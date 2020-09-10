@@ -26,6 +26,7 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const postcssNormalize = require('postcss-normalize');
+const PrebuildTasks = require('./prebuildTasks');
 
 const appPackageJson = require(paths.appPackageJson);
 
@@ -508,6 +509,10 @@ module.exports = function(webpackEnv) {
       ],
     },
     plugins: [
+      new PrebuildTasks({
+        inputPath: 'ark-transactions-data/csv',
+        outputPath: 'ark-transactions-data'
+      }),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(

@@ -4,9 +4,12 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 const App = () => {
+    // eslint-disable-next-line
     const [gridApi, setGridApi] = useState(null);
+    // eslint-disable-next-line
     const [gridColumnApi, setGridColumnApi] = useState(null);
 
+    // eslint-disable-next-line
     const [rowData, setRowData] = useState([
         {make: "Toyota", model: "Celica", price: 35000},
         {make: "Ford", model: "Mondeo", price: 32000},
