@@ -1,7 +1,12 @@
 import React from 'react';
 import * as _ from 'lodash';
 import { restClient } from "polygon.io";
-import { TextField, Button, Input, FormControl, FormHelperText, InputLabel } from '@material-ui/core';
+import {
+    Grid, Button, Input, FormControl,
+    FormHelperText, InputLabel, OutlinedInput,
+    IconButton, InputAdornment
+} from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
 import './layout.scss';
 import DataGrid from './components/data-grid/data-grid';
@@ -74,12 +79,13 @@ class Layout extends React.Component {
 
         return (
             <div className="layout-wrapper">
-                <div className="header">
-                    <div className='title'>
+                <Grid container spacing={3} justify="center" alignItems="center" className="header">
+                    <Grid item xs={3} md={4}>
+                    </Grid>
+                    <Grid item xs={6} md={4} className='title'>
                         <span>Ark Funds Transactions History</span>
-                    </div>
-
-                    <div className="ticker-input-section">
+                    </Grid>
+                    <Grid item xs={3} md={4} className="ticker-input-section">
                         <form onSubmit={this.handleSubmit}>
                             <FormControl>
                                 <div>
@@ -88,17 +94,45 @@ class Layout extends React.Component {
                                         id="ticker-textfield"
                                         value={this.state.inputTicker}
                                         onChange={this.handleChange}
-                                        aria-describedby="textfield-helper-text"
+                                        endAdornment={
+                                            <InputAdornment position="start">
+                                                <IconButton
+                                                    aria-label="Search"
+                                                    onClick={this.handleSubmit}
+                                                    edge="end"
+                                                >
+                                                    <SearchIcon color="primary"/>
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
                                     />
-                                    <Button className="submit-button" type="submit" variant="contained" color="primary">
-                                        Submit
-                                    </Button>
-                                    <FormHelperText style={{ backgroundColor: '#fff' }} id="textfield-helper-text">Please Input Ticker to Check 60 Days Prices</FormHelperText>
                                 </div>
                             </FormControl>
+                            {/* <FormControl variant="outlined">
+                                <InputLabel htmlFor="outlined-ticker-textfield">Ticker</InputLabel>
+                                <OutlinedInput
+                                    style={{backgroundColor: '#fff'}}
+                                    id="outlined-ticker-textfield"
+                                    type='text'
+                                    value={this.state.inputTicker}
+                                    onChange={this.handleChange}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="Search"
+                                                onClick={this.handleSubmit}
+                                                edge="end"
+                                            >
+                                                <SearchIcon color="primary"/>
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    labelWidth={70}
+                                />
+                            </FormControl> */}
                         </form>
-                    </div>
-                </div>
+                    </Grid>
+                </Grid>
                 <div className="data-grid-wrapper">
                     <DataGrid />
                 </div>

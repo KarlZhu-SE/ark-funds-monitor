@@ -7,20 +7,17 @@
 .layout-wrapper {}
 
 .header {
-    text-align: center;
 
     .title {
-        display: inline-block;
-        padding: 20px 20px 20px 20px;
         color: white;
-        font-size: xx-large;
+        font-size: x-large;
+        text-align: center;
     }
 
     .ticker-input-section {
-        position: absolute;
-        z-index: 1;
-        right: 3%;
-        top: 1%;
+        margin-left: -20px;
+        padding: 10px 20px 20px 0px !important;
+        text-align: center;
 
         form .MuiFormControl-root {
             label {
@@ -32,14 +29,16 @@
                 z-index: 100;
             }
 
-            .MuiInputBase-root input {
-                background-color: white
-            }
-        }
+            .MuiInputBase-root {
+                border-radius: 5px;
+                background-color: white;
 
-        .submit-button {
-            margin-left: 10px;
-            width: 50px;
+                input {
+                    min-width: 50px;
+                    border-radius: 5px;
+                    max-width: 100px;
+                }
+            }
         }
     }
 }
