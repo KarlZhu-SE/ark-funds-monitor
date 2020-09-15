@@ -1,0 +1,45 @@
+.stock-figure-wrapper {
+    padding-top: 3%;
+}
+
+.data-grid-wrapper {}
+
+.layout-wrapper {}
+
+.header {
+    text-align: center;
+
+    .title {
+        display: inline-block;
+        padding: 20px 20px 20px 20px;
+        color: white;
+        font-size: xx-large;
+    }
+
+    .ticker-input-section {
+        position: absolute;
+        z-index: 1;
+        right: 3%;
+        top: 1%;
+
+        form .MuiFormControl-root {
+            label {
+                z-index: 100;
+            }
+
+            label.Mui-focused {
+                color: white;
+                z-index: 100;
+            }
+
+            .MuiInputBase-root input {
+                background-color: white
+            }
+        }
+
+        .submit-button {
+            margin-left: 10px;
+            width: 50px;
+        }
+    }
+}

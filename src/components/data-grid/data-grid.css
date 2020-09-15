@@ -1,0 +1,12 @@
+.ag-theme-alpine {
+  height: 20rem;
+}
+
+.center {
+  margin: auto;
+  width: 95%;
+  /* height: 50%; */
+  /* border: 2px solid black; */
+
+  padding: 0;
+}

@@ -510,8 +510,10 @@ module.exports = function(webpackEnv) {
     },
     plugins: [
       new PrebuildTasks({
-        inputPath: 'ark-transactions-data/csv',
-        outputPath: 'ark-transactions-data'
+        xlsPath: 'ark-transactions-data/xls',
+        csvPath: 'ark-transactions-data/csv',
+        dailySummaryDataPath: 'ark-transactions-data/daily-summary',
+        outputPath: 'src/rawData'
       }),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(

@@ -23,6 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 
-mergedData.js
+# mergedData.js
 
 package-lock.json

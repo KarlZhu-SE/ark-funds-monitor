@@ -1,28 +1,47 @@
 'use strict';
 
+const _ = require('lodash');
 const fs = require('fs');
 const { parse } = require('fast-csv');
 const path = require('path');
 const mkdirp = require('mkdirp');
-const _ = require('lodash');
+const XLSX = require('xlsx');
 
 class PrebuildTasks {
     constructor(pathObj) {
         console.time('Pre-build tasks')
 
         let mergedData = [];
-        // let rResolve;
-        // const dataReadings = new Promise((resolve) => { rResolve = resolve; })
         let readingPromises = [];
+
+        // read all xls, transform them to csv, merge all and then transform to json
+
         mkdirp(pathObj.outputPath, function (err) {
             if (err) {
                 console.error(err);
             } else {
-                // read all csvs, merge them all and transform to js
-                if (fs.existsSync(pathObj.inputPath) && fs.statSync(pathObj.inputPath).isDirectory()) {
-                    const localeFiles = fs.readdirSync(pathObj.inputPath);
+
+                // xls to csv
+                if (fs.existsSync(pathObj.xlsPath) && fs.statSync(pathObj.xlsPath).isDirectory()) {
+                    const localeFiles = fs.readdirSync(pathObj.xlsPath);
                     for (let i = 0; i < localeFiles.length; i++) {
-                        const filePath = `${pathObj.inputPath}/${localeFiles[i]}`;
+                        const filePath = `${pathObj.xlsPath}/${localeFiles[i]}`;
+                        if (!fs.statSync(filePath).isDirectory()) {
+                            const workbook = XLSX.readFile(filePath);
+                            const firstSheetName = workbook.SheetNames[0];
+                            const worksheet = workbook.Sheets[firstSheetName];
+
+                            fs.writeFileSync(`${pathObj.csvPath}/${path.basename(filePath, path.extname(filePath))}.csv`, XLSX.utils.sheet_to_csv(worksheet));
+                        }
+                    }
+                }
+
+                // csv to js
+                if (fs.existsSync(pathObj.csvPath) && fs.statSync(pathObj.csvPath).isDirectory()) {
+                    const localeFiles = fs.readdirSync(pathObj.csvPath);
+                    for (let i = 0; i < localeFiles.length; i++) {
+                        const filePath = `${pathObj.csvPath}/${localeFiles[i]}`;
+
                         if (!fs.statSync(filePath).isDirectory()) {
                             let promise = new Promise((resolve, reject) => {
                                 let strData = '';
@@ -31,9 +50,21 @@ class PrebuildTasks {
                                     strData = data.slice(data.indexOf('FUND,Date'));
                                     const stream = parse({ headers: true })
                                         .on('error', error => console.error(error))
-                                        .on('data', row => mergedData.push(row))
+                                        .on('data', row => {
+                                            let isEmpty = true;
+                                            for (let prop in row) {
+                                                if (Object.prototype.hasOwnProperty.call(row, prop)) {
+                                                    if (row[prop] !== '') {
+                                                        isEmpty = false;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                            if (!isEmpty) {
+                                                mergedData.push(row)
+                                            }
+                                        })
                                         .on('end', rowCount => {
-                                            console.log(`Parsed ${rowCount} rows`);
                                             resolve();
                                         });
                                     stream.write(strData);
@@ -44,12 +75,23 @@ class PrebuildTasks {
                             readingPromises.push(promise);
                         }
                     }
-                    Promise.all(readingPromises).then(() => {
-                        fs.writeFileSync(`${pathObj.outputPath}/mergedData.js`, 'var rawData = ' + JSON.stringify(mergedData));
-                    })
                 }
+
+                Promise.all(readingPromises).then(() => {
+                    console.log(`Parsed ${mergedData.length} transactions`);
+                    if (mergedData.length === 0) {
+                        return;
+                    }
+                    mergedData = _.orderBy(mergedData, ['Date', 'FUND'], ['desc', 'asc']);
+                    fs.writeFileSync(`${pathObj.dailySummaryDataPath}/dataTill${mergedData[0]['Date']}.json`, JSON.stringify(mergedData));
+                    console.log(`Wrote data to ${pathObj.dailySummaryDataPath}/dataTill${mergedData[0]['Date']}.json`);
+
+                    fs.writeFileSync(`${pathObj.outputPath}/mergedData.json`, JSON.stringify(mergedData));
+                    console.log(`Wrote data to ${pathObj.outputPath}/mergedData.json`);
+
+                    console.timeEnd('Pre-build tasks');
+                })
             }
-            console.timeEnd('Pre-build tasks');
         })
     }
 
