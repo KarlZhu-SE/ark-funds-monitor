@@ -1,6 +1,7 @@
 {
   "name": "ark-funds-monitor",
   "version": "0.1.0",
+  "homepage": "http://IssueX.github.io/ark-funds-monitor",
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
@@ -75,6 +76,8 @@
     "xlsx": "^0.16.6"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
@@ -94,7 +97,9 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  },
   "jest": {
     "roots": [
       "<rootDir>/src"
