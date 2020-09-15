@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { AgGridColumn, AgGridReact } from 'ag-grid-react';
+import React from 'react';
+import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import * as _ from 'lodash';
-
+import { Grid } from '@material-ui/core';
 import './data-grid.css';
 
 let rawData = require('../../rawData/mergedData.json');
@@ -13,52 +13,119 @@ Array.prototype.swapElements = function (a, b) {
     return this;
 }
 
-const massageRawData = (rawData) => {
-    let tempData = _.cloneDeep(rawData);
-
-    // remove empty property
-    tempData.map(x => {
-        for (let key in x) {
-            if (key === '') {
-                delete x[key];
-            }
-        }
-    })
-
-    return tempData;
-}
-
 const toDate = (dateStr) => {
     const [year, month, day] = dateStr.split("-")
     return new Date(year, month, day)
 }
 
-const DataGrid = () => {
-    const [gridApi, setGridApi] = useState(null);
-    const [gridColumnApi, setGridColumnApi] = useState(null);
-    const [rowData, setRowData] = useState(massageRawData(rawData));
-
-    const columns = Object.keys(rowData[0]).swapElements(0, 1);
-
-    const onCellClick = e => {
-        console.log('in')
-        const selectedNodes = gridApi.getSelectedNodes()
-        const selectedData = selectedNodes.map(node => node.data)
-        const selectedDataStringPresentation = selectedData.map(node => node.make + ' ' + node.model).join(', ')
-        alert(`Selected nodes: ${selectedDataStringPresentation}`)
+class DataGrid extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            width: window.innerWidth,
+            height: window.innerHeight,
+        };
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
-    return (
-        <div className={['ag-theme-alpine', 'center'].join(' ')}>
-            <AgGridReact
-                rowData={rowData}
-                cellClicked={onCellClick}>
-                {columns.map(column => (
-                    <AgGridColumn key={column} field={column} width={170} sortable={true} filter={true}></AgGridColumn>
-                ))}
-            </AgGridReact>
-        </div>
-    );
+    getColumnDefs(rawData) {
+        const columnDefs = [];
+        const columnNamesInOrder = Object.keys(this.massageRawData(rawData)[0]).swapElements(0, 1);
+        columnNamesInOrder.map(x => {
+            let genericColDef = {
+                key: x,
+                field: x,
+            };
+            let specificColDef = {};
+            switch (x) {
+                case 'Date':
+                case 'Direction':
+                case 'CUSIP':
+                case 'Shares':
+                case '% Of ETF':
+                    specificColDef = {
+                        width: this.state.width / 12,
+                        minWidth: 100,
+                    }
+                    break
+                case 'FUND':
+                case 'Ticker':
+                    specificColDef = {
+                        width: this.state.width / 10,
+                        minWidth: 90,
+                    }
+                    break
+                case 'Name':
+                    specificColDef = {
+                        width: this.state.width / 4,
+                    }
+                    break
+                default:
+                    specificColDef = {
+                        width: this.state.width / 8,
+                        minWidth: 100,
+                    };
+                    break;
+            }
+            columnDefs.push(Object.assign(genericColDef, specificColDef));
+        })
+        return columnDefs;
+    }
+
+    massageRawData(rawData) {
+        let tempData = _.cloneDeep(rawData);
+        // remove empty property
+        tempData.map(x => {
+            for (let key in x) {
+                if (key === '') {
+                    delete x[key];
+                }
+            }
+        })
+        return tempData;
+    }
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+
+    // onCellClick(e) {
+    //     console.log('in')
+    //     const selectedNodes = gridApi.getSelectedNodes()
+    //     const selectedData = selectedNodes.map(node => node.data)
+    //     const selectedDataStringPresentation = selectedData.map(node => node.make + ' ' + node.model).join(', ')
+    //     alert(`Selected nodes: ${selectedDataStringPresentation}`)
+    // }
+
+    render() {
+        const dataGridDef = {
+            defaultColDef: { resizable: true, sortable: true, filter: true },
+            columnDefs: this.getColumnDefs(rawData),
+            rowData: this.massageRawData(rawData)
+        }
+        return (
+            <Grid container spacing={3} justify="center" alignItems="center">
+                <Grid item xs={11} className={['ag-theme-alpine', 'center'].join(' ')}>
+                    <AgGridReact
+                        rowData={dataGridDef.rowData}
+                        columnDefs={dataGridDef.columnDefs}
+                        defaultColDef={dataGridDef.defaultColDef}
+                    // cellClicked={onCellClick(e)}
+                    >
+                    </AgGridReact>
+                </Grid>
+            </Grid>
+        );
+    }
 };
 
 export default DataGrid;

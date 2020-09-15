@@ -77,7 +77,9 @@ class StockFigure extends React.Component {
                 inactiveColor: '#777',
                 textStyle: {
                     color: '#fff'
-                }
+                },
+                top: '4%',
+                bottom: '-2%'
             },
             axisPointer: {
                 link: { xAxisIndex: 'all' },
