@@ -54,12 +54,12 @@ class StockFigure extends React.Component {
     getOption() {
         this.data = this.splitData(_.cloneDeep(this.props.data));
         let option = {
-            backgroundColor: '#21202D',
+            backgroundColor: 'rgb(206, 255, 233)',
             title: {
                 text: this.props.title,
                 left: '5%',
                 top: '-1%',
-                textStyle: { color: '#fff' },
+                textStyle: { color: '#000' },
             },
             tooltip: {
                 trigger: 'axis',
@@ -77,7 +77,7 @@ class StockFigure extends React.Component {
                 data: ['Day', 'MA5', 'MA10', 'MA20'],
                 inactiveColor: '#777',
                 textStyle: {
-                    color: '#fff'
+                    color: '#000'
                 },
                 top: '1%',
             },
@@ -96,13 +96,6 @@ class StockFigure extends React.Component {
                     brush: {
                         type: ['lineX', 'clear']
                     }
-                }
-            },
-            brush: {
-                xAxisIndex: 'all',
-                brushLink: 'all',
-                outOfBrush: {
-                    colorAlpha: 0.1
                 }
             },
             visualMap: {
@@ -136,7 +129,7 @@ class StockFigure extends React.Component {
                     data: this.data.categoryData,
                     scale: true,
                     boundaryGap: false,
-                    axisLine: { onZero: false, lineStyle: { color: '#8392A5' } },
+                    axisLine: { onZero: false, lineStyle: { color: '#000' } },
                     splitLine: { show: false },
                     splitNumber: 20,
                     min: 'dataMin',
@@ -162,7 +155,7 @@ class StockFigure extends React.Component {
                 splitArea: {
                     show: true
                 },
-                axisLine: { lineStyle: { color: '#8392A5' } },
+                axisLine: { lineStyle: { color: '#000' } },
                 splitLine: { show: false }
             },
             {
@@ -170,7 +163,7 @@ class StockFigure extends React.Component {
                 gridIndex: 1,
                 splitNumber: 2,
                 axisLabel: { show: false },
-                axisLine: { show: false, lineStyle: { color: '#8392A5' } },
+                axisLine: { show: false, lineStyle: { color: '#000' } },
                 axisTick: { show: false },
                 splitLine: { show: false }
             }
