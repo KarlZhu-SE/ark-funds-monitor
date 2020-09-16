@@ -7,7 +7,7 @@
 .layout-wrapper {}
 
 .header-section {
-    background-color: #ADEFD1FF;
+    background-color: #00203FFF;
     height: 64px;
     width: 100%;
     top: 0px;
@@ -24,7 +24,7 @@
 
             .title {
                 position: absolute;
-                color: #00203FFF;
+                color: white;
                 margin: auto;
                 left: 4%;
                 top: 8px;
@@ -39,29 +39,28 @@
             .subtitle-version {
                 z-index: 1000;
                 position: fixed;
-                color: white;
+                color: #00203FFF;
                 font-size: small;
-                right: 0px;
+                right: 5px;
                 bottom: 20px;
-                margin-bottom: 1px;
+                margin-bottom: 5px;
             }
 
             .subtitle-update-date {
                 z-index: 1000;
                 position: fixed;
-                color: white;
+                color: #00203FFF;
                 font-size: small;
-                right: 0px;
-                bottom: 1px;
-                margin-bottom: 1px;
+                right: 5px;
+                bottom: 5px;
+                margin-bottom: 5px;
             }
         }
 
         .ticker-input-section {
             height: 64px;
             padding: 0 !important;
-            background-color: #ADEFD1FF;
-
+            background-color: #00203FFF;
 
             form .MuiFormControl-root {
                 float: right;
@@ -70,8 +69,8 @@
                 .MuiInputBase-root {
                     border-radius: 5px;
                     background-color: white;
-                    height: 40px;
-                    margin-top: 18px;
+                    height: 30px;
+                    margin-top: 23px;
 
                     input {
                         min-width: 50px;

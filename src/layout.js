@@ -12,6 +12,8 @@ import './layout.scss';
 import DataGrid from './components/data-grid/data-grid';
 import StockFigure from './components/stock-figure/stock-figure';
 
+let arkData = require('./rawData/mergedData.json');
+
 const rest = restClient("RTHdj0YLW1JrkVcVeSQjBSHFgS4lgtCf");
 
 class Layout extends React.Component {
@@ -92,7 +94,7 @@ class Layout extends React.Component {
                         </Grid>
                         <Grid item xs={3} md={4} className='subtitle-container'>
                             <p className='subtitle-version'>Version: {packageJson.version}</p>
-                            <p className='subtitle-update-date'>Last Update Date: {new Date().toJSON().slice(0,10)}</p>
+                            <p className='subtitle-update-date'>Last Update Date: {arkData[0]['Date']}</p>
                         </Grid>
                         <Grid item xs={3} md={4} className="ticker-input-section">
                             <form onSubmit={this.handleSubmit}>

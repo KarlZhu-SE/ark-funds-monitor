@@ -40,6 +40,11 @@ class DataGrid extends React.Component {
             let specificColDef = {};
             switch (x) {
                 case 'Date':
+                    specificColDef = {
+                        width: this.state.width / 12,
+                        minWidth: 120,
+                    }
+                    break
                 case 'Direction':
                 case 'CUSIP':
                 case 'Shares':
