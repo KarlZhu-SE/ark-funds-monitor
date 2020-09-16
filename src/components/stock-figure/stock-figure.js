@@ -369,8 +369,9 @@ class StockFigure extends React.Component {
                 continue;
             }
 
-            const buyCount = dataArrayInDate.map(x => x.Direction === 'Buy').length;
+            const buyCount = dataArrayInDate.filter(x => x.Direction === 'Buy').length;
             const sellCount = dataArrayInDate.length - buyCount;
+
             if (buyCount === 0 || sellCount === 0) {
                 let pointText = '';
                 if (buyCount === 0) {
