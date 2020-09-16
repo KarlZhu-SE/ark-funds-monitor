@@ -4,7 +4,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import * as _ from 'lodash';
 import { Grid } from '@material-ui/core';
-import './data-grid.css';
+import './data-grid.scss';
 
 let rawData = require('../../rawData/mergedData.json');
 
@@ -98,13 +98,11 @@ class DataGrid extends React.Component {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
-    // onCellClick(e) {
-    //     console.log('in')
-    //     const selectedNodes = gridApi.getSelectedNodes()
-    //     const selectedData = selectedNodes.map(node => node.data)
-    //     const selectedDataStringPresentation = selectedData.map(node => node.make + ' ' + node.model).join(', ')
-    //     alert(`Selected nodes: ${selectedDataStringPresentation}`)
-    // }
+    onRowClicked(e) {
+        if (e && e.data && e.data.Ticker) {
+            this.props.onSelectTicker(e);
+        }
+    }
 
     render() {
         const dataGridDef = {
@@ -119,7 +117,9 @@ class DataGrid extends React.Component {
                         rowData={dataGridDef.rowData}
                         columnDefs={dataGridDef.columnDefs}
                         defaultColDef={dataGridDef.defaultColDef}
-                    // cellClicked={onCellClick(e)}
+                        paginationAutoPageSize={true}
+                        pagination={true}
+                        onRowClicked={this.onRowClicked.bind(this)}
                     >
                     </AgGridReact>
                 </Grid>

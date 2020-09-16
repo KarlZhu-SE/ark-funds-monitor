@@ -2,9 +2,8 @@ import React from 'react';
 import * as _ from 'lodash';
 import { restClient } from "polygon.io";
 import {
-    Grid, Button, Input, FormControl,
-    FormHelperText, InputLabel, OutlinedInput,
-    IconButton, InputAdornment
+    Grid, Input, FormControl,
+    InputLabel, IconButton, InputAdornment
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -20,6 +19,7 @@ class Layout extends React.Component {
         this.state = { inputTicker: '', massagedData: [], figureTitle: '' };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.onDataGridSelectTicker = this.onDataGridSelectTicker.bind(this);
     }
 
     handleChange(event) {
@@ -27,6 +27,7 @@ class Layout extends React.Component {
     }
 
     handleSubmit(event) {
+        console.log(event)
         // Get From/To date
         const toDate = new Date();
         let fromDate = new Date();
@@ -69,6 +70,11 @@ class Layout extends React.Component {
         event.preventDefault();
     }
 
+    onDataGridSelectTicker(e) {
+        this.setState({ inputTicker: e.data.Ticker });
+        this.handleSubmit(e.event);
+    }
+
     render() {
         let subComponent;
         if (this.state.massagedData.length > 0) {
@@ -108,33 +114,11 @@ class Layout extends React.Component {
                                     />
                                 </div>
                             </FormControl>
-                            {/* <FormControl variant="outlined">
-                                <InputLabel htmlFor="outlined-ticker-textfield">Ticker</InputLabel>
-                                <OutlinedInput
-                                    style={{backgroundColor: '#fff'}}
-                                    id="outlined-ticker-textfield"
-                                    type='text'
-                                    value={this.state.inputTicker}
-                                    onChange={this.handleChange}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="Search"
-                                                onClick={this.handleSubmit}
-                                                edge="end"
-                                            >
-                                                <SearchIcon color="primary"/>
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                    labelWidth={70}
-                                />
-                            </FormControl> */}
                         </form>
                     </Grid>
                 </Grid>
                 <div className="data-grid-wrapper">
-                    <DataGrid />
+                    <DataGrid onSelectTicker={this.onDataGridSelectTicker}/>
                 </div>
                 <div className="stock-figure-wrapper">
                     {subComponent}

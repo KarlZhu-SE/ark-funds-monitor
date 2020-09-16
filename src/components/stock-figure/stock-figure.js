@@ -58,7 +58,8 @@ class StockFigure extends React.Component {
             title: {
                 text: this.props.title,
                 left: '5%',
-                textStyle: { color: '#fff' }
+                top: '-1%',
+                textStyle: { color: '#fff' },
             },
             tooltip: {
                 trigger: 'axis',
@@ -78,8 +79,7 @@ class StockFigure extends React.Component {
                 textStyle: {
                     color: '#fff'
                 },
-                top: '4%',
-                bottom: '-2%'
+                top: '1%',
             },
             axisPointer: {
                 link: { xAxisIndex: 'all' },
@@ -362,20 +362,64 @@ class StockFigure extends React.Component {
             ]
         };
 
+        // handle mark point for BUY/SELL from ARK
         const filteredArkData = arkData.filter(x => x.Ticker === this.props.title);
-        for (let x of filteredArkData) {
-            const dataInProps = this.props.data.find(m => m[0] === x.Date);
+        if (!filteredArkData || filteredArkData.length === 0) {
+            return option;
+        }
+
+        const groupMap = _.groupBy(filteredArkData, 'Date');
+        for (let date in groupMap) {
+            const dataArrayInDate = groupMap[date];
+            const dataInProps = this.props.data.find(m => m[0] === dataArrayInDate[0].Date);
             if (!(dataInProps && dataInProps[4])) {
                 continue;
             }
-            option.series[0].markPoint.data.push({
-                name: `${x.Date} ${x.Direction}`,
-                coord: [x.Date, dataInProps[4]],
-                value: x.Direction,
-                itemStyle: {
-                    color: 'rgb(41,60,85)'
+
+            const buyCount = dataArrayInDate.map(x => x.Direction === 'Buy').length;
+            const sellCount = dataArrayInDate.length - buyCount;
+            if (buyCount === 0 || sellCount === 0) {
+                let pointText = '';
+                if (buyCount === 0) {
+                    pointText = sellCount === 1
+                                ? `${dataArrayInDate[0].Direction}`
+                                : `Sell\nX${sellCount}`;
+                } else if (sellCount === 0) {
+                    pointText = buyCount === 1
+                                ? `${dataArrayInDate[0].Direction}`
+                                : `Buy\nX${buyCount}`;
                 }
-            })
+
+                option.series[0].markPoint.data.push({
+                    name: `${dataArrayInDate[0].Date} ${dataArrayInDate[0].Direction}`,
+                    coord: [dataArrayInDate[0].Date, dataInProps[4]],
+                    value: pointText,
+                    itemStyle: {
+                        color: buyCount === 0
+                            ? 'rgb(41,60,85)'
+                            : 'rgb(186, 171, 52)'
+                    }
+                })
+            } else {
+                // have buyCount > 0 and sellCount > 0
+                option.series[0].markPoint.data.push({
+                    name: `${dataArrayInDate[0].Date} Buy`,
+                    coord: [dataArrayInDate[0].Date, dataInProps[4]],
+                    value: `Buy\nX${buyCount}`,
+                    itemStyle: {
+                        color: 'rgb(186, 171, 52)'
+                    }
+                })
+
+                option.series[0].markPoint.data.push({
+                    name: `${dataArrayInDate[0].Date} Sell`,
+                    coord: [dataArrayInDate[0].Date, dataInProps[4] * 1.1],
+                    value: `Sell\n${sellCount}`,
+                    itemStyle: {
+                        color: 'rgb(41,60,85)'
+                    }
+                })
+            }
         }
         return option;
     }
