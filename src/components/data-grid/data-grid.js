@@ -2,6 +2,7 @@ import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 import * as _ from 'lodash';
 import { Grid } from '@material-ui/core';
 import './data-grid.scss';
@@ -112,7 +113,7 @@ class DataGrid extends React.Component {
         }
         return (
             <Grid container spacing={3} justify="center" alignItems="center">
-                <Grid item xs={11} className={['ag-theme-alpine', 'center'].join(' ')}>
+                <Grid item xs={11} className={['ag-theme-alpine-dark', 'center'].join(' ')}>
                     <AgGridReact
                         rowData={dataGridDef.rowData}
                         columnDefs={dataGridDef.columnDefs}

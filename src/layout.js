@@ -3,10 +3,11 @@ import * as _ from 'lodash';
 import { restClient } from "polygon.io";
 import {
     Grid, Input, FormControl,
-    InputLabel, IconButton, InputAdornment
+    InputLabel, IconButton, InputAdornment,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
+import packageJson from '../package.json';
 import './layout.scss';
 import DataGrid from './components/data-grid/data-grid';
 import StockFigure from './components/stock-figure/stock-figure';
@@ -23,11 +24,10 @@ class Layout extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ inputTicker: event.target.value });
+        this.setState({ inputTicker: event.target.value.toUpperCase() });
     }
 
     handleSubmit(event) {
-        console.log(event)
         // Get From/To date
         const toDate = new Date();
         let fromDate = new Date();
@@ -85,40 +85,44 @@ class Layout extends React.Component {
 
         return (
             <div className="layout-wrapper">
-                <Grid container spacing={3} justify="center" alignItems="center" className="header">
-                    <Grid item xs={3} md={4}>
+                <div className="header-section">
+                    <Grid container spacing={3} justify="center" alignItems="center">
+                        <Grid item xs={6} md={4} className='title-container'>
+                            <h2 className='title'>Ark Funds Monitor</h2>
+                        </Grid>
+                        <Grid item xs={3} md={4} className='subtitle-container'>
+                            <p className='subtitle-version'>Version: {packageJson.version}</p>
+                            <p className='subtitle-update-date'>Last Update Date: {new Date().toJSON().slice(0,10)}</p>
+                        </Grid>
+                        <Grid item xs={3} md={4} className="ticker-input-section">
+                            <form onSubmit={this.handleSubmit}>
+                                <FormControl>
+                                    <div>
+                                        <Input
+                                            id="ticker-textfield"
+                                            value={this.state.inputTicker}
+                                            onChange={this.handleChange}
+                                            placeholder='Ticker'
+                                            endAdornment={
+                                                <InputAdornment position="start">
+                                                    <IconButton
+                                                        aria-label="Search"
+                                                        onClick={this.handleSubmit}
+                                                        edge="end"
+                                                    >
+                                                        <SearchIcon color="primary" />
+                                                    </IconButton>
+                                                </InputAdornment>
+                                            }
+                                        />
+                                    </div>
+                                </FormControl>
+                            </form>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={6} md={4} className='title'>
-                        <span>Ark Funds Transactions History</span>
-                    </Grid>
-                    <Grid item xs={3} md={4} className="ticker-input-section">
-                        <form onSubmit={this.handleSubmit}>
-                            <FormControl>
-                                <div>
-                                    <InputLabel htmlFor="ticker-textfield">Ticker</InputLabel>
-                                    <Input
-                                        id="ticker-textfield"
-                                        value={this.state.inputTicker}
-                                        onChange={this.handleChange}
-                                        endAdornment={
-                                            <InputAdornment position="start">
-                                                <IconButton
-                                                    aria-label="Search"
-                                                    onClick={this.handleSubmit}
-                                                    edge="end"
-                                                >
-                                                    <SearchIcon color="primary"/>
-                                                </IconButton>
-                                            </InputAdornment>
-                                        }
-                                    />
-                                </div>
-                            </FormControl>
-                        </form>
-                    </Grid>
-                </Grid>
+                </div>
                 <div className="data-grid-wrapper">
-                    <DataGrid onSelectTicker={this.onDataGridSelectTicker}/>
+                    <DataGrid onSelectTicker={this.onDataGridSelectTicker} />
                 </div>
                 <div className="stock-figure-wrapper">
                     {subComponent}

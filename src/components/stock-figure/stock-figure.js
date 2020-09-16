@@ -54,7 +54,7 @@ class StockFigure extends React.Component {
     getOption() {
         this.data = this.splitData(_.cloneDeep(this.props.data));
         let option = {
-            backgroundColor: '#21202D',
+            backgroundColor: '#000000FF',
             title: {
                 text: this.props.title,
                 left: '5%',

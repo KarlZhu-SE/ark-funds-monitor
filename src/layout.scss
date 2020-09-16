@@ -6,39 +6,79 @@
 
 .layout-wrapper {}
 
-.header {
+.header-section {
+    background-color: #ADEFD1FF;
+    height: 64px;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 999;
+    margin-bottom: 3%;
 
-    .title {
-        color: white;
-        font-size: x-large;
-        text-align: center;
-    }
+    .MuiGrid-container {
+        height: 64px;
 
-    .ticker-input-section {
-        margin-left: -20px;
-        padding: 15px 20px 20px 0px !important;
-        text-align: center;
+        .title-container {
+            height: 64px;
+            padding: 0 !important;
 
-        form .MuiFormControl-root {
-            label {
-                z-index: 100;
-                padding-left: 5%
+            .title {
+                position: absolute;
+                color: #00203FFF;
+                margin: auto;
+                left: 4%;
+                top: 8px;
             }
+        }
 
-            label.Mui-focused {
+        .subtitle-container {
+            position: relative;
+            height: 64px;
+            padding: 0 !important;
+
+            .subtitle-version {
+                z-index: 1000;
+                position: fixed;
                 color: white;
-                z-index: 100;
+                font-size: small;
+                right: 0px;
+                bottom: 20px;
+                margin-bottom: 1px;
             }
 
-            .MuiInputBase-root {
-                border-radius: 5px;
-                background-color: white;
+            .subtitle-update-date {
+                z-index: 1000;
+                position: fixed;
+                color: white;
+                font-size: small;
+                right: 0px;
+                bottom: 1px;
+                margin-bottom: 1px;
+            }
+        }
 
-                input {
-                    min-width: 50px;
+        .ticker-input-section {
+            height: 64px;
+            padding: 0 !important;
+            background-color: #ADEFD1FF;
+
+
+            form .MuiFormControl-root {
+                float: right;
+                margin-right: 15%;
+
+                .MuiInputBase-root {
                     border-radius: 5px;
-                    max-width: 100px;
-                    padding-left: 5%
+                    background-color: white;
+                    height: 40px;
+                    margin-top: 18px;
+
+                    input {
+                        min-width: 50px;
+                        border-radius: 5px;
+                        max-width: 100px;
+                        padding-left: 5px;
+                    }
                 }
             }
         }
