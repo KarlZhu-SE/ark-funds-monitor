@@ -16,12 +16,13 @@
 
     .ticker-input-section {
         margin-left: -20px;
-        padding: 10px 20px 20px 0px !important;
+        padding: 15px 20px 20px 0px !important;
         text-align: center;
 
         form .MuiFormControl-root {
             label {
                 z-index: 100;
+                padding-left: 5%
             }
 
             label.Mui-focused {
@@ -37,6 +38,7 @@
                     min-width: 50px;
                     border-radius: 5px;
                     max-width: 100px;
+                    padding-left: 5%
                 }
             }
         }
