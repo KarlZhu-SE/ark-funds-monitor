@@ -19,3 +19,13 @@
 .ag-row-hover {
   background-color: #dfdfff !important;
 }
+
+@media screen and (max-width: 800px) {
+  .ag-header-cell-text {
+    font-size: 16px;
+  }
+
+  .ag-cell {
+    font-size: 14px;
+  }
+}

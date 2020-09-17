@@ -41,7 +41,7 @@ class DataGrid extends React.Component {
                 case 'Date':
                     specificColDef = {
                         width: this.state.width / 12,
-                        minWidth: 120,
+                        minWidth: 130,
                     }
                     break
                 case 'Direction':
@@ -56,7 +56,7 @@ class DataGrid extends React.Component {
                 case 'FUND':
                 case 'Ticker':
                     specificColDef = {
-                        width: this.state.width / 10,
+                        width: this.state.width / 12,
                         minWidth: 90,
                     }
                     break
