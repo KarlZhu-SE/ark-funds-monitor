@@ -3,6 +3,8 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-community/dist/styles/ag-theme-material.css';
+
 import * as _ from 'lodash';
 import { Grid } from '@material-ui/core';
 import './data-grid.scss';
@@ -110,13 +112,18 @@ class DataGrid extends React.Component {
 
     render() {
         const dataGridDef = {
-            defaultColDef: { resizable: true, sortable: true, filter: true },
+            defaultColDef: {
+                resizable: true,
+                sortable: true,
+                filter: 'agTextColumnFilter',
+                floatingFilter: true
+            },
             columnDefs: this.getColumnDefs(rawData),
             rowData: this.massageRawData(rawData)
         }
         return (
-            <Grid container spacing={3} justify="center" alignItems="center">
-                <Grid item xs={11} className={['ag-theme-alpine-dark', 'center'].join(' ')}>
+            <Grid container justify="center" alignItems="center">
+                <Grid item xs={11} className={['ag-theme-alpine', 'center'].join(' ')}>
                     <AgGridReact
                         rowData={dataGridDef.rowData}
                         columnDefs={dataGridDef.columnDefs}

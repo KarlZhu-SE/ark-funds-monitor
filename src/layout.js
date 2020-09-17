@@ -101,7 +101,18 @@ class Layout extends React.Component {
         if (this.state.massagedData.length > 0) {
             subComponent = <StockFigure title={this.state.figureTitle.toUpperCase()} data={this.state.massagedData} />;
         } else {
-            subComponent = <div></div>;
+            subComponent =
+                <div className="chart-placeholder">
+                    <p>
+                        Search Any Ticker or Any Click Row
+                        <br></br>
+                        Candlestick Chart Will Display Below
+                    </p>
+                    <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-chevron-double-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </div>;
         }
 
         return (
@@ -109,7 +120,12 @@ class Layout extends React.Component {
                 <div className="header-section">
                     <Grid container spacing={3} justify="center" alignItems="center">
                         <Grid item xs={6} md={4} className='title-container'>
-                            <h2 className='title'>Ark Funds Monitor</h2>
+                            <span class="logo">
+                                <a href="http://IssueX.github.io/ark-funds-monitor/">
+                                    <img height="90" width="120" src="https://ark-funds.com/wp-content/uploads/2020/07/ark-logo-1-1.svg" alt="ark-funds.com" title="" />
+                                </a>
+                            </span>
+                            <p className='title'>ARK Funds Monitor</p>
                         </Grid>
                         <Grid item xs={3} md={4} className='subtitle-container'>
                             <p className='subtitle-version'>Version: {packageJson.version}</p>
