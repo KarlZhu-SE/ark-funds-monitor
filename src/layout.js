@@ -119,19 +119,16 @@ class Layout extends React.Component {
             <div className="layout-wrapper">
                 <div className="header-section">
                     <Grid container spacing={3} justify="center" alignItems="center">
-                        <Grid item xs={6} md={4} className='title-container'>
+                        <Grid item xs={6} md={10} className='title-container'>
                             <span class="logo">
                                 <a href="http://IssueX.github.io/ark-funds-monitor/">
                                     <img height="90" width="120" src="https://ark-funds.com/wp-content/uploads/2020/07/ark-logo-1-1.svg" alt="ark-funds.com" title="" />
                                 </a>
                             </span>
-                            <p className='title'>ARK Funds Monitor</p>
+                            <span className='title'>ARK Funds Monitor</span>
                         </Grid>
-                        <Grid item xs={3} md={4} className='subtitle-container'>
-                            <p className='subtitle-version'>Version: {packageJson.version}</p>
-                            <p className='subtitle-update-date'>Last Update Date: {arkData[0]['Date']}</p>
-                        </Grid>
-                        <Grid item xs={3} md={4} className="ticker-input-section">
+
+                        <Grid item xs={6} md={2} className="ticker-input-section">
                             <form onSubmit={this.handleSubmit}>
                                 <FormControl>
                                     <div>
@@ -167,6 +164,10 @@ class Layout extends React.Component {
                 </div>
                 <div className="stock-figure-wrapper">
                     {subComponent}
+                </div>
+                <div className='info-container'>
+                    <p className='info-version'>Version: {packageJson.version}</p>
+                    <p className='info-update-date'>Last Update Date: {arkData[0]['Date']}</p>
                 </div>
             </div>
         );
