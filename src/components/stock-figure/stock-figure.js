@@ -54,30 +54,39 @@ class StockFigure extends React.Component {
     getOption() {
         this.data = this.splitData(_.cloneDeep(this.props.data));
         let option = {
-            backgroundColor: 'rgb(206, 255, 233)',
+            backgroundColor: '#fff',
             title: {
                 text: this.props.title,
                 left: '5%',
-                top: '-1%',
-                textStyle: { color: '#000' },
+                textStyle: {
+                    color: '#000',
+                    fontSize: 24
+                },
             },
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
                     animation: false,
                     type: 'cross',
+                    label: {
+                        fontSize: 16
+                    },
                     lineStyle: {
                         color: '#376df4',
                         width: 2,
                         opacity: 1
                     }
+                },
+                textStyle: {
+                    fontSize: 16
                 }
             },
             legend: {
                 data: ['Day', 'MA5', 'MA10', 'MA20'],
                 inactiveColor: '#777',
                 textStyle: {
-                    color: '#000'
+                    color: '#000',
+                    fontSize: 20
                 },
                 top: '1%',
             },
@@ -133,7 +142,13 @@ class StockFigure extends React.Component {
                     splitLine: { show: false },
                     splitNumber: 20,
                     min: 'dataMin',
-                    max: 'dataMax'
+                    max: 'dataMax',
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            fontSize: 16
+                        }
+                    }
                 },
                 {
                     type: 'category',
@@ -156,7 +171,13 @@ class StockFigure extends React.Component {
                     show: true
                 },
                 axisLine: { lineStyle: { color: '#000' } },
-                splitLine: { show: false }
+                splitLine: { show: false },
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        fontSize: 16
+                    }
+                }
             },
             {
                 scale: true,
@@ -165,7 +186,7 @@ class StockFigure extends React.Component {
                 axisLabel: { show: false },
                 axisLine: { show: false, lineStyle: { color: '#000' } },
                 axisTick: { show: false },
-                splitLine: { show: false }
+                splitLine: { show: false },
             }
             ],
             dataZoom: [
@@ -376,12 +397,12 @@ class StockFigure extends React.Component {
                 let pointText = '';
                 if (buyCount === 0) {
                     pointText = sellCount === 1
-                                ? `${dataArrayInDate[0].Direction}`
-                                : `Sell\nX${sellCount}`;
+                        ? `${dataArrayInDate[0].Direction}`
+                        : `Sell\nX${sellCount}`;
                 } else if (sellCount === 0) {
                     pointText = buyCount === 1
-                                ? `${dataArrayInDate[0].Direction}`
-                                : `Buy\nX${buyCount}`;
+                        ? `${dataArrayInDate[0].Direction}`
+                        : `Buy\nX${buyCount}`;
                 }
 
                 option.series[0].markPoint.data.push({
@@ -424,7 +445,7 @@ class StockFigure extends React.Component {
                 option={this.getOption()}
                 notMerge={true}
                 lazyUpdate={true}
-                style={{ height: '500px', width: '100%' }}
+                style={{ height: '600px', width: '100%' }}
             />
             // /* <ReactEcharts
             //     option={this.getOption()}
