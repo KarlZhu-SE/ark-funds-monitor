@@ -2,14 +2,14 @@
 .layout-wrapper {}
 
 .header-section {
-    background-color: white;
+    background-color: #6951cc;
     height: 80px;
     width: 100%;
     top: 0px;
     left: 0px;
     z-index: 999;
     margin-bottom: 2%;
-    box-shadow: 0 2px 5px 0 rgb(160, 160, 160);
+    box-shadow: 0 2px 5px 0 rgb(191, 156, 255);
 
     .MuiGrid-container {
         width: 100%;
@@ -21,6 +21,11 @@
 
             .logo {
                 margin-left: 5%;
+                color: white;
+
+                img {
+                    filter: invert(100%);
+                }
             }
 
             @media screen and (max-width: 800px) {
@@ -30,16 +35,14 @@
             }
 
             .title {
-                position: fixed;
-                color: black;
+                position: absolute;
+                color: white;
                 margin: auto;
                 padding-left: 30px;
                 top: 5px;
                 font-size: 40px;
             }
         }
-
-
 
         .ticker-input-section {
             height: 64px;
@@ -82,6 +85,10 @@
         p {
             font-size: 20px;
             font-weight: bold;
+        }
+
+        svg {
+            color: #6951cc;
         }
     }
 }
