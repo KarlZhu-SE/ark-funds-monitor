@@ -1,6 +1,6 @@
 {
   "name": "ark-funds-monitor",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "homepage": "http://IssueX.github.io/ark-funds-monitor",
   "private": true,
   "dependencies": {
