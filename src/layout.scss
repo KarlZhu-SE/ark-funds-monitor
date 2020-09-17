@@ -23,41 +23,23 @@
                 margin-left: 5%;
             }
 
+            @media screen and (max-width: 800px) {
+                .title {
+                    display: none !important;
+                }
+            }
+
             .title {
-                position: absolute;
+                position: fixed;
                 color: black;
                 margin: auto;
-                left: 13%;
+                padding-left: 30px;
                 top: 5px;
                 font-size: 40px;
             }
         }
 
-        .subtitle-container {
-            position: relative;
-            height: 80px;
-            padding: 0 !important;
 
-            .subtitle-version {
-                z-index: 1000;
-                position: fixed;
-                color: #00203FFF;
-                font-size: small;
-                right: 5px;
-                bottom: 20px;
-                margin-bottom: 5px;
-            }
-
-            .subtitle-update-date {
-                z-index: 1000;
-                position: fixed;
-                color: #00203FFF;
-                font-size: small;
-                right: 5px;
-                bottom: 5px;
-                margin-bottom: 5px;
-            }
-        }
 
         .ticker-input-section {
             height: 64px;
@@ -101,5 +83,27 @@
             font-size: 20px;
             font-weight: bold;
         }
+    }
+}
+
+.info-container {
+    .info-version {
+        z-index: 1000;
+        position: fixed;
+        color: #00203FFF;
+        font-size: small;
+        right: 5px;
+        bottom: 20px;
+        margin-bottom: 5px;
+    }
+
+    .info-update-date {
+        z-index: 1000;
+        position: fixed;
+        color: #00203FFF;
+        font-size: small;
+        right: 5px;
+        bottom: 5px;
+        margin-bottom: 5px;
     }
 }
