@@ -104,7 +104,7 @@ class Layout extends React.Component {
             subComponent =
                 <div className="chart-placeholder">
                     <p>
-                        Search Any Ticker or Any Click Row
+                        Search Any Ticker or Click Any Row/Cell
                         <br></br>
                         Candlestick Chart Will Display Below
                     </p>
