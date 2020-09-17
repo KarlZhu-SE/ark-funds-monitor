@@ -9,14 +9,10 @@ import './data-grid.scss';
 
 let rawData = require('../../rawData/mergedData.json');
 
+// eslint-disable-next-line
 Array.prototype.swapElements = function (a, b) {
     this[a] = this.splice(b, 1, this[a])[0];
     return this;
-}
-
-const toDate = (dateStr) => {
-    const [year, month, day] = dateStr.split("-")
-    return new Date(year, month, day)
 }
 
 class DataGrid extends React.Component {
@@ -32,6 +28,7 @@ class DataGrid extends React.Component {
     getColumnDefs(rawData) {
         const columnDefs = [];
         const columnNamesInOrder = Object.keys(this.massageRawData(rawData)[0]).swapElements(0, 1);
+        // eslint-disable-next-line
         columnNamesInOrder.map(x => {
             let genericColDef = {
                 key: x,
@@ -81,6 +78,7 @@ class DataGrid extends React.Component {
     massageRawData(rawData) {
         let tempData = _.cloneDeep(rawData);
         // remove empty property
+        // eslint-disable-next-line
         tempData.map(x => {
             for (let key in x) {
                 if (key === '') {

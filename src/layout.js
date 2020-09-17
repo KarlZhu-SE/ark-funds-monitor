@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { restClient } from "polygon.io";
 import {
     Grid, Input, FormControl,
-    InputLabel, IconButton, InputAdornment,
+    IconButton, InputAdornment,
 } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -19,14 +19,32 @@ const rest = restClient("RTHdj0YLW1JrkVcVeSQjBSHFgS4lgtCf");
 class Layout extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { inputTicker: '', massagedData: [], figureTitle: '' };
+        this.state = { inputTicker: '', massagedData: [], figureTitle: '', isInputing: false };
         this.handleChange = this.handleChange.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handlingComposition = this.handlingComposition.bind(this);
+        this.handleComposition = this.handleComposition.bind(this);
         this.onDataGridSelectTicker = this.onDataGridSelectTicker.bind(this);
+        this.isCompositionEnd = true;
+    }
+
+    handlingComposition() {
+        this.isCompositionEnd = false;
+    }
+
+    handleComposition(e) {
+        this.isCompositionEnd = true;
     }
 
     handleChange(event) {
-        this.setState({ inputTicker: event.target.value.toUpperCase() });
+        if (this.isCompositionEnd) {
+            this.setState({ inputTicker: event.target.value.trim().toUpperCase() });
+        }
+    }
+
+    handleBlur(event) {
+        this.isCompositionEnd = true;
     }
 
     handleSubmit(event) {
@@ -49,6 +67,7 @@ class Layout extends React.Component {
                 // massage response
                 if (response && response.results) {
                     const massaged = [];
+                    // eslint-disable-next-line
                     response.results.map(row => {
                         let rowData = [];
                         const timeInDate = new Date(row.t);
@@ -68,7 +87,7 @@ class Layout extends React.Component {
                     that.setState({ figureTitle: _.cloneDeep(that.state.inputTicker) })
                 }
             })
-            .catch(/* your error handler*/)
+            .catch(/* error handler*/)
         event.preventDefault();
     }
 
@@ -103,7 +122,11 @@ class Layout extends React.Component {
                                         <Input
                                             id="ticker-textfield"
                                             value={this.state.inputTicker}
+                                            onCompositionStart={this.handlingComposition}
+                                            onCompositionUpdate={this.handlingComposition}
+                                            onCompositionEnd={this.handleComposition}
                                             onChange={this.handleChange}
+                                            onBlur={this.handleBlur}
                                             placeholder='Ticker'
                                             endAdornment={
                                                 <InputAdornment position="start">
