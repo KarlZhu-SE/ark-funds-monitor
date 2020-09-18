@@ -1,6 +1,5 @@
 import React from 'react';
 import * as _ from 'lodash';
-import { restClient } from "polygon.io";
 import {
     Grid, Input, FormControl,
     IconButton, InputAdornment,
@@ -13,8 +12,6 @@ import DataGrid from './components/data-grid/data-grid';
 import StockFigure from './components/stock-figure/stock-figure';
 
 let arkData = require('./rawData/mergedData.json');
-
-const rest = restClient("RTHdj0YLW1JrkVcVeSQjBSHFgS4lgtCf");
 
 class Layout extends React.Component {
     constructor(props) {
@@ -48,55 +45,63 @@ class Layout extends React.Component {
     }
 
     handleSubmit(event) {
-        // Get From/To date
-        const toDate = new Date();
-        let fromDate = new Date();
-        fromDate.setDate(fromDate.getDate() - 60);
-        const toDateString = new Date(toDate.getTime() - (toDate.getTimezoneOffset() * 60000))
-            .toISOString()
-            .split("T")[0];
-        const fromDateString = new Date(fromDate.getTime() - (fromDate.getTimezoneOffset() * 60000))
-            .toISOString()
-            .split("T")[0];
-
         let that = this;
+        let endDate = new Date().setHours(0, 0, 0, 0) / 1000;
+        let startDate = endDate - 60 * 24 * 60 * 60;
+        let getCandleUrl = 'https://finnhub.io/api/v1/stock/candle?';
 
-        rest.stocks
-            .aggregates(this.state.inputTicker, 1, 'day', fromDateString, toDateString)
-            .then((response) => {
-                // massage response
-                if (response && response.results) {
-                    const massaged = [];
-                    // eslint-disable-next-line
-                    response.results.map(row => {
-                        let rowData = [];
-                        const timeInDate = new Date(row.t);
-                        rowData.push(
-                            new Date(timeInDate.getTime() - (timeInDate.getTimezoneOffset() * 60000))
-                                .toISOString()
+        const apiParams = {
+            symbol: this.state.inputTicker,
+            resolution: 'D',
+            from: startDate,
+            to: endDate,
+            token: 'bti26hf48v6uv69lirj0'
+        };
+        let paramsArray = [];
+        for (let prop in apiParams) {
+            paramsArray.push(`${prop}=${apiParams[prop]}`);
+        }
+        getCandleUrl = getCandleUrl + paramsArray.join('&');
+
+        fetch(getCandleUrl, {
+            method: 'GET'
+        })
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data);
+                if (data && data.s === 'ok') {
+                    let massaged = [];
+                    for (let i = 0; i < data.t.length; i++) {
+                        let row = [];
+                        row.push(
+                            new Date(data.t[i] * 1000 - (new Date().getTimezoneOffset() * 60000)).toISOString()
                                 .split("T")[0],
-                            row.o,
-                            row.c,
-                            row.l,
-                            row.h,
-                            row.v
-                        );
-                        massaged.push(rowData)
-                    })
-                    that.setState({ massagedData: massaged })
-                    that.setState({ figureTitle: _.cloneDeep(that.state.inputTicker) })
+                            Math.round(data.o[i] * 100) / 100,
+                            Math.round(data.c[i] * 100) / 100,
+                            Math.round(data.l[i] * 100) / 100,
+                            Math.round(data.h[i] * 100) / 100,
+                            data.v[i],
+                        )
+                        massaged.push(row);
+                    }
+
+                    // that.setState({ figureTitle: _.cloneDeep(that.state.inputTicker) });
+                    that.state.figureTitle = that.state.inputTicker;
+                    that.setState({ massagedData: _.cloneDeep(massaged) });
                 }
             })
-            .catch(/* error handler*/)
+            .catch(error => this.setState({ error }));
         event.preventDefault();
     }
 
     onDataGridSelectTicker(e) {
+        // this.state.inputTicker = e.data.Ticker;
         this.setState({ inputTicker: e.data.Ticker });
         this.handleSubmit(e.event);
     }
 
     render() {
+        console.log('render layout!');
         let subComponent;
         if (this.state.massagedData.length > 0) {
             subComponent = <StockFigure title={this.state.figureTitle.toUpperCase()} data={this.state.massagedData} />;

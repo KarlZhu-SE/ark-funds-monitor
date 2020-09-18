@@ -52,7 +52,6 @@
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "path": "^0.12.7",
     "pnp-webpack-plugin": "1.6.4",
-    "polygon.io": "^1.0.0",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
     "postcss-normalize": "8.0.1",
