@@ -17,6 +17,10 @@ class StockFigure extends React.Component {
         this.props = props;
     }
 
+    shouldComponentUpdate(nextProps) {
+        return this.props.data !== nextProps.data;
+    }
+
     splitData(rawData) {
         var categoryData = [];
         var values = [];

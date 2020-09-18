@@ -33,7 +33,6 @@ class DataGrid extends React.Component {
         // eslint-disable-next-line
         columnNamesInOrder.map(x => {
             let genericColDef = {
-                key: x,
                 field: x,
             };
             let specificColDef = {};
