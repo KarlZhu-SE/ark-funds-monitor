@@ -73,7 +73,7 @@ class Layout extends React.Component {
                     for (let i = 0; i < data.t.length; i++) {
                         let row = [];
                         row.push(
-                            new Date(data.t[i] * 1000 - (new Date().getTimezoneOffset() * 60000)).toISOString()
+                            new Date(data.t[i] * 1000).toISOString()
                                 .split("T")[0],
                             Math.round(data.o[i] * 100) / 100,
                             Math.round(data.c[i] * 100) / 100,
@@ -121,7 +121,7 @@ class Layout extends React.Component {
 
         return (
             <div className="layout-wrapper">
-                <div className="header-section">
+                <div className="header-wrapper">
                     <Grid container spacing={3} justify="center" alignItems="center">
                         <Grid item xs={6} md={10} className='title-container'>
                             <span className="logo">
