@@ -18,9 +18,7 @@ class StockFigure extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        const titleUpdated = this.props.title !== nextProps.title;
-        const dataUpdated = this.props.data !== nextProps.props;
-        return titleUpdated || dataUpdated;
+        return this.props.data !== nextProps.data;
     }
 
     splitData(rawData) {

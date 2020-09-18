@@ -68,7 +68,6 @@ class Layout extends React.Component {
         })
             .then(response => response.json())
             .then((data) => {
-                console.log(data);
                 if (data && data.s === 'ok') {
                     let massaged = [];
                     for (let i = 0; i < data.t.length; i++) {
