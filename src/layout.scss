@@ -1,116 +1,69 @@
+.layout-wrapper {
+    .header-wrapper {}
 
-.layout-wrapper {}
+    .accordion-wrapper {
+        padding-left: 5%;
+        width: 90%;
 
-.header-section {
-    background-color: #6951cc;
-    height: 80px;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    z-index: 999;
-    margin-bottom: 2%;
-    box-shadow: 0 2px 5px 0 rgb(191, 156, 255);
+        .MuiAccordion-root {
+            border: black 1px solid;
 
-    .MuiGrid-container {
-        width: 100%;
-        height: 80px;
+            .MuiAccordionSummary-root {
+                background-color: #dfdfff;
 
-        .title-container {
-            height: 80px;
-            padding: 0 !important;
+                .MuiAccordionSummary-content {
 
-            .logo {
-                margin-left: 5%;
-                color: white;
+                    .accordion-heading {
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        flex-basis: 33.33%;
+                        flex-shrink: 0;
+                    }
 
-                img {
-                    filter: invert(100%);
-                }
-            }
-
-            @media screen and (max-width: 800px) {
-                .title {
-                    display: none !important;
-                }
-            }
-
-            .title {
-                position: absolute;
-                color: white;
-                margin: auto;
-                padding-left: 30px;
-                top: 5px;
-                font-size: 40px;
-            }
-        }
-
-        .ticker-input-section {
-            height: 64px;
-            padding: 0 !important;
-            // background-color: #00203FFF;
-
-            form .MuiFormControl-root {
-                float: right;
-                margin-right: 15%;
-
-                .MuiInputBase-root {
-                    border-radius: 5px;
-                    background-color: white;
-                    height: 30px;
-                    margin-top: 23px;
-
-                    input {
-                        min-width: 50px;
-                        border-radius: 5px;
-                        max-width: 100px;
-                        padding-left: 5px;
+                    .accordion-second-heading {
+                        font-size: 1rem;
+                        color: rgba(0, 0, 0, 0.54);
+                        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+                        font-weight: 400;
+                        line-height: 1.5;
+                        letter-spacing: 0.01em;
                     }
                 }
             }
-        }
-    }
-}
 
-.data-grid-wrapper {}
-
-.stock-figure-wrapper {
-    padding-top: 1%;
-
-    height: '600px';
-    width: '100%';
-
-    .chart-placeholder {
-        text-align: center;
-
-        p {
-            font-size: 18px;
-            font-weight: bold;
         }
 
-        svg {
-            color: #6951cc;
+        .most-active-stocks-tabs-wrapper {
+            width: 100%;
+        }
+
+        .data-grid-wrapper {}
+
+        .stock-figure-wrapper {
+            height: 500px;
+            width: 100%;
         }
     }
-}
 
-.info-container {
-    .info-version {
-        z-index: 1000;
-        position: fixed;
-        color: #00203FFF;
-        font-size: small;
-        right: 5px;
-        bottom: 20px;
-        margin-bottom: 5px;
-    }
+    .info-container {
+        .info-version {
+            z-index: 1000;
+            position: fixed;
+            color: #00203FFF;
+            font-size: small;
+            right: 5px;
+            bottom: 20px;
+            margin-bottom: 5px;
+        }
 
-    .info-update-date {
-        z-index: 1000;
-        position: fixed;
-        color: #00203FFF;
-        font-size: small;
-        right: 5px;
-        bottom: 5px;
-        margin-bottom: 5px;
+        .info-update-date {
+            z-index: 1000;
+            position: fixed;
+            color: #00203FFF;
+            font-size: small;
+            right: 5px;
+            bottom: 5px;
+            margin-bottom: 5px;
+        }
     }
 }

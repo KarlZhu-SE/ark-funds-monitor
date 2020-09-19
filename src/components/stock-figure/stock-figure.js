@@ -65,7 +65,7 @@ class StockFigure extends React.Component {
                 left: '5%',
                 textStyle: {
                     color: '#000',
-                    fontSize: 24
+                    fontSize: 20
                 },
             },
             tooltip: {
@@ -91,7 +91,7 @@ class StockFigure extends React.Component {
                 inactiveColor: '#777',
                 textStyle: {
                     color: '#000',
-                    fontSize: 20
+                    fontSize: 16
                 },
                 top: '1%',
             },
@@ -445,21 +445,33 @@ class StockFigure extends React.Component {
     }
 
     render() {
-        return (
-            <ReactEcharts
+        let subComponent;
+        if (this.props.data.length > 0) {
+            subComponent = <ReactEcharts
                 option={this.getOption()}
                 notMerge={true}
                 lazyUpdate={true}
-                style={{ height: '600px', width: '100%' }}
-            />
-            // /* <ReactEcharts
-            //     option={this.getOption()}
-            //     notMerge={true}
-            //     lazyUpdate={true}
-            //     theme={"theme_name"}
-            //     onChartReady={this.onChartReadyCallback}
-            //     onEvents={EventsDict}
-            //     opts={} /> */
+                style={{ height: '500px', width: '100%' }}
+                />
+        } else {
+            subComponent =
+                <div className="chart-placeholder">
+                    <p>
+                        Search Any Ticker or Click Any Row/Cell
+                        <br></br>
+                        Candlestick Chart Will Display Below
+                    </p>
+                    <svg width="3em" height="3em" viewBox="0 0 16 16" className="bi bi-chevron-double-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        <path d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </div>;
+        }
+
+        return (
+            <div>
+                {subComponent}
+            </div>
         );
     }
 }

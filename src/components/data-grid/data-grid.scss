@@ -1,5 +1,6 @@
 .ag-theme-alpine {
   height: 35rem;
+  border: black 1px solid;
 }
 
 .center {
@@ -8,12 +9,12 @@
 }
 
 .ag-header-cell-text {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .ag-cell {
   font-family: "Arial", Arial, serif;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .ag-row-hover {
@@ -22,10 +23,10 @@
 
 @media screen and (max-width: 800px) {
   .ag-header-cell-text {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .ag-cell {
-    font-size: 14px;
+    font-size: 12px;
   }
 }

@@ -9,6 +9,8 @@ import * as _ from 'lodash';
 import { Grid } from '@material-ui/core';
 import './data-grid.scss';
 
+import { tickerService } from '../../services/ticker-service'
+
 let rawData = require('../../rawData/mergedData.json');
 
 // eslint-disable-next-line
@@ -105,7 +107,7 @@ class DataGrid extends React.Component {
 
     onRowClicked(e) {
         if (e && e.data && e.data.Ticker) {
-            this.props.onSelectTicker(e);
+            tickerService.changeTicker(e.data.Ticker);
         }
     }
 
@@ -122,7 +124,7 @@ class DataGrid extends React.Component {
         }
         return (
             <Grid container justify="center" alignItems="center">
-                <Grid item xs={11} className={['ag-theme-alpine', 'center'].join(' ')}>
+                <Grid item xs={12} className={['ag-theme-alpine', 'center'].join(' ')}>
                     <AgGridReact
                         rowData={dataGridDef.rowData}
                         columnDefs={dataGridDef.columnDefs}
