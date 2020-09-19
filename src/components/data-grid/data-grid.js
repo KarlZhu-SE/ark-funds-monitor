@@ -124,7 +124,7 @@ class DataGrid extends React.Component {
         }
         return (
             <Grid container justify="center" alignItems="center">
-                <Grid item xs={11} className={['ag-theme-alpine', 'center'].join(' ')}>
+                <Grid item xs={12} className={['ag-theme-alpine', 'center'].join(' ')}>
                     <AgGridReact
                         rowData={dataGridDef.rowData}
                         columnDefs={dataGridDef.columnDefs}

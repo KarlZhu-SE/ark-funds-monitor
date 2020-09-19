@@ -1,0 +1,35 @@
+.most-active-stocks-tabs-section {
+  height: 10rem;
+  display: flex;
+  flex-grow: 1;
+  background-color: #fff;
+  width: 100%;
+
+  .MuiTabs-root.MuiTabs-vertical {
+    min-width: 120px;
+  }
+
+  @media (min-width: 600px) {
+    .MuiTab-root {
+      min-width: 80px;
+    }
+  }
+
+  .MuiTabScrollButton-vertical {
+    max-height: 1rem;
+  }
+
+  .MuiTabs-flexContainer {
+    border-right: 1px solid rgb(197, 197, 197);
+  }
+
+  .vertical-tabpanel-content {
+    width: 100%;
+    padding: 0.3rem;
+    max-height: 10rem;
+
+    .cards-wrapper {
+      display: flex;
+    }
+  }
+}

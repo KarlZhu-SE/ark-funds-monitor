@@ -1,0 +1,42 @@
+.bullet {
+    display: 'inline-block';
+    margin: '0 2px';
+    transform: 'scale(0.8)';
+}
+
+.stock-card-wrapper {
+    .MuiCard-root {
+        max-height: 10rem;
+        max-width: 100%;
+        margin-left: 1rem;
+        background-color: yellow;
+
+        .MuiCardContent-root {
+            padding: 10px;
+        }
+
+        .card-ticker {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .card-ticker:hover {
+            cursor: pointer;
+        }
+
+        .card-full-name {
+            font-size: 14px;
+        }
+
+        .haha {
+            margin-bottom: 12px;
+        }
+
+        @media screen and (max-width: 800px) {
+            .card-full-name {
+              display: none !important;
+            }
+          }
+    }
+
+}

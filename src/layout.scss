@@ -1,50 +1,69 @@
+.layout-wrapper {
+    .header-wrapper {}
 
-.layout-wrapper {}
+    .accordion-wrapper {
+        padding-left: 5%;
+        width: 90%;
 
-.header-wrapper {
+        .MuiAccordion-root {
+            border: black 1px solid;
 
-}
+            .MuiAccordionSummary-root {
+                background-color: #dfdfff;
 
-.data-grid-wrapper {}
+                .MuiAccordionSummary-content {
 
-.stock-figure-wrapper {
-    padding-top: 1%;
+                    .accordion-heading {
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                        flex-basis: 33.33%;
+                        flex-shrink: 0;
+                    }
 
-    height: '600px';
-    width: '100%';
+                    .accordion-second-heading {
+                        font-size: 1rem;
+                        color: rgba(0, 0, 0, 0.54);
+                        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+                        font-weight: 400;
+                        line-height: 1.5;
+                        letter-spacing: 0.01em;
+                    }
+                }
+            }
 
-    .chart-placeholder {
-        text-align: center;
-
-        p {
-            font-size: 18px;
-            font-weight: bold;
         }
 
-        svg {
-            color: #6951cc;
+        .most-active-stocks-tabs-wrapper {
+            width: 100%;
+        }
+
+        .data-grid-wrapper {}
+
+        .stock-figure-wrapper {
+            height: 500px;
+            width: 100%;
         }
     }
-}
 
-.info-container {
-    .info-version {
-        z-index: 1000;
-        position: fixed;
-        color: #00203FFF;
-        font-size: small;
-        right: 5px;
-        bottom: 20px;
-        margin-bottom: 5px;
-    }
+    .info-container {
+        .info-version {
+            z-index: 1000;
+            position: fixed;
+            color: #00203FFF;
+            font-size: small;
+            right: 5px;
+            bottom: 20px;
+            margin-bottom: 5px;
+        }
 
-    .info-update-date {
-        z-index: 1000;
-        position: fixed;
-        color: #00203FFF;
-        font-size: small;
-        right: 5px;
-        bottom: 5px;
-        margin-bottom: 5px;
+        .info-update-date {
+            z-index: 1000;
+            position: fixed;
+            color: #00203FFF;
+            font-size: small;
+            right: 5px;
+            bottom: 5px;
+            margin-bottom: 5px;
+        }
     }
 }
