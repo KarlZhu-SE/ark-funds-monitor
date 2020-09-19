@@ -1,12 +1,41 @@
 .most-active-stocks-tabs-section {
-  height: 10rem;
   display: flex;
   flex-grow: 1;
   background-color: #fff;
   width: 100%;
 
+  #vertical-tabpanel-0 {
+    width: 95%;
+  }
+
+  #vertical-tabpanel-1 {
+    width: 95%;
+  }
+  
+  #vertical-tabpanel-2 {
+    width: 95%;
+  }
+
   .MuiTabs-root.MuiTabs-vertical {
     min-width: 120px;
+
+    .MuiTabs-scroller.MuiTabs-scrollable {
+      border-right: 1px solid rgb(197, 197, 197);
+
+      .MuiTabs-flexContainer {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+
+        .MuiButtonBase-root.MuiTab-root.MuiTab-textColorInherit.Mui-selected {
+          // background-color: #04f0d8;
+        }
+    
+        .MuiTab-root {
+          padding: 6px 0px;
+        }
+      }
+    }
   }
 
   @media (min-width: 600px) {
@@ -19,17 +48,20 @@
     max-height: 1rem;
   }
 
-  .MuiTabs-flexContainer {
-    border-right: 1px solid rgb(197, 197, 197);
-  }
-
   .vertical-tabpanel-content {
     width: 100%;
     padding: 0.3rem;
-    max-height: 10rem;
+    max-height: 12rem;
+
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 
     .cards-wrapper {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 1rem 0 1rem;
     }
   }
 }

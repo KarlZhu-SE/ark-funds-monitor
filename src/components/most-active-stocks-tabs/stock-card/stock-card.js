@@ -12,9 +12,6 @@ import { tickerService } from '../../../services/ticker-service';
 class StockCard extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     inputTicker: ''
-        // };
         this.props = props;
     }
 
@@ -25,9 +22,9 @@ class StockCard extends React.Component {
     render() {
         return (
             <div className="stock-card-wrapper">
-                <Card>
+                <Card style={{backgroundColor: this.props.backgroundColor}} onClick={this.handleClickTicker.bind(this)}>
                     <CardContent>
-                    <Typography className='card-ticker' onClick={this.handleClickTicker.bind(this)}>
+                        <Typography className='card-ticker'>
                             {this.props.data.ticker}
                         </Typography>
                         <Typography className='card-full-name' color="textSecondary" gutterBottom>
@@ -36,14 +33,14 @@ class StockCard extends React.Component {
                         {/* <Typography className='haha' color="textSecondary">
                             adjective
                         </Typography> */}
-                        <Typography variant="body2" component="p">
+                        <Typography className='card-details' variant="body2" component="p">
                             well meaning and kindly.
           <br />
                             {'"a benevolent smile"'}
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">Learn More</Button>
+                        <Button size="small" >View In Chart</Button>
                     </CardActions>
                 </Card>
             </div>
