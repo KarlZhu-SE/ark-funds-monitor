@@ -91,7 +91,7 @@ class StockFigure extends React.Component {
                 inactiveColor: '#777',
                 textStyle: {
                     color: '#000',
-                    fontSize: 20
+                    fontSize: 18
                 },
                 top: '1%',
             },

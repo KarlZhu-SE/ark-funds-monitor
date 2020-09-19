@@ -1,13 +1,10 @@
 import React from 'react';
-import * as _ from 'lodash';
-import {
-    Grid, Input, FormControl,
-    IconButton, InputAdornment,
-} from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
 
 import packageJson from '../package.json';
 import './layout.scss';
+import { tickerService } from './services/ticker-service'
+
+import Header from './components/header/header';
 import DataGrid from './components/data-grid/data-grid';
 import StockFigure from './components/stock-figure/stock-figure';
 
@@ -17,41 +14,31 @@ class Layout extends React.Component {
     constructor(props) {
         super(props);
         this.state = { inputTicker: '', massagedData: [], figureTitle: '', isInputing: false };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handlingComposition = this.handlingComposition.bind(this);
-        this.handleComposition = this.handleComposition.bind(this);
-        this.onDataGridSelectTicker = this.onDataGridSelectTicker.bind(this);
-        this.isCompositionEnd = true;
     }
 
-    handlingComposition() {
-        this.isCompositionEnd = false;
+    componentDidMount() {
+        this.tickerSubscription = tickerService.getTicker().subscribe(ticker => {
+            if (ticker) {
+                this.setState({ inputTicker: ticker });
+                this.getCandleData(ticker);
+            } else {
+                this.setState({ ticker: '' });
+            }
+        });
     }
 
-    handleComposition(e) {
-        this.isCompositionEnd = true;
+    componentWillUnmount() {
+        this.tickerSubscription.unsubscribe();
     }
 
-    handleChange(event) {
-        if (this.isCompositionEnd) {
-            this.setState({ inputTicker: event.target.value.trim().toUpperCase() });
-        }
-    }
-
-    handleBlur(event) {
-        this.isCompositionEnd = true;
-    }
-
-    handleSubmit(event) {
+    getCandleData(ticker) {
         let that = this;
         let endDate = new Date().setHours(0, 0, 0, 0) / 1000;
         let startDate = endDate - 60 * 24 * 60 * 60;
         let getCandleUrl = 'https://finnhub.io/api/v1/stock/candle?';
 
         const apiParams = {
-            symbol: this.state.inputTicker,
+            symbol: ticker,
             resolution: 'D',
             from: startDate,
             to: endDate,
@@ -84,19 +71,12 @@ class Layout extends React.Component {
                         massaged.push(row);
                     }
 
-                    // that.setState({ figureTitle: _.cloneDeep(that.state.inputTicker) });
-                    that.state.figureTitle = that.state.inputTicker;
-                    that.setState({ massagedData: _.cloneDeep(massaged) });
+                    that.setState({ figureTitle: ticker });
+                    that.setState({ massagedData: massaged });
                 }
             })
             .catch(error => this.setState({ error }));
-        event.preventDefault();
-    }
-
-    onDataGridSelectTicker(e) {
-        // this.state.inputTicker = e.data.Ticker;
-        this.setState({ inputTicker: e.data.Ticker });
-        this.handleSubmit(e.event);
+        // event.preventDefault();
     }
 
     render() {
@@ -122,49 +102,10 @@ class Layout extends React.Component {
         return (
             <div className="layout-wrapper">
                 <div className="header-wrapper">
-                    <Grid container spacing={3} justify="center" alignItems="center">
-                        <Grid item xs={6} md={10} className='title-container'>
-                            <span className="logo">
-                                <a href="http://IssueX.github.io/ark-funds-monitor/">
-                                    <img height="90" width="120" src="https://ark-funds.com/wp-content/uploads/2020/07/ark-logo-1-1.svg" alt="ark-funds.com" title="" />
-                                </a>
-                            </span>
-                            <span className='title'>ARK Funds Monitor</span>
-                        </Grid>
-
-                        <Grid item xs={6} md={2} className="ticker-input-section">
-                            <form onSubmit={this.handleSubmit}>
-                                <FormControl>
-                                    <div>
-                                        <Input
-                                            id="ticker-textfield"
-                                            value={this.state.inputTicker}
-                                            onCompositionStart={this.handlingComposition}
-                                            onCompositionUpdate={this.handlingComposition}
-                                            onCompositionEnd={this.handleComposition}
-                                            onChange={this.handleChange}
-                                            onBlur={this.handleBlur}
-                                            placeholder='Ticker'
-                                            endAdornment={
-                                                <InputAdornment position="start">
-                                                    <IconButton
-                                                        aria-label="Search"
-                                                        onClick={this.handleSubmit}
-                                                        edge="end"
-                                                    >
-                                                        <SearchIcon color="primary" />
-                                                    </IconButton>
-                                                </InputAdornment>
-                                            }
-                                        />
-                                    </div>
-                                </FormControl>
-                            </form>
-                        </Grid>
-                    </Grid>
+                    <Header />
                 </div>
                 <div className="data-grid-wrapper">
-                    <DataGrid onSelectTicker={this.onDataGridSelectTicker} />
+                    <DataGrid />
                 </div>
                 <div className="stock-figure-wrapper">
                     {subComponent}
