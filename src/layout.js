@@ -149,11 +149,11 @@ class Layout extends React.Component {
                             aria-controls="candlestick-chart-panel-content"
                             id="candlestick-chart-panel-header">
                             <Typography className="accordion-heading">Candlestick Chart</Typography>
-                            <Typography className="accordion-second-heading">Candlestick chart with ARK transaction history</Typography>
+                            <Typography className="accordion-second-heading">Candlestick chart with ARK transactions as mark points</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <div className="stock-figure-wrapper">
-                                <StockFigure title={this.state.figureTitle.toUpperCase()} data={this.state.massagedData} />;
+                                <StockFigure title={this.state.figureTitle.toUpperCase()} data={this.state.massagedData} />
                             </div>
                         </AccordionDetails>
                     </Accordion>

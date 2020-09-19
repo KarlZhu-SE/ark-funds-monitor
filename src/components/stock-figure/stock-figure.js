@@ -5,9 +5,9 @@ import ReactEcharts from 'echarts-for-react';
 
 let arkData = require('../../rawData/mergedData.json');
 
-var downColor = '#ec0000';
+var downColor = '#FF5000';
 var downBorderColor = '#8A0000';
-var upColor = '#00da3c';
+var upColor = '#00C805';
 var upBorderColor = '#008F28';
 
 class StockFigure extends React.Component {
@@ -416,8 +416,8 @@ class StockFigure extends React.Component {
                     value: pointText,
                     itemStyle: {
                         color: buyCount === 0
-                            ? 'rgb(41,60,85)'
-                            : 'rgb(186, 171, 52)'
+                            ? '#FF5000'
+                            : '#00C805'
                     }
                 })
             } else {
@@ -427,7 +427,7 @@ class StockFigure extends React.Component {
                     coord: [dataArrayInDate[0].Date, dataInProps[4]],
                     value: `Buy\nX${buyCount}`,
                     itemStyle: {
-                        color: 'rgb(186, 171, 52)'
+                        color: '#00C805'
                     }
                 })
 
@@ -436,7 +436,7 @@ class StockFigure extends React.Component {
                     coord: [dataArrayInDate[0].Date, dataInProps[4] * 1.1],
                     value: `Sell\n${sellCount}`,
                     itemStyle: {
-                        color: 'rgb(41,60,85)'
+                        color: '#FF5000'
                     }
                 })
             }
@@ -465,14 +465,14 @@ class StockFigure extends React.Component {
                         <path d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                         <path d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                     </svg>
-                </div>;
+                </div>
         }
 
         return (
             <div>
                 {subComponent}
             </div>
-        );
+        )
     }
 }
 

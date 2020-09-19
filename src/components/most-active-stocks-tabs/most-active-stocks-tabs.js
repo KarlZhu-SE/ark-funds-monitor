@@ -91,17 +91,17 @@ class MostActiveStocksTabs extends React.Component {
                 </Tabs>
                 <TabPanel value={this.state.tabIndex} index={0}>
                     {this.state.mostActiveStocks.map(el =>
-                        <StockCard key={el.ticker} data={el} />
+                        <StockCard key={el.ticker} data={el} backgroundColor={'#FCAE1E'}/>
                     )}
                 </TabPanel>
                 <TabPanel value={this.state.tabIndex} index={1}>
                     {this.state.mostBuyStocks.map(el =>
-                        <StockCard key={el.ticker} data={el} />
+                        <StockCard key={el.ticker} data={el} backgroundColor={'#00C805'}/>
                     )}
                 </TabPanel>
                 <TabPanel value={this.state.tabIndex} index={2}>
                     {this.state.mostSellStocks.map(el =>
-                        <StockCard key={el.ticker} data={el} />
+                        <StockCard key={el.ticker} data={el} backgroundColor={'#FF5000'}/>
                     )}
                 </TabPanel>
             </div>
