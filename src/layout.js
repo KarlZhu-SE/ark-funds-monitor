@@ -143,7 +143,7 @@ class Layout extends React.Component {
                             id="most-active-stock-panel-header">
                             <Typography className="accordion-heading">Most Active Stocks</Typography>
                             <Typography className="accordion-second-heading" component={'span'}>
-                                The most active stocks ARK trades in the past
+                                The most active stocks ARK trades in 
                                 <FormControl className="days-dropdown">
                                     <Select
                                         labelId="demo-simple-select-placeholder-label-label"
