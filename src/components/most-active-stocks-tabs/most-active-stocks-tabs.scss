@@ -24,9 +24,10 @@
       border-right: 1px solid rgb(197, 197, 197);
 
       .MuiTabs-flexContainer {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+        // position: relative;
+        // top: 50%;
+        // transform: translateY(-50%);
+        margin-top: 1.5rem;
 
         .MuiButtonBase-root.MuiTab-root.MuiTab-textColorInherit.Mui-selected {
           // background-color: #04f0d8;
