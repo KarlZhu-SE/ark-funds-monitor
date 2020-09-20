@@ -40,11 +40,6 @@
     }
   }
 
-  // @media (max-width: 600px) {
-  //   .MuiTab-root {
-  //     min-width: 80px;
-  //   }
-  // }
 
   .MuiTabScrollButton-vertical {
     max-height: 1rem;
@@ -63,7 +58,6 @@
     .cards-wrapper {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
       margin: 0 1rem 0 1rem;
     }
   }

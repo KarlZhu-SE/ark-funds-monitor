@@ -93,7 +93,7 @@ class StockFigure extends React.Component {
                     color: '#000',
                     fontSize: 16
                 },
-                top: '1%',
+                top: '3%',
             },
             axisPointer: {
                 link: { xAxisIndex: 'all' },
