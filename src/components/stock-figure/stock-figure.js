@@ -457,7 +457,7 @@ class StockFigure extends React.Component {
             subComponent =
                 <div className="chart-placeholder">
                     <p>
-                        Search Any Ticker or Click Any Row/Cell
+                        Search Any Ticker/Tap Any Card/Tap Any Row
                         <br></br>
                         Candlestick Chart Will Display Below
                     </p>
