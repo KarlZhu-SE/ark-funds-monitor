@@ -26,7 +26,6 @@ class MostActiveStocksTabs extends React.Component {
     componentDidMount() {
         this.daysRangeSubscription = daysRangeService.getDaysRange().subscribe(daysRange => {
             if (daysRange) {
-                console.log(daysRange)
                 this.initCardsData(arkData, daysRange);
             }
         });

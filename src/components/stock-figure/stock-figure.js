@@ -57,7 +57,7 @@ class StockFigure extends React.Component {
 
     getOption() {
         this.data = this.splitData(_.cloneDeep(this.props.data));
-        console.log(this.data)
+        // console.log(this.data)
         let option = {
             backgroundColor: '#fff',
             title: {
@@ -447,12 +447,25 @@ class StockFigure extends React.Component {
     render() {
         let subComponent;
         if (this.props.data.length > 0) {
-            subComponent = <ReactEcharts
-                option={this.getOption()}
-                notMerge={true}
-                lazyUpdate={true}
-                style={{ height: '500px', width: '100%' }}
-                />
+            const sixtyDaysPercentage = this.props.data[this.props.data.length - 1][2] / this.props.data[0][2] - 1;
+            const thirtyDaysPercentage = this.props.data[this.props.data.length - 1][2] / this.props.data[Math.round((this.props.data.length - 1) / 2)][2] - 1;
+                    
+            let sixtyPerf = (sixtyDaysPercentage < 0 ? "" : "+") + (sixtyDaysPercentage * 100).toFixed(2) + '%'
+            let thirtyPerf = (thirtyDaysPercentage < 0 ? "" : "+") + (thirtyDaysPercentage * 100).toFixed(2) + '%'
+
+            subComponent =
+                <div>
+                    <div className="highlights">
+                        <p>Last 30 days performance: {thirtyPerf}</p>
+                        <p>Last 60 days performance: {sixtyPerf}</p>
+                    </div>
+                    <ReactEcharts
+                        option={this.getOption()}
+                        notMerge={true}
+                        lazyUpdate={true}
+                        style={{ height: '500px', width: '100%' }}
+                    />
+                </div>
         } else {
             subComponent =
                 <div className="chart-placeholder">
