@@ -88,11 +88,11 @@ class MostActiveStocksTabs extends React.Component {
 
         const numberOfStocks = 5;
         // eslint-disable-next-line
-        this.state.mostActiveStocks = rslt.sort((a, b) => b.noOfTransactions - a.noOfTransactions).splice(0, numberOfStocks);
+        this.state.mostActiveStocks = rslt.sort((a, b) => b.noOfTransactions - a.noOfTransactions).slice(0, numberOfStocks);
         // eslint-disable-next-line
-        this.state.mostBuyStocks = rslt.sort((a, b) => b.noOfBuy - a.noOfBuy).splice(0, numberOfStocks);
+        this.state.mostBuyStocks = rslt.sort((a, b) => b.noOfBuy - a.noOfBuy).slice(0, numberOfStocks);
         // eslint-disable-next-line
-        this.state.mostSellStocks = rslt.sort((a, b) => b.noOfSell - a.noOfSell).splice(0, numberOfStocks);
+        this.state.mostSellStocks = rslt.sort((a, b) => b.noOfSell - a.noOfSell).slice(0, numberOfStocks);      
     }
 
     handleTabChange = (event, newTabIndex) => {
