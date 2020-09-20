@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 import { Grid } from '@material-ui/core';
 import './data-grid.scss';
 
-import { tickerService } from '../../services/ticker-service'
+import { tickerService } from '../../services/generic-service'
 
 let rawData = require('../../rawData/mergedData.json');
 

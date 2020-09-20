@@ -5,10 +5,13 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 import packageJson from '../package.json';
 import './layout.scss';
-import { tickerService } from './services/ticker-service'
+import { tickerService, daysRangeService } from './services/generic-service';
 
 import Header from './components/header/header';
 import MostActiveStocksTabs from './components/most-active-stocks-tabs/most-active-stocks-tabs';
@@ -22,6 +25,7 @@ class Layout extends React.Component {
         super(props);
         this.state = {
             expanded: ['most-active-stock-panel', 'candlestick-chart-panel'],
+            daysRange: 30,
             inputTicker: '',
             massagedData: [],
             figureTitle: '',
@@ -40,10 +44,19 @@ class Layout extends React.Component {
                 this.setState({ ticker: '' });
             }
         });
+
+        this.daysRangeSubscription = daysRangeService.getDaysRange().subscribe(daysRange => {
+            if (daysRange) {
+                this.setState({ daysRange: daysRange });
+            } else {
+                this.setState({ daysRange: 30 });
+            }
+        });
     }
 
     componentWillUnmount() {
         this.tickerSubscription.unsubscribe();
+        this.daysRangeSubscription.unsubscribe();
     }
 
     getCandleData(ticker) {
@@ -91,12 +104,10 @@ class Layout extends React.Component {
                 }
             })
             .catch(error => this.setState({ error }));
-        // event.preventDefault();
     }
 
     handlePanelChange(panel) {
         return (event, isExpanded) => {
-            // setExpanded(isExpanded ? panel : false);
             const panelArr = this.state.expanded;
             if (isExpanded) {
                 panelArr.push(panel)
@@ -110,6 +121,14 @@ class Layout extends React.Component {
         }
     };
 
+    handleClickDaysRange(event) {
+        event.stopPropagation();
+    }
+
+    handleSelectDaysRange(event) {
+        daysRangeService.changeDaysRange(event.target.value);
+    }
+
     render() {
         return (
             <div className="layout-wrapper">
@@ -122,8 +141,29 @@ class Layout extends React.Component {
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="most-active-stock-panel-content"
                             id="most-active-stock-panel-header">
-                            <Typography className="accordion-heading">Most Active Stocks in 30 days</Typography>
-                            <Typography className="accordion-second-heading">The most active stocks ARK trades in the past 30 days</Typography>
+                            <Typography className="accordion-heading">Most Active Stocks</Typography>
+                            <Typography className="accordion-second-heading" component={'span'}>
+                                The most active stocks ARK trades in the past
+                                <FormControl className="days-dropdown">
+                                    <Select
+                                        labelId="demo-simple-select-placeholder-label-label"
+                                        id="demo-simple-select-placeholder-label"
+                                        value={this.state.daysRange}
+                                        onClick={this.handleClickDaysRange.bind(this)}
+                                        onChange={this.handleSelectDaysRange.bind(this)}
+                                        MenuProps={{ disableScrollLock: true }}
+                                    >
+                                        <MenuItem value={5}>5</MenuItem>
+                                        <MenuItem value={10}>10</MenuItem>
+                                        <MenuItem value={20}>20</MenuItem>
+                                        <MenuItem value={30}>30</MenuItem>
+                                        <MenuItem value={60}>60</MenuItem>
+                                        <MenuItem value={10000}>All</MenuItem>
+                                    </Select>
+                                </FormControl> days.
+                                <br />
+                                Click card to view charts.
+                            </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <div className="most-active-stocks-tabs-wrapper">
@@ -136,7 +176,7 @@ class Layout extends React.Component {
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="data-grid-panel-content"
                             id="data-grid-panel-header">
-                            <Typography className="accordion-heading">ARK Transactions Table</Typography>
+                            <Typography className="accordion-heading">Transactions Table</Typography>
                             <Typography className="accordion-second-heading">Includes all ARK transactions from Aug 18th, 2020</Typography>
                         </AccordionSummary>
                         <AccordionDetails>

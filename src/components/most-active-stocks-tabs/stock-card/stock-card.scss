@@ -1,11 +1,11 @@
 .stock-card-wrapper {
     flex: 0 1 10%;
-    // height: rem;
-    // max-height: 150px;
     min-width: 150px;
+    margin-bottom: 1rem;
 
     .MuiCard-root {
-        height: 11rem;
+        height: 9rem;
+        border-radius: 10px;
 
         .MuiCardContent-root {
             padding: 10px;
@@ -17,6 +17,13 @@
         }
 
         .card-full-name {
+            font-size: 12px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .card-details {
             font-size: 12px;
         }
     }
@@ -40,7 +47,8 @@
             }
 
             .card-details {
-                display: none !important;
+                // display: none !important;
+                font-size: 10px;
             }
         }
     }

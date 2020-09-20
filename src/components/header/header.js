@@ -6,7 +6,7 @@ import {
 import SearchIcon from '@material-ui/icons/Search';
 
 import './header.scss';
-import { tickerService } from '../../services/ticker-service'
+import { tickerService } from '../../services/generic-service'
 
 class Header extends React.Component {
     constructor(props) {
