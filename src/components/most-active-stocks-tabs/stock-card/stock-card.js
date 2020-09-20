@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import './stock-card.scss';
-import { tickerService } from '../../../services/ticker-service';
+import { tickerService } from '../../../services/generic-service';
 
 class StockCard extends React.Component {
     constructor(props) {
@@ -34,14 +34,19 @@ class StockCard extends React.Component {
                             adjective
                         </Typography> */}
                         <Typography className='card-details' variant="body2" component="p">
-                            well meaning and kindly.
-          <br />
-                            {'"a benevolent smile"'}
+                            Buys : {this.props.data.noOfBuy}
+                            <br/>
+                            Sells: {this.props.data.noOfSell}
+                            <br/>
+                            Trans: {this.props.data.noOfTransactions}
                         </Typography>
+                        {/* <Typography gutterBottom>
+                            View Chart
+                        </Typography> */}
                     </CardContent>
-                    <CardActions>
-                        <Button size="small" >View In Chart</Button>
-                    </CardActions>
+                    {/* <CardActions>
+                        <Button size="small" >Chart</Button>
+                    </CardActions> */}
                 </Card>
             </div>
         );

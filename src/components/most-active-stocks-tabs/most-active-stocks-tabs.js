@@ -6,6 +6,7 @@ import Box from '@material-ui/core/Box';
 
 import './most-active-stocks-tabs.scss';
 import StockCard from './stock-card/stock-card';
+import { daysRangeService } from '../../services/generic-service';
 
 let arkData = require('../../rawData/mergedData.json');
 
@@ -18,11 +19,24 @@ class MostActiveStocksTabs extends React.Component {
             mostBuyStocks: [],
             mostSellStocks: []
         };
+        this.props = props;
         this.handleTabChange = this.handleTabChange.bind(this);
-        this.initCardsData(arkData);
     }
 
-    initCardsData(arkData) {
+    componentDidMount() {
+        this.daysRangeSubscription = daysRangeService.getDaysRange().subscribe(daysRange => {
+            if (daysRange) {
+                console.log(daysRange)
+                this.initCardsData(arkData, daysRange);
+            }
+        });
+    }
+
+    componentWillUnmount() {
+        this.daysRangeSubscription.unsubscribe();
+    }
+
+    initCardsData(arkData, daysRange) {
         // for now, check all time data
         // [{
         // ticker: 'TSLA'
@@ -35,7 +49,18 @@ class MostActiveStocksTabs extends React.Component {
         // }]
         let hash = {};
         let rslt = [];
+
+        let dateString = '';
+        if (daysRange !== 10000) {
+            const deadlineDate = new Date().setHours(0, 0, 0, 0) / 1000 - daysRange * 24 * 60 * 60;
+            dateString = new Date(deadlineDate * 1000).toISOString().split("T")[0];
+        }
+
         for (let tran of arkData) {
+            if (dateString && dateString === tran.Date) {
+                break;
+            }
+
             if (!hash[tran.Ticker]) {
                 hash[tran.Ticker] = 1;
                 rslt.push({

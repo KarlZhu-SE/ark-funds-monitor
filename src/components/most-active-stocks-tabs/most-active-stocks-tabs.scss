@@ -5,15 +5,15 @@
   width: 100%;
 
   #vertical-tabpanel-0 {
-    width: 95%;
+    width: 100%;
   }
 
   #vertical-tabpanel-1 {
-    width: 95%;
+    width: 100%;
   }
   
   #vertical-tabpanel-2 {
-    width: 95%;
+    width: 100%;
   }
 
   .MuiTabs-root.MuiTabs-vertical {
@@ -52,6 +52,7 @@
     width: 100%;
     padding: 0.3rem;
     max-height: 12rem;
+    overflow-y: scroll;
 
     position: relative;
     top: 50%;
