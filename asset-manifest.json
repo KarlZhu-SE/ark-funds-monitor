@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/ark-funds-monitor/static/css/main.2da09000.chunk.css",
-    "main.js": "/ark-funds-monitor/static/js/main.37e25438.chunk.js",
-    "main.js.map": "/ark-funds-monitor/static/js/main.37e25438.chunk.js.map",
+    "main.css": "/ark-funds-monitor/static/css/main.834125be.chunk.css",
+    "main.js": "/ark-funds-monitor/static/js/main.44328ad7.chunk.js",
+    "main.js.map": "/ark-funds-monitor/static/js/main.44328ad7.chunk.js.map",
     "runtime-main.js": "/ark-funds-monitor/static/js/runtime-main.3ca9b8fc.js",
     "runtime-main.js.map": "/ark-funds-monitor/static/js/runtime-main.3ca9b8fc.js.map",
     "static/css/2.b89dba55.chunk.css": "/ark-funds-monitor/static/css/2.b89dba55.chunk.css",
     "static/js/2.c8b6c7a5.chunk.js": "/ark-funds-monitor/static/js/2.c8b6c7a5.chunk.js",
     "static/js/2.c8b6c7a5.chunk.js.map": "/ark-funds-monitor/static/js/2.c8b6c7a5.chunk.js.map",
     "index.html": "/ark-funds-monitor/index.html",
-    "precache-manifest.70a96a925e71f7c628010b06456ef38f.js": "/ark-funds-monitor/precache-manifest.70a96a925e71f7c628010b06456ef38f.js",
+    "precache-manifest.83ec7ffaea75611c517baa9a66e1fc8f.js": "/ark-funds-monitor/precache-manifest.83ec7ffaea75611c517baa9a66e1fc8f.js",
     "service-worker.js": "/ark-funds-monitor/service-worker.js",
     "static/css/2.b89dba55.chunk.css.map": "/ark-funds-monitor/static/css/2.b89dba55.chunk.css.map",
-    "static/css/main.2da09000.chunk.css.map": "/ark-funds-monitor/static/css/main.2da09000.chunk.css.map",
+    "static/css/main.834125be.chunk.css.map": "/ark-funds-monitor/static/css/main.834125be.chunk.css.map",
     "static/js/2.c8b6c7a5.chunk.js.LICENSE.txt": "/ark-funds-monitor/static/js/2.c8b6c7a5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3ca9b8fc.js",
     "static/css/2.b89dba55.chunk.css",
     "static/js/2.c8b6c7a5.chunk.js",
-    "static/css/main.2da09000.chunk.css",
-    "static/js/main.37e25438.chunk.js"
+    "static/css/main.834125be.chunk.css",
+    "static/js/main.44328ad7.chunk.js"
   ]
 }
