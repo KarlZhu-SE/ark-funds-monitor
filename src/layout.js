@@ -143,7 +143,7 @@ class Layout extends React.Component {
                             id="most-active-stock-panel-header">
                             <Typography className="accordion-heading">Most Active Stocks</Typography>
                             <Typography className="accordion-second-heading" component={'span'}>
-                                The most active stocks ARK trades in 
+                                Top 5 Most Active Stocks ARK Trades in 
                                 <FormControl className="days-dropdown">
                                     <Select
                                         labelId="demo-simple-select-placeholder-label-label"
@@ -161,8 +161,6 @@ class Layout extends React.Component {
                                         <MenuItem value={10000}>All</MenuItem>
                                     </Select>
                                 </FormControl> days.
-                                <br />
-                                Click card to view charts.
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -177,7 +175,7 @@ class Layout extends React.Component {
                             aria-controls="data-grid-panel-content"
                             id="data-grid-panel-header">
                             <Typography className="accordion-heading">Transactions Table</Typography>
-                            <Typography className="accordion-second-heading">Includes all ARK transactions from Aug 18th, 2020</Typography>
+                            <Typography className="accordion-second-heading">Includes All ARK Trades from Aug 18th, 2020</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <DataGrid />
@@ -189,7 +187,7 @@ class Layout extends React.Component {
                             aria-controls="candlestick-chart-panel-content"
                             id="candlestick-chart-panel-header">
                             <Typography className="accordion-heading">Candlestick Chart</Typography>
-                            <Typography className="accordion-second-heading">Candlestick chart with ARK transactions as mark points</Typography>
+                            <Typography className="accordion-second-heading">60 Days Candlestick Chart with ARK Trade Points</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <div className="stock-figure-wrapper">
