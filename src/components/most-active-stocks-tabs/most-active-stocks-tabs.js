@@ -49,15 +49,16 @@ class MostActiveStocksTabs extends React.Component {
         let hash = {};
         let rslt = [];
 
-        let dateString = '';
+        let deadlineTimestamp = '';
         if (daysRange !== 10000) {
-            const deadlineDate = new Date().setHours(0, 0, 0, 0) / 1000 - daysRange * 24 * 60 * 60;
-            dateString = new Date(deadlineDate * 1000).toISOString().split("T")[0];
+            deadlineTimestamp = new Date().setHours(0, 0, 0, 0) - daysRange * 24 * 60 * 60 * 1000;
         }
 
         for (let tran of arkData) {
-            if (dateString && dateString === tran.Date) {
-                break;
+            if (deadlineTimestamp) {
+                if (new Date(tran.Date).getTime() < deadlineTimestamp) {
+                    break;
+                }
             }
 
             if (!hash[tran.Ticker]) {
@@ -92,7 +93,7 @@ class MostActiveStocksTabs extends React.Component {
         // eslint-disable-next-line
         this.state.mostBuyStocks = rslt.sort((a, b) => b.noOfBuy - a.noOfBuy).slice(0, numberOfStocks);
         // eslint-disable-next-line
-        this.state.mostSellStocks = rslt.sort((a, b) => b.noOfSell - a.noOfSell).slice(0, numberOfStocks);      
+        this.state.mostSellStocks = rslt.sort((a, b) => b.noOfSell - a.noOfSell).slice(0, numberOfStocks);
     }
 
     handleTabChange = (event, newTabIndex) => {
@@ -115,17 +116,17 @@ class MostActiveStocksTabs extends React.Component {
                 </Tabs>
                 <TabPanel value={this.state.tabIndex} index={0}>
                     {this.state.mostActiveStocks.map(el =>
-                        <StockCard key={el.ticker} data={el} backgroundColor={'#FCAE1E'}/>
+                        <StockCard key={el.ticker} data={el} backgroundColor={'#FCAE1E'} />
                     )}
                 </TabPanel>
                 <TabPanel value={this.state.tabIndex} index={1}>
                     {this.state.mostBuyStocks.map(el =>
-                        <StockCard key={el.ticker} data={el} backgroundColor={'#00C805'}/>
+                        <StockCard key={el.ticker} data={el} backgroundColor={'#00C805'} />
                     )}
                 </TabPanel>
                 <TabPanel value={this.state.tabIndex} index={2}>
                     {this.state.mostSellStocks.map(el =>
-                        <StockCard key={el.ticker} data={el} backgroundColor={'#FF5000'}/>
+                        <StockCard key={el.ticker} data={el} backgroundColor={'#FF5000'} />
                     )}
                 </TabPanel>
             </div>

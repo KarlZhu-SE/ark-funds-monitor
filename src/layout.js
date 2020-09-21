@@ -143,7 +143,7 @@ class Layout extends React.Component {
                             id="most-active-stock-panel-header">
                             <Typography className="accordion-heading">Most Active Stocks</Typography>
                             <Typography className="accordion-second-heading" component={'span'}>
-                                Top 5 Most Active Stocks in 
+                                Top 5 Most Active Stocks that ARK Trades in
                                 <FormControl className="days-dropdown">
                                     <Select
                                         labelId="demo-simple-select-placeholder-label-label"
@@ -153,14 +153,13 @@ class Layout extends React.Component {
                                         onChange={this.handleSelectDaysRange.bind(this)}
                                         MenuProps={{ disableScrollLock: true }}
                                     >
-                                        <MenuItem value={7}>7</MenuItem>
-                                        <MenuItem value={14}>14</MenuItem>
-                                        <MenuItem value={21}>21</MenuItem>
-                                        <MenuItem value={30}>30</MenuItem>
-                                        <MenuItem value={60}>60</MenuItem>
+                                        <MenuItem value={7}>1 Week</MenuItem>
+                                        <MenuItem value={14}>2 Weeks</MenuItem>
+                                        <MenuItem value={30}>1 Month</MenuItem>
+                                        <MenuItem value={60}>2 Months</MenuItem>
                                         <MenuItem value={10000}>All</MenuItem>
                                     </Select>
-                                </FormControl> calendar days.
+                                </FormControl>
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
