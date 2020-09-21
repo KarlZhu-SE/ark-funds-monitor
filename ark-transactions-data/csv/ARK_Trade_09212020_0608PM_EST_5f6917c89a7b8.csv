@@ -1,0 +1,26 @@
+INTRA-DAY TRADE TO TOTAL FUND HOLDINGS (NOT INDIVIDUAL BASKET),,,,,,,,,
+"Trade notification files are not provided until full trade execution at the end of a trading day. ARK may not trade every day. The time stamp of the email is the time of file upload and not necessarily the exact time of the trades. Files of trades are not comprehensive lists of a day's trades for the ARK ETFs, but instead contain the most recent trades made in the ARK ETFs' portfolios. Additional files may be posted at a later time. Most ARK ETF portfolio trades settle on a T+2 basis. These files represent an unofficial account, as all accounting and custody for the ARK ETFs is performed by BNY Mellon. Updated ARK ETF end of day holdings are available on https://ark-funds.com/investor-resources
+
+ARK Trade Desk
+212.426.7040
+ark@ark-invest.com",,,,,,,,,
+,,,,,,,,,
+FUND,Date,Direction,Ticker,CUSIP,Name,Shares,% of ETF,,
+ARKF,2020-09-21,Buy,FB,30303M102,FACEBOOK INC,2189,0.0946,,
+ARKF,2020-09-21,Buy,LSPDCN,53227R106,LIGHTSPEED POS INC,50009,0.2568,,
+ARKF,2020-09-21,Buy,WORK,83088V102,SLACK TECHNOLOGIES INC,44300,0.1985,,
+ARKF,2020-09-21,Sell,SNAP,83304A106,SNAP INC,94606,0.3956,,
+ARKF,2020-09-21,Sell,Z,98954M200,ZILLOW GROUP INC,8790,0.1442,,
+ARKG,2020-09-21,Sell,CBMG,15117P102,CELLULAR BIOMEDICINE GROUP INC,30830,0.0266,,
+ARKK,2020-09-21,Buy,PSTG,74624M102,PURE STORAGE INC,425013,0.0706,,
+ARKK,2020-09-21,Buy,PACB,69404D108,PACIFIC BIOSCIENCES OF CALIFORNIA INC,94744,0.009,,
+ARKK,2020-09-21,Sell,ILMN,452327109,ILLUMINA INC,17618,0.0554,,
+ARKW,2020-09-21,Buy,FB,30303M102,FACEBOOK INC,57307,0.5967,,
+ARKW,2020-09-21,Buy,PD,69553P100,PAGERDUTY INC,77240,0.0846,,
+ARKW,2020-09-21,Buy,U,91332U101,UNITY SOFTWARE INC,148562,0.4441,,
+ARKW,2020-09-21,Buy,WORK,83088V102,SLACK TECHNOLOGIES INC,36100,0.0403,,
+ARKW,2020-09-21,Sell,AYX,02156B103,ALTERYX INC,83625,0.3857,,
+ARKW,2020-09-21,Sell,ROKU,77543R102,ROKU INC,16313,0.1288,,
+ARKW,2020-09-21,Sell,SNAP,83304A106,SNAP INC,478656,0.4804,,
+ARKW,2020-09-21,Sell,XLNX,983919101,XILINX INC,28451,0.1178,,
+,,,,,,,,,

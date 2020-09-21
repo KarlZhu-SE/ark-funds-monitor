@@ -25,7 +25,7 @@ class Layout extends React.Component {
         super(props);
         this.state = {
             expanded: ['most-active-stock-panel', 'candlestick-chart-panel'],
-            daysRange: 30,
+            daysRange: 7,
             inputTicker: '',
             massagedData: [],
             figureTitle: '',
@@ -143,7 +143,7 @@ class Layout extends React.Component {
                             id="most-active-stock-panel-header">
                             <Typography className="accordion-heading">Most Active Stocks</Typography>
                             <Typography className="accordion-second-heading" component={'span'}>
-                                Top 5 Most Active Stocks ARK Trades in 
+                                Top 5 Most Active Stocks in 
                                 <FormControl className="days-dropdown">
                                     <Select
                                         labelId="demo-simple-select-placeholder-label-label"
@@ -153,14 +153,14 @@ class Layout extends React.Component {
                                         onChange={this.handleSelectDaysRange.bind(this)}
                                         MenuProps={{ disableScrollLock: true }}
                                     >
-                                        <MenuItem value={5}>5</MenuItem>
-                                        <MenuItem value={10}>10</MenuItem>
-                                        <MenuItem value={20}>20</MenuItem>
+                                        <MenuItem value={7}>7</MenuItem>
+                                        <MenuItem value={14}>14</MenuItem>
+                                        <MenuItem value={21}>21</MenuItem>
                                         <MenuItem value={30}>30</MenuItem>
                                         <MenuItem value={60}>60</MenuItem>
                                         <MenuItem value={10000}>All</MenuItem>
                                     </Select>
-                                </FormControl> days.
+                                </FormControl> calendar days.
                             </Typography>
                         </AccordionSummary>
                         <AccordionDetails>

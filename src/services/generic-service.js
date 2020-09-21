@@ -2,7 +2,7 @@ import { Subject, BehaviorSubject } from 'rxjs';
 
 const tickerSubject = new Subject('');
 
-const daysRangeSubject = new BehaviorSubject(30);
+const daysRangeSubject = new BehaviorSubject(7);
 
 export const tickerService = {
     changeTicker: ticker => tickerSubject.next(ticker),
