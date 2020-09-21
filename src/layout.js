@@ -153,11 +153,12 @@ class Layout extends React.Component {
                                         onChange={this.handleSelectDaysRange.bind(this)}
                                         MenuProps={{ disableScrollLock: true }}
                                     >
+                                        <MenuItem value={1}>1 Day</MenuItem>
                                         <MenuItem value={7}>1 Week</MenuItem>
                                         <MenuItem value={14}>2 Weeks</MenuItem>
                                         <MenuItem value={30}>1 Month</MenuItem>
                                         <MenuItem value={60}>2 Months</MenuItem>
-                                        <MenuItem value={10000}>All</MenuItem>
+                                        <MenuItem value={10000}>All Time</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Typography>
