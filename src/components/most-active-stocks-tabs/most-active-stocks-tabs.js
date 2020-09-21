@@ -48,17 +48,17 @@ class MostActiveStocksTabs extends React.Component {
         // }]
         let hash = {};
         let rslt = [];
-
+        let lastestDate = arkData[0].Date;
         let deadlineTimestamp = '';
+
         if (daysRange !== 10000) {
-            deadlineTimestamp = new Date().setHours(0, 0, 0, 0) - daysRange * 24 * 60 * 60 * 1000;
+            deadlineTimestamp = new Date(lastestDate).setHours(0, 0, 0, 0) - daysRange * 24 * 60 * 60 * 1000;
         }
 
         for (let tran of arkData) {
-            if (deadlineTimestamp) {
-                if (new Date(tran.Date).getTime() < deadlineTimestamp) {
-                    break;
-                }
+            // handle deadline
+            if (deadlineTimestamp && new Date(tran.Date).getTime() < deadlineTimestamp) {
+                break;
             }
 
             if (!hash[tran.Ticker]) {
