@@ -25,7 +25,7 @@ class Layout extends React.Component {
         super(props);
         this.state = {
             expanded: ['most-active-stock-panel', 'candlestick-chart-panel'],
-            daysRange: 30,
+            daysRange: 7,
             inputTicker: '',
             massagedData: [],
             figureTitle: '',
