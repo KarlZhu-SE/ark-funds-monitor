@@ -456,8 +456,8 @@ class StockFigure extends React.Component {
             subComponent =
                 <div>
                     <div className="highlights">
-                        <p>Last 30 days performance: {thirtyPerf}</p>
-                        <p>Last 60 days performance: {sixtyPerf}</p>
+                        <p>Last 1 month  performance: {thirtyPerf}</p>
+                        <p>Last 2 months performance: {sixtyPerf}</p>
                     </div>
                     <ReactEcharts
                         option={this.getOption()}
