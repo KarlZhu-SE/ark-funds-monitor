@@ -181,7 +181,7 @@ class Layout extends React.Component {
                                         <MenuItem value={14}>2 Weeks</MenuItem>
                                         <MenuItem value={30}>1 Month</MenuItem>
                                         <MenuItem value={60}>2 Months</MenuItem>
-                                        <MenuItem value={10000}>All Time</MenuItem>
+                                        <MenuItem value={10000}>From 08/18/2020</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Typography>
@@ -222,7 +222,7 @@ class Layout extends React.Component {
 
                 <div className='info-container'>
                     <p className='info-version'>Version: {packageJson.version}</p>
-                    <p className='info-update-date'>Last Update Date: {arkData[0]['Date']}</p>
+                    <p className='info-update-date'>Latest ARK Data: {arkData[0]['Date']}</p>
                 </div>
             </div>
         );
