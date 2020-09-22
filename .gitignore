@@ -23,6 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 
-# mergedData.json
-merge
+mergedData.json
 
+*.csv
