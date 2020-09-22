@@ -12,7 +12,7 @@
   #vertical-tabpanel-1 {
     width: 100%;
   }
-  
+
   #vertical-tabpanel-2 {
     width: 100%;
   }
@@ -32,7 +32,7 @@
         .MuiButtonBase-root.MuiTab-root.MuiTab-textColorInherit.Mui-selected {
           // background-color: #04f0d8;
         }
-    
+
         .MuiTab-root {
           padding: 6px 0px;
         }
@@ -60,5 +60,11 @@
       flex-wrap: wrap;
       margin: 0 1rem 0 1rem;
     }
+  }
+}
+
+@media (min-width: 600px) {
+  .MuiTab-root {
+    min-width: 50px;
   }
 }
