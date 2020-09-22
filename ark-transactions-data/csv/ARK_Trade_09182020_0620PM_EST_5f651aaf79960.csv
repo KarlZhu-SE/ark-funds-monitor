@@ -1,0 +1,18 @@
+INTRA-DAY TRADE TO TOTAL FUND HOLDINGS (NOT INDIVIDUAL BASKET),,,,,,,,,
+"Trade notification files are not provided until full trade execution at the end of a trading day. ARK may not trade every day. The time stamp of the email is the time of file upload and not necessarily the exact time of the trades. Files of trades are not comprehensive lists of a day's trades for the ARK ETFs, but instead contain the most recent trades made in the ARK ETFs' portfolios. Additional files may be posted at a later time. Most ARK ETF portfolio trades settle on a T+2 basis. These files represent an unofficial account, as all accounting and custody for the ARK ETFs is performed by BNY Mellon. Updated ARK ETF end of day holdings are available on https://ark-funds.com/investor-resources
+
+ARK Trade Desk
+212.426.7040
+ark@ark-invest.com",,,,,,,,,
+,,,,,,,,,
+FUND,Date,Direction,Ticker,CUSIP,Name,Shares,% of ETF,,
+ARKG,2020-09-18,Buy,CRSP,H17182108,CRISPR THERAPEUTICS AG,9200,0.04,,
+ARKG,2020-09-18,Buy,INCY,45337C102,INCYTE CORP,61127,0.25,,
+ARKG,2020-09-18,Sell,CBMG,15117P102,CELLULAR BIOMEDICINE GROUP INC,7208,0.01,,
+ARKG,2020-09-18,Sell,NSTG,63009R109,NANOSTRING TECHNOLOGIES INC,49564,0.1,,
+ARKK,2020-09-18,Buy,DOCU,256163106,DOCUSIGN INC,126230,0.28,,
+ARKK,2020-09-18,Buy,PACB,69404D108,PACIFIC BIOSCIENCES OF CALIFOR,862410,0.08,,
+ARKK,2020-09-18,Buy,PSTG,74624M102,PURE STORAGE INC,713300,0.12,,
+ARKK,2020-09-18,Sell,ILMN,452327109,ILLUMINA INC,4348,0.02,,
+ARKK,2020-09-18,Sell,TSLA,88160R101,TESLA INC,85200,0.44,,
+,,,,,,,,,

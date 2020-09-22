@@ -1,0 +1,20 @@
+INTRA-DAY TRADE TO TOTAL FUND HOLDINGS (NOT INDIVIDUAL BASKET),,,,,,,,,
+"Trade notification files are not provided until full trade execution at the end of a trading day. ARK may not trade every day. The time stamp of the email is the time of file upload and not necessarily the exact time of the trades. Files of trades are not comprehensive lists of a day's trades for the ARK ETFs, but instead contain the most recent trades made in the ARK ETFs' portfolios. Additional files may be posted at a later time. Most ARK ETF portfolio trades settle on a T+2 basis. These files represent an unofficial account, as all accounting and custody for the ARK ETFs is performed by BNY Mellon. Updated ARK ETF end of day holdings are available on https://ark-funds.com/investor-resources
+
+ARK Trade Desk
+212.426.7040
+ark@ark-invest.com",,,,,,,,,
+,,,,,,,,,
+FUND,Date,Direction,Ticker,CUSIP,Name,Shares,% of ETF,,
+ARKG,2020-09-17,Buy,EXAS,30063P105,EXACT SCIENCES CORP,92037,0.3169,,
+ARKG,2020-09-17,Buy,TDOC,87918A105,TELADOC HEALTH INC,21399,0.1908,,
+ARKG,2020-09-17,Sell,CBMG,15117P102,CELLULAR BIOMEDICINE GROUP INC,9600,0.0083,,
+ARKG,2020-09-17,Sell,ILMN,452327109,ILLUMINA INC,35231,0.5002,,
+ARKG,2020-09-17,Sell,MCRB,81750R102,SERES THERAPEUTICS INC,6549,0.0082,,
+ARKK,2020-09-17,Buy,TWST,90184D100,TWIST BIOSCIENCE CORP,71270,0.0546,,
+ARKK,2020-09-17,Buy,TDOC,87918A105,TELADOC HEALTH INC,56170,0.1303,,
+ARKK,2020-09-17,Buy,SPOT,L8681T102,SPOTIFY TECHNOLOGY SA,71208,0.2009,,
+ARKK,2020-09-17,Buy,PACB,69404D108,PACIFIC BIOSCIENCES OF CALIFORNIA INC,906676,0.0845,,
+ARKK,2020-09-17,Buy,WORK,83088V102,SLACK TECHNOLOGIES INC,319800,0.0963,,
+ARKK,2020-09-17,Sell,ILMN,452327109,ILLUMINA INC,133513,0.4873,,
+,,,,,,,,,
