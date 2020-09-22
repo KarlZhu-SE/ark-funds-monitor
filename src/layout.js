@@ -63,6 +63,9 @@ class Layout extends React.Component {
     }
 
     getCandleData(ticker) {
+        if (this.state.errorMessage) {
+            this.setState({ errorMessage: '' });
+        }
         this.setState({ isFigureLoading: true });
 
         let that = this;
@@ -195,7 +198,7 @@ class Layout extends React.Component {
                             aria-controls="data-grid-panel-content"
                             id="data-grid-panel-header">
                             <Typography className="accordion-heading">Transactions Table</Typography>
-                            <Typography className="accordion-second-heading">Includes All ARK Trades from Aug 18th, 2020</Typography>
+                            <Typography className="accordion-second-heading">All ARK Transactions from Aug 18th, 2020</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <DataGrid />
@@ -207,7 +210,7 @@ class Layout extends React.Component {
                             aria-controls="candlestick-chart-panel-content"
                             id="candlestick-chart-panel-header">
                             <Typography className="accordion-heading">Candlestick Chart</Typography>
-                            <Typography className="accordion-second-heading">60 Days Candlestick Chart with ARK Trade Points</Typography>
+                            <Typography className="accordion-second-heading">Two Months Candlestick Chart with ARK Trade Points</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <div className="stock-figure-wrapper">
