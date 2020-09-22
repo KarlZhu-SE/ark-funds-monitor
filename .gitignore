@@ -23,4 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 
-# mergedData.js
+mergedData.json
+
+*.csv
