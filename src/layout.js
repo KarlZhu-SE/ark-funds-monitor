@@ -166,7 +166,7 @@ class Layout extends React.Component {
                             id="most-active-stock-panel-header">
                             <Typography className="accordion-heading">Most Active Stocks</Typography>
                             <Typography className="accordion-second-heading" component={'span'}>
-                                Top 5 Most Active Stocks that ARK Trades in
+                                Top 10 Most Active Stocks that ARK Trades in
                                 <FormControl className="days-dropdown">
                                     <Select
                                         labelId="demo-simple-select-placeholder-label-label"

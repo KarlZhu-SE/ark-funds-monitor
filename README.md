@@ -7,4 +7,4 @@ Resolve header search bar input issue;
 
 # Version 0.1.6
 Accordion structure;
-Added Top 5 Most Active Stocks section;
+Added Top 10 Most Active Stocks section;
