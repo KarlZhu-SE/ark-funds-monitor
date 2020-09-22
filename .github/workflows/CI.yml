@@ -25,18 +25,18 @@ jobs:
           FOLDER: build # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch
           
-      - name: Send Email✉️
-        uses: dawidd6/action-send-mail@v2
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{secrets.MAIL_USERNAME}}
-          password: ${{secrets.MAIL_PASSWORD}}
-          subject: Build job of ${{github.repository}} completed successfully!
+#       - name: Send Email✉️
+#         uses: dawidd6/action-send-mail@v2
+#         with:
+#           server_address: smtp.gmail.com
+#           server_port: 465
+#           username: ${{secrets.MAIL_USERNAME}}
+#           password: ${{secrets.MAIL_PASSWORD}}
+#           subject: Build job of ${{github.repository}} completed successfully!
           # Read file contents as body:
-          body: file://README.md
-          to: xzhu@wpi.edu
-          from: Karl Zhu # <user@example.com>
+#           body: file://README.md
+#           to: xzhu@wpi.edu
+#           from: Karl Zhu # <user@example.com>
           # Optional content type (defaults to text/plain):
           #content_type: text/html
           # Optional attachments:
