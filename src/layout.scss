@@ -1,8 +1,16 @@
 .layout-wrapper {
     .header-wrapper {}
 
+    .notification-bar-wrapper {
+        .MuiAlert-root {
+            margin: auto;
+            width: 92%;
+            margin-bottom: 20px;
+        }
+    }
+
     .accordion-wrapper {
-        padding-left: 2.5%;
+        margin-left: 2.5%;
         width: 95%;
 
         .MuiAccordion-root {

@@ -1,7 +1,9 @@
 import React from 'react';
 import * as _ from 'lodash';
-import './stock-figure.scss';
 import ReactEcharts from 'echarts-for-react';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+import './stock-figure.scss';
 
 let arkData = require('../../rawData/mergedData.json');
 
@@ -18,7 +20,7 @@ class StockFigure extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        return this.props.data !== nextProps.data;
+        return this.props.data !== nextProps.data || this.props.isLoading !== nextProps.isLoading;
     }
 
     splitData(rawData) {
@@ -446,10 +448,15 @@ class StockFigure extends React.Component {
 
     render() {
         let subComponent;
-        if (this.props.data.length > 0) {
+        if (this.props.isLoading === true) {
+            subComponent =
+                <div className='loader-wrapper'>
+                    <CircularProgress />
+                </div>
+        } else if (this.props.data.length > 0) {
             const sixtyDaysPercentage = this.props.data[this.props.data.length - 1][2] / this.props.data[0][2] - 1;
             const thirtyDaysPercentage = this.props.data[this.props.data.length - 1][2] / this.props.data[Math.round((this.props.data.length - 1) / 2)][2] - 1;
-                    
+
             let sixtyPerf = (sixtyDaysPercentage < 0 ? "" : "+") + (sixtyDaysPercentage * 100).toFixed(2) + '%'
             let thirtyPerf = (thirtyDaysPercentage < 0 ? "" : "+") + (thirtyDaysPercentage * 100).toFixed(2) + '%'
 
