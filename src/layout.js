@@ -8,6 +8,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Alert from '@material-ui/lab/Alert';
 
 import packageJson from '../package.json';
 import './layout.scss';
@@ -29,6 +30,8 @@ class Layout extends React.Component {
             inputTicker: '',
             massagedData: [],
             figureTitle: '',
+            isFigureLoading: false,
+            errorMessage: '',
             isInputing: false
         };
 
@@ -60,6 +63,8 @@ class Layout extends React.Component {
     }
 
     getCandleData(ticker) {
+        this.setState({ isFigureLoading: true });
+
         let that = this;
         let endDate = new Date().setHours(0, 0, 0, 0) / 1000;
         let startDate = endDate - 60 * 24 * 60 * 60;
@@ -102,6 +107,12 @@ class Layout extends React.Component {
                     that.setState({ figureTitle: ticker });
                     that.setState({ massagedData: massaged });
                 }
+
+                if (data.s === 'no_data') {
+                    that.setState({ errorMessage: `API returned 'NO DATA' for ${ticker}` });
+                }
+                
+                that.setState({ isFigureLoading: false });
             })
             .catch(error => this.setState({ error }));
     }
@@ -130,10 +141,19 @@ class Layout extends React.Component {
     }
 
     render() {
+        let notificationBar;
+        if (this.state.errorMessage) {
+            notificationBar = <Alert variant="filled" severity="error" onClose={() => { this.setState({ errorMessage: '' }) }}>{this.state.errorMessage}</Alert>
+        } else {
+            notificationBar = <div></div>
+        }
         return (
             <div className="layout-wrapper">
                 <div className="header-wrapper">
                     <Header />
+                </div>
+                <div className="notification-bar-wrapper">
+                    {notificationBar}
                 </div>
                 <div className="accordion-wrapper">
                     <Accordion expanded={this.state.expanded.includes('most-active-stock-panel')} onChange={this.handlePanelChange('most-active-stock-panel')}>
@@ -191,7 +211,7 @@ class Layout extends React.Component {
                         </AccordionSummary>
                         <AccordionDetails>
                             <div className="stock-figure-wrapper">
-                                <StockFigure title={this.state.figureTitle.toUpperCase()} data={this.state.massagedData} />
+                                <StockFigure title={this.state.figureTitle.toUpperCase()} data={this.state.massagedData} isLoading={this.state.isFigureLoading} />
                             </div>
                         </AccordionDetails>
                     </Accordion>

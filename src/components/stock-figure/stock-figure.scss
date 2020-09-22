@@ -1,3 +1,13 @@
+.loader-wrapper {
+    margin-top: 10%;
+    text-align: center;
+
+    .MuiCircularProgress-root {
+        height: 60px !important;
+        width: 60px !important;
+    }
+}
+
 .chart-placeholder {
     text-align: center;
 

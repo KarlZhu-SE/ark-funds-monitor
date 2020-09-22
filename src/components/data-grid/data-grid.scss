@@ -1,7 +1,9 @@
 .ag-theme-alpine {
   height: 35rem;
-  border: black 1px solid;
-  border-radius: 8px;
+
+  .ag-root-wrapper {
+    border-radius: 8px;
+  }
 }
 
 .center {
