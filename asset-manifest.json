@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/ark-funds-monitor/static/css/main.ac760dfa.chunk.css",
-    "main.js": "/ark-funds-monitor/static/js/main.33c567d1.chunk.js",
-    "main.js.map": "/ark-funds-monitor/static/js/main.33c567d1.chunk.js.map",
+    "main.css": "/ark-funds-monitor/static/css/main.12f3b6f7.chunk.css",
+    "main.js": "/ark-funds-monitor/static/js/main.8cf288fc.chunk.js",
+    "main.js.map": "/ark-funds-monitor/static/js/main.8cf288fc.chunk.js.map",
     "runtime-main.js": "/ark-funds-monitor/static/js/runtime-main.3ca9b8fc.js",
     "runtime-main.js.map": "/ark-funds-monitor/static/js/runtime-main.3ca9b8fc.js.map",
-    "static/css/2.b89dba55.chunk.css": "/ark-funds-monitor/static/css/2.b89dba55.chunk.css",
-    "static/js/2.371cf395.chunk.js": "/ark-funds-monitor/static/js/2.371cf395.chunk.js",
-    "static/js/2.371cf395.chunk.js.map": "/ark-funds-monitor/static/js/2.371cf395.chunk.js.map",
+    "static/css/2.70891016.chunk.css": "/ark-funds-monitor/static/css/2.70891016.chunk.css",
+    "static/js/2.2b3f4aea.chunk.js": "/ark-funds-monitor/static/js/2.2b3f4aea.chunk.js",
+    "static/js/2.2b3f4aea.chunk.js.map": "/ark-funds-monitor/static/js/2.2b3f4aea.chunk.js.map",
     "index.html": "/ark-funds-monitor/index.html",
-    "precache-manifest.22b0866d742fda00c7d58023d7271ef4.js": "/ark-funds-monitor/precache-manifest.22b0866d742fda00c7d58023d7271ef4.js",
+    "precache-manifest.0fca99b7b8f183ada02fa9df20cd9257.js": "/ark-funds-monitor/precache-manifest.0fca99b7b8f183ada02fa9df20cd9257.js",
     "service-worker.js": "/ark-funds-monitor/service-worker.js",
-    "static/css/2.b89dba55.chunk.css.map": "/ark-funds-monitor/static/css/2.b89dba55.chunk.css.map",
-    "static/css/main.ac760dfa.chunk.css.map": "/ark-funds-monitor/static/css/main.ac760dfa.chunk.css.map",
-    "static/js/2.371cf395.chunk.js.LICENSE.txt": "/ark-funds-monitor/static/js/2.371cf395.chunk.js.LICENSE.txt"
+    "static/css/2.70891016.chunk.css.map": "/ark-funds-monitor/static/css/2.70891016.chunk.css.map",
+    "static/css/main.12f3b6f7.chunk.css.map": "/ark-funds-monitor/static/css/main.12f3b6f7.chunk.css.map",
+    "static/js/2.2b3f4aea.chunk.js.LICENSE.txt": "/ark-funds-monitor/static/js/2.2b3f4aea.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3ca9b8fc.js",
-    "static/css/2.b89dba55.chunk.css",
-    "static/js/2.371cf395.chunk.js",
-    "static/css/main.ac760dfa.chunk.css",
-    "static/js/main.33c567d1.chunk.js"
+    "static/css/2.70891016.chunk.css",
+    "static/js/2.2b3f4aea.chunk.js",
+    "static/css/main.12f3b6f7.chunk.css",
+    "static/js/main.8cf288fc.chunk.js"
   ]
 }
