@@ -57,7 +57,7 @@ class MostActiveStocksTabs extends React.Component {
 
         for (let tran of arkData) {
             // handle deadline
-            if (deadlineTimestamp && new Date(tran.Date).getTime() < deadlineTimestamp) {
+            if (deadlineTimestamp && new Date(tran.Date).setHours(0, 0, 0, 0) <= deadlineTimestamp) {
                 break;
             }
 
