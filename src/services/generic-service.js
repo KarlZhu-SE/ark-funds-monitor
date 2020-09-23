@@ -2,7 +2,8 @@ import { Subject, BehaviorSubject } from 'rxjs';
 
 const tickerSubject = new Subject('');
 
-const daysRangeSubject = new BehaviorSubject(7);
+const mostActiveDaysRangeSubject = new BehaviorSubject(7);
+const candlestickDaysRangeSubject = new BehaviorSubject(30);
 
 export const tickerService = {
     changeTicker: ticker => tickerSubject.next(ticker),
@@ -11,7 +12,11 @@ export const tickerService = {
 };
 
 export const daysRangeService = {
-    changeDaysRange: daysRange => daysRangeSubject.next(daysRange),
-    clearDaysRange: () => daysRangeSubject.next(),
-    getDaysRange: () => daysRangeSubject.asObservable()
+    changeMostActiveDaysRange: daysRange => mostActiveDaysRangeSubject.next(daysRange),
+    clearMostActiveDaysRange: () => mostActiveDaysRangeSubject.next(),
+    getMostActiveDaysRange: () => mostActiveDaysRangeSubject.asObservable(),
+
+    changeCandlestickDaysRange: daysRange => candlestickDaysRangeSubject.next(daysRange),
+    clearCandlestickDaysRange: () => candlestickDaysRangeSubject.next(),
+    getCandlestickDaysRange: () => candlestickDaysRangeSubject.asObservable()
 };

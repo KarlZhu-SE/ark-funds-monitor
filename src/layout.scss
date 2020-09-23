@@ -32,21 +32,24 @@
                         flex-shrink: 0;
                     }
 
-                    .accordion-second-heading {
-                        font-size: 1rem;
-                        color: rgba(0, 0, 0, 0.54);
-                        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-                        font-weight: 400;
-                        line-height: 1.5;
-                        letter-spacing: 0.01em;
-                        margin-left: 1rem;
+                    .second-heading-wrapper {
+                        text-align: center;
 
-                        .days-dropdown {
-                            min-width: 50px;
-                            margin-left: 5px;
-
-                            .MuiInputBase-root.MuiInput-root {
-                                max-height: 25px;
+                        .accordion-second-heading {
+                            font-size: 1rem;
+                            color: rgba(0, 0, 0, 0.54);
+                            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+                            font-weight: 400;
+                            line-height: 1.5;
+                            letter-spacing: 0.01em;
+    
+                            .days-dropdown {
+                                min-width: 50px;
+                                margin-left: 5px;
+    
+                                .MuiInputBase-root.MuiInput-root {
+                                    max-height: 25px;
+                                }
                             }
                         }
                     }
@@ -69,6 +72,7 @@
 
         .stock-figure-wrapper {
             height: auto;
+            min-height: 300px;
             width: 100%;
         }
     }
