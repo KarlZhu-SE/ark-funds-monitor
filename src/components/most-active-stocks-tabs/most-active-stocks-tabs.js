@@ -15,6 +15,9 @@ class MostActiveStocksTabs extends React.Component {
         super(props);
         this.state = {
             tabIndex: 0,
+            // buy, sell, active colors
+            tabsColor: ['#00C805', '#FF5000', '#FCAE1E'],
+            tabIndicatorColor: '#00C805',
             mostActiveStocks: [],
             mostBuyStocks: [],
             mostSellStocks: []
@@ -24,7 +27,7 @@ class MostActiveStocksTabs extends React.Component {
     }
 
     componentDidMount() {
-        this.daysRangeSubscription = daysRangeService.getDaysRange().subscribe(daysRange => {
+        this.mostActiveDaysRangeSubscription = daysRangeService.getMostActiveDaysRange().subscribe(daysRange => {
             if (daysRange) {
                 this.initCardsData(arkData, daysRange);
             }
@@ -32,7 +35,7 @@ class MostActiveStocksTabs extends React.Component {
     }
 
     componentWillUnmount() {
-        this.daysRangeSubscription.unsubscribe();
+        this.mostActiveDaysRangeSubscription.unsubscribe();
     }
 
     initCardsData(arkData, daysRange) {
@@ -97,7 +100,7 @@ class MostActiveStocksTabs extends React.Component {
     }
 
     handleTabChange = (event, newTabIndex) => {
-        this.setState({ tabIndex: newTabIndex })
+        this.setState({ tabIndex: newTabIndex });
     };
 
     render() {
@@ -109,24 +112,26 @@ class MostActiveStocksTabs extends React.Component {
                     value={this.state.tabIndex}
                     onChange={this.handleTabChange}
                     aria-label="Vertical tabs example"
+                    TabIndicatorProps={{ style: { background: this.state.tabsColor[this.state.tabIndex] } }}
                 >
                     <Tab label="Most Buy" {...a11yProps(0)} />
                     <Tab label="Most Sell" {...a11yProps(1)} />
                     <Tab label="Most Active" {...a11yProps(2)} />
                 </Tabs>
+
                 <TabPanel value={this.state.tabIndex} index={0}>
                     {this.state.mostBuyStocks.map(el =>
-                        <StockCard key={el.ticker} data={el} backgroundColor={'#00C805'} />
+                        <StockCard key={el.ticker} data={el} backgroundColor={this.state.tabsColor[this.state.tabIndex]} />
                     )}
                 </TabPanel>
                 <TabPanel value={this.state.tabIndex} index={1}>
                     {this.state.mostSellStocks.map(el =>
-                        <StockCard key={el.ticker} data={el} backgroundColor={'#FF5000'} />
+                        <StockCard key={el.ticker} data={el} backgroundColor={this.state.tabsColor[this.state.tabIndex]} />
                     )}
                 </TabPanel>
                 <TabPanel value={this.state.tabIndex} index={2}>
                     {this.state.mostActiveStocks.map(el =>
-                        <StockCard key={el.ticker} data={el} backgroundColor={'#FCAE1E'} />
+                        <StockCard key={el.ticker} data={el} backgroundColor={this.state.tabsColor[this.state.tabIndex]} />
                     )}
                 </TabPanel>
             </div>

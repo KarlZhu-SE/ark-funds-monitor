@@ -1,7 +1,9 @@
 import React from 'react';
 import * as _ from 'lodash';
 import ReactEcharts from 'echarts-for-react';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import {
+    CircularProgress
+} from '@material-ui/core';
 
 import './stock-figure.scss';
 
@@ -64,7 +66,8 @@ class StockFigure extends React.Component {
             backgroundColor: '#fff',
             title: {
                 text: this.props.title,
-                left: '5%',
+                left: '2%',
+                top: '-1%',
                 textStyle: {
                     color: '#000',
                     fontSize: 20
@@ -454,17 +457,17 @@ class StockFigure extends React.Component {
                     <CircularProgress />
                 </div>
         } else if (this.props.data.length > 0) {
-            const sixtyDaysPercentage = this.props.data[this.props.data.length - 1][2] / this.props.data[0][2] - 1;
-            const thirtyDaysPercentage = this.props.data[this.props.data.length - 1][2] / this.props.data[Math.round((this.props.data.length - 1) / 2)][2] - 1;
+            const fullRangePercentage = this.props.data[this.props.data.length - 1][2] / this.props.data[0][2] - 1;
+            const halfRangePercentage = this.props.data[this.props.data.length - 1][2] / this.props.data[Math.round((this.props.data.length - 1) / 2)][2] - 1;
 
-            let sixtyPerf = (sixtyDaysPercentage < 0 ? "" : "+") + (sixtyDaysPercentage * 100).toFixed(2) + '%'
-            let thirtyPerf = (thirtyDaysPercentage < 0 ? "" : "+") + (thirtyDaysPercentage * 100).toFixed(2) + '%'
+            let fullRangeChange = (fullRangePercentage < 0 ? "" : "+") + (fullRangePercentage * 100).toFixed(2) + '%'
+            let halfRangeChange = (halfRangePercentage < 0 ? "" : "+") + (halfRangePercentage * 100).toFixed(2) + '%'
 
             subComponent =
                 <div>
                     <div className="highlights">
-                        <p>Last 1 month  performance: {thirtyPerf}</p>
-                        <p>Last 2 months performance: {sixtyPerf}</p>
+                        <div><p>Full range price change: {fullRangeChange}</p></div>
+                        <div><p>Half range price change: {halfRangeChange}</p></div>
                     </div>
                     <ReactEcharts
                         option={this.getOption()}

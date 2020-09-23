@@ -1,0 +1,26 @@
+INTRA-DAY TRADE TO TOTAL FUND HOLDINGS (NOT INDIVIDUAL BASKET),,,,,,,,,
+"Trade notification files are not provided until full trade execution at the end of a trading day. ARK may not trade every day. The time stamp of the email is the time of file upload and not necessarily the exact time of the trades. Files of trades are not comprehensive lists of a day's trades for the ARK ETFs, but instead contain the most recent trades made in the ARK ETFs' portfolios. Additional files may be posted at a later time. Most ARK ETF portfolio trades settle on a T+2 basis. These files represent an unofficial account, as all accounting and custody for the ARK ETFs is performed by BNY Mellon. Updated ARK ETF end of day holdings are available on https://ark-funds.com/investor-resources
+
+ARK Trade Desk
+212.426.7040
+ark@ark-invest.com",,,,,,,,,
+,,,,,,,,,
+FUND,Date,Direction,Ticker,CUSIP,Name,Shares,% of ETF,,
+ARKF,2020-09-23,Buy,FB,30303M102,FACEBOOK INC,6778,0.2836,,
+ARKF,2020-09-23,Sell,4689JP,J9894K105,Z HOLDINGS CORP,264669,0.2796,,
+ARKG,2020-09-23,Buy,PSTG,74624M102,PURE STORAGE INC,162662,0.1155,,
+ARKG,2020-09-23,Sell,CBMG,15117P102,CELLULAR BIOMEDICINE GROUP INC,4715,0.0041,,
+ARKK,2020-09-23,Buy,TSLA,88160R101,TESLA INC,142166,0.677,,
+ARKK,2020-09-23,Sell,Z,98954M200,ZILLOW GROUP INC,129104,0.1547,,
+ARKK,2020-09-23,Sell,XLNX,983919101,XILINX INC,36652,0.0438,,
+ARKK,2020-09-23,Sell,TER,880770102,TERADYNE INC,272261,0.2533,,
+ARKK,2020-09-23,Sell,ROKU,77543R102,ROKU INC,67738,0.1554,,
+ARKK,2020-09-23,Sell,NSTG,63009R109,NANOSTRING TECHNOLOGIES INC,12465,0.0068,,
+ARKK,2020-09-23,Sell,MCRB,81750R102,SERES THERAPEUTICS INC,21597,0.0067,,
+ARKK,2020-09-23,Sell,CGEN,M25722105,COMPUGEN LTD,12108,0.0025,,
+ARKQ,2020-09-23,Buy,BYDDY,05606L100,BYD CO LTD,74431,0.3475,,
+ARKW,2020-09-23,Buy,TSLA,88160R101,TESLA INC,22190,0.3682,,
+ARKW,2020-09-23,Buy,U,91332U101,UNITY SOFTWARE INC,126700,0.4513,,
+ARKW,2020-09-23,Sell,AYX,02156B103,ALTERYX INC,78462,0.3673,,
+ARKW,2020-09-23,Sell,XLNX,983919101,XILINX INC,84119,0.3532,,
+,,,,,,,,,

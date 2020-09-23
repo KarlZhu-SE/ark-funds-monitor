@@ -2,13 +2,10 @@ import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
-import 'ag-grid-community/dist/styles/ag-theme-material.css';
-
 import * as _ from 'lodash';
 import { Grid } from '@material-ui/core';
-import './data-grid.scss';
 
+import './data-grid.scss';
 import { tickerService } from '../../services/generic-service'
 
 let rawData = require('../../rawData/mergedData.json');
