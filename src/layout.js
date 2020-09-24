@@ -12,7 +12,7 @@ import { tickerService, daysRangeService } from './services/generic-service';
 import Header from './components/header/header';
 import MostActiveStocksTabs from './components/most-active-stocks-tabs/most-active-stocks-tabs';
 import DataGrid from './components/data-grid/data-grid';
-import StockFigure from './components/stock-details/stock-figure/stock-figure';
+import StockDetails from './components/stock-details/stock-details';
 
 let arkData = require('./rawData/mergedData.json');
 
@@ -22,11 +22,6 @@ class Layout extends React.Component {
         this.state = {
             expanded: ['most-active-stock-panel'],
             mostActiveDaysRange: 7,
-            candlestickDaysRange: 30,
-            inputTicker: '',
-            massagedData: [],
-            figureTitle: '',
-            isFigureLoading: false,
             errorMessage: '',
             isInputing: false
         };
@@ -39,9 +34,6 @@ class Layout extends React.Component {
     componentDidMount() {
         this.tickerSubscription = tickerService.getTicker().subscribe(ticker => {
             if (ticker) {
-                this.setState({ inputTicker: ticker });
-                this.getCandleData(ticker, this.state.candlestickDaysRange);
-
                 // expand stock details section if it is closed
                 const panelArr = this.state.expanded;
                 if (panelArr.indexOf('stock-details-panel') === -1) {
@@ -61,77 +53,11 @@ class Layout extends React.Component {
                 this.setState({ mostActiveDaysRange: 30 });
             }
         });
-
-        this.candlestickDaysRangeSubscription = daysRangeService.getCandlestickDaysRange().subscribe(candlestickDaysRange => {
-            if (candlestickDaysRange) {
-                this.setState({ candlestickDaysRange: candlestickDaysRange });
-            } else {
-                this.setState({ candlestickDaysRange: 30 });
-            }
-        });
     }
 
     componentWillUnmount() {
         this.tickerSubscription.unsubscribe();
         this.mostActiveDaysRangeSubscription.unsubscribe();
-    }
-
-    getCandleData(ticker, daysRange) {
-        if (this.state.errorMessage) {
-            this.setState({ errorMessage: '' });
-        }
-        this.setState({ isFigureLoading: true });
-
-        let that = this;
-        let endDate = new Date().setHours(0, 0, 0, 0) / 1000;
-        let startDate = endDate - daysRange * 24 * 60 * 60;
-        let getCandleUrl = 'https://finnhub.io/api/v1/stock/candle?';
-
-        const apiParams = {
-            symbol: ticker,
-            resolution: 'D',
-            from: startDate,
-            to: endDate,
-            token: 'bti26hf48v6uv69lirj0'
-        };
-        let paramsArray = [];
-        for (let prop in apiParams) {
-            paramsArray.push(`${prop}=${apiParams[prop]}`);
-        }
-        getCandleUrl = getCandleUrl + paramsArray.join('&');
-
-        fetch(getCandleUrl, {
-            method: 'GET'
-        })
-            .then(response => response.json())
-            .then((data) => {
-                if (data && data.s === 'ok') {
-                    let massaged = [];
-                    for (let i = 0; i < data.t.length; i++) {
-                        let row = [];
-                        row.push(
-                            new Date(data.t[i] * 1000).toISOString()
-                                .split("T")[0],
-                            Math.round(data.o[i] * 100) / 100,
-                            Math.round(data.c[i] * 100) / 100,
-                            Math.round(data.l[i] * 100) / 100,
-                            Math.round(data.h[i] * 100) / 100,
-                            data.v[i],
-                        )
-                        massaged.push(row);
-                    }
-
-                    that.setState({ figureTitle: ticker });
-                    that.setState({ massagedData: massaged });
-                }
-
-                if (data.s === 'no_data') {
-                    that.setState({ errorMessage: `API returned 'NO DATA' for ${ticker}` });
-                }
-
-                that.setState({ isFigureLoading: false });
-            })
-            .catch(error => this.setState({ error }));
     }
 
     handlePanelChange(panel) {
@@ -157,12 +83,6 @@ class Layout extends React.Component {
         switch (type) {
             case 'mostActive':
                 daysRangeService.changeMostActiveDaysRange(event.target.value);
-                break;
-            case 'candlestick':
-                daysRangeService.changeCandlestickDaysRange(event.target.value);
-                if (this.state.massagedData.length > 0) {
-                    this.getCandleData(this.state.inputTicker, event.target.value)
-                }
                 break;
             default:
                 break;
@@ -197,7 +117,7 @@ class Layout extends React.Component {
 
                             <Grid item xs={7} md={4} className="second-heading-wrapper">
                                 <Typography className="accordion-second-heading" component={'span'}>
-                                    Top 10 Most Active Stocks that ARK Trades in
+                                    Top 10 Most Active Stocks in
                                 <FormControl className="days-dropdown">
                                         <Select
                                             labelId="demo-simple-select-placeholder-label-label"
@@ -239,35 +159,16 @@ class Layout extends React.Component {
                             </Grid>
 
                             <Grid item xs={7} md={4} className="second-heading-wrapper">
-                                <Typography className="accordion-second-heading" component={'span'}>
-                                    <FormControl className="days-dropdown">
-                                        <Select
-                                            labelId="demo-simple-select-placeholder-label-label"
-                                            id="demo-simple-select-placeholder-label"
-                                            value={this.state.candlestickDaysRange}
-                                            onClick={(e) => this.handleClickDaysRange(e)}
-                                            onChange={(e) => this.handleSelectDaysRange(e, 'candlestick')}
-                                            MenuProps={{ disableScrollLock: true }}
-                                        >
-                                            <MenuItem value={7}>1 Week</MenuItem>
-                                            <MenuItem value={14}>2 Weeks</MenuItem>
-                                            <MenuItem value={30}>1 Month</MenuItem>
-                                            <MenuItem value={90}>3 Months</MenuItem>
-                                            <MenuItem value={365}>1 Year</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                Candlestick Chart with ARK Trade Points</Typography>
+                                {/* <Typography className="accordion-second-heading" component={'span'}>
+                                Chart with ARK Trade History</Typography> */}
                             </Grid>
 
                         </AccordionSummary>
 
                         <AccordionDetails>
                             <div className="stock-details-wrapper">
-                                <StockFigure title={this.state.figureTitle.toUpperCase()} data={this.state.massagedData} isLoading={this.state.isFigureLoading} />
+                                <StockDetails />
                             </div>
-                            {/* <div className="stock-details-wrapper">
-                                <StockFigure title={this.state.figureTitle.toUpperCase()} data={this.state.massagedData} isLoading={this.state.isFigureLoading} />
-                            </div> */}
                         </AccordionDetails>
 
                     </Accordion>
