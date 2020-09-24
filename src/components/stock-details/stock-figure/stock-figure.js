@@ -7,7 +7,7 @@ import {
 
 import './stock-figure.scss';
 
-let arkData = require('../../rawData/mergedData.json');
+let arkData = require('../../../rawData/mergedData.json');
 
 var downColor = '#FF5000';
 var downBorderColor = '#8A0000';

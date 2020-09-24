@@ -12,7 +12,7 @@ import { tickerService, daysRangeService } from './services/generic-service';
 import Header from './components/header/header';
 import MostActiveStocksTabs from './components/most-active-stocks-tabs/most-active-stocks-tabs';
 import DataGrid from './components/data-grid/data-grid';
-import StockFigure from './components/stock-figure/stock-figure';
+import StockFigure from './components/stock-details/stock-figure/stock-figure';
 
 let arkData = require('./rawData/mergedData.json');
 
@@ -20,7 +20,7 @@ class Layout extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            expanded: ['most-active-stock-panel', 'candlestick-chart-panel'],
+            expanded: ['most-active-stock-panel'],
             mostActiveDaysRange: 7,
             candlestickDaysRange: 30,
             inputTicker: '',
@@ -41,6 +41,14 @@ class Layout extends React.Component {
             if (ticker) {
                 this.setState({ inputTicker: ticker });
                 this.getCandleData(ticker, this.state.candlestickDaysRange);
+
+                // expand stock details section if it is closed
+                const panelArr = this.state.expanded;
+                if (panelArr.indexOf('stock-details-panel') === -1) {
+                    panelArr.push('stock-details-panel');
+                }
+                this.setState({ expanded: panelArr });
+
             } else {
                 this.setState({ ticker: '' });
             }
@@ -137,7 +145,7 @@ class Layout extends React.Component {
                     panelArr.splice(index, 1);
                 }
             }
-            this.setState({ expanded: panelArr })
+            this.setState({ expanded: panelArr });
         }
     };
 
@@ -220,36 +228,14 @@ class Layout extends React.Component {
 
                     </Accordion>
 
-                    <Accordion expanded={this.state.expanded.includes('data-grid-panel')} onChange={this.handlePanelChange('data-grid-panel')}>
+                    <Accordion expanded={this.state.expanded.includes('stock-details-panel')} onChange={this.handlePanelChange('stock-details-panel')}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
-                            aria-controls="data-grid-panel-content"
-                            id="data-grid-panel-header">
+                            aria-controls="stock-details-panel-content"
+                            id="stock-details-panel-header">
 
                             <Grid item xs={5} md={4}>
-                                <Typography className="accordion-heading">Transactions Table</Typography>
-                            </Grid>
-
-                            <Grid item xs={7} md={4} className="second-heading-wrapper">
-                                <Typography className="accordion-second-heading">All ARK Transactions from Aug 18th, 2020</Typography>
-                            </Grid>
-
-                        </AccordionSummary>
-
-                        <AccordionDetails>
-                            <DataGrid />
-                        </AccordionDetails>
-
-                    </Accordion>
-
-                    <Accordion expanded={this.state.expanded.includes('candlestick-chart-panel')} onChange={this.handlePanelChange('candlestick-chart-panel')}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="candlestick-chart-panel-content"
-                            id="candlestick-chart-panel-header">
-
-                            <Grid item xs={5} md={4}>
-                                <Typography className="accordion-heading">Candlestick Chart</Typography>
+                                <Typography className="accordion-heading">Stock Details</Typography>
                             </Grid>
 
                             <Grid item xs={7} md={4} className="second-heading-wrapper">
@@ -276,12 +262,38 @@ class Layout extends React.Component {
                         </AccordionSummary>
 
                         <AccordionDetails>
-                            <div className="stock-figure-wrapper">
+                            <div className="stock-details-wrapper">
                                 <StockFigure title={this.state.figureTitle.toUpperCase()} data={this.state.massagedData} isLoading={this.state.isFigureLoading} />
                             </div>
+                            {/* <div className="stock-details-wrapper">
+                                <StockFigure title={this.state.figureTitle.toUpperCase()} data={this.state.massagedData} isLoading={this.state.isFigureLoading} />
+                            </div> */}
                         </AccordionDetails>
 
                     </Accordion>
+
+                    <Accordion expanded={this.state.expanded.includes('data-grid-panel')} onChange={this.handlePanelChange('data-grid-panel')}>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="data-grid-panel-content"
+                            id="data-grid-panel-header">
+
+                            <Grid item xs={5} md={4}>
+                                <Typography className="accordion-heading">Transactions Table</Typography>
+                            </Grid>
+
+                            <Grid item xs={7} md={4} className="second-heading-wrapper">
+                                <Typography className="accordion-second-heading">All ARK Transactions from Aug 18th, 2020</Typography>
+                            </Grid>
+
+                        </AccordionSummary>
+
+                        <AccordionDetails>
+                            <DataGrid />
+                        </AccordionDetails>
+
+                    </Accordion>
+
                 </div>
 
                 <div className='info-container'>
