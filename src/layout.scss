@@ -1,4 +1,6 @@
 .layout-wrapper {
+    margin-bottom: 100px;
+
     .header-wrapper {}
 
     .notification-bar-wrapper {
@@ -58,7 +60,13 @@
 
             #most-active-stock-panel-content {
                 .MuiAccordionDetails-root {
-                    padding: 0.2rem 0.4rem 0.4rem;
+                    padding: 0.2rem 0.4rem 0.4rem 0.1rem;
+                }
+            }
+
+            #stock-details-panel-content {
+                .MuiAccordionDetails-root {
+                    padding: 0;
                 }
             }
         }
@@ -70,7 +78,7 @@
 
         .data-grid-wrapper {}
 
-        .stock-figure-wrapper {
+        .stock-details-wrapper {
             height: auto;
             min-height: 300px;
             width: 100%;
@@ -98,31 +106,4 @@
             margin-bottom: 5px;
         }
     }
-}
-
-
-/* !important is needed sometimes */
-::-webkit-scrollbar {
-    width: 12px !important;
-    -webkit-overflow-scrolling: auto
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important;
-    -webkit-border-radius: 10px !important;
-    border-radius: 10px !important;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px !important;
-    border-radius: 10px !important;
-    background: #41617D !important;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5) !important;
-
-}
-
-::-webkit-scrollbar-thumb:window-inactive {
-    background: #41617D !important;
 }
