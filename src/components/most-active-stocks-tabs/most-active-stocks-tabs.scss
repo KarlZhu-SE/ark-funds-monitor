@@ -18,7 +18,7 @@
   }
 
   .MuiTabs-root.MuiTabs-vertical {
-    min-width: 80px;
+    min-width: 120px;
 
     .MuiTabs-scroller.MuiTabs-scrollable {
       border-right: 1px solid rgb(197, 197, 197);
@@ -32,6 +32,7 @@
 
         .MuiTab-root {
           padding: 6px 0px;
+          min-width: auto;
         }
       }
     }
@@ -60,8 +61,16 @@
   }
 }
 
-@media (min-width: 600px) {
-  .MuiTab-root {
-    min-width: 50px;
+@media (max-width: 600px) {
+  .MuiTabs-root.MuiTabs-vertical {
+    min-width: 80px !important;
+
+    .MuiTab-root {
+      min-width: 50px;
+
+      span.MuiTab-wrapper {
+        font-size: 10px;
+      }
+    }
   }
 }

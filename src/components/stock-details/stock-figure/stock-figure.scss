@@ -1,6 +1,9 @@
 .loader-wrapper {
-    margin-top: 10%;    
     text-align: center;
+    margin-top: 120px;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 
     .MuiCircularProgress-root {
         height: 60px !important;
@@ -26,5 +29,43 @@
 
     p {
         font-weight: bold;
+    }
+}
+
+.MuiTab-labelIcon .MuiTab-wrapper>*:first-child {
+    margin-bottom: 0px !important;
+}
+
+.toggle-button-group {
+    width: 100%;
+
+    .figure-range-col {
+        text-align: center;
+
+        // Button:focus{background-color: #6200EE;}
+
+    }
+
+    .MuiToggleButton-root {
+        color: #6200EE;
+        flex-grow: 0;
+        max-width: 16.666667%;
+        flex-basis: 16.666667%;
+        border: 0;
+        border-radius: 0;
+        background-color: transparent !important;
+
+        .MuiToggleButton-label {
+            width: 30px;
+        }
+    }
+
+    .MuiToggleButton-root.Mui-selected {
+        color: #fff;
+
+        .MuiToggleButton-label {
+            background-color: #6200EE !important;
+        }
+
     }
 }

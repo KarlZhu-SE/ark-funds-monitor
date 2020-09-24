@@ -1,0 +1,25 @@
+INTRA-DAY TRADE TO TOTAL FUND HOLDINGS (NOT INDIVIDUAL BASKET),,,,,,,,,
+"Trade notification files are not provided until full trade execution at the end of a trading day. ARK may not trade every day. The time stamp of the email is the time of file upload and not necessarily the exact time of the trades. Files of trades are not comprehensive lists of a day's trades for the ARK ETFs, but instead contain the most recent trades made in the ARK ETFs' portfolios. Additional files may be posted at a later time. Most ARK ETF portfolio trades settle on a T+2 basis. These files represent an unofficial account, as all accounting and custody for the ARK ETFs is performed by BNY Mellon. Updated ARK ETF end of day holdings are available on https://ark-funds.com/investor-resources
+
+ARK Trade Desk
+212.426.7040
+ark@ark-invest.com",,,,,,,,,
+,,,,,,,,,
+FUND,Date,Direction,Ticker,CUSIP,Name,Shares,% of ETF,,
+ARKG,2020-09-24,Buy,ACCD,00437E102,ACCOLADE INC,15956,0.0242,,
+ARKG,2020-09-24,Buy,SDGR,80810D103,SCHRODINGER INC/UNITED STATES,90323,0.1992,,
+ARKG,2020-09-24,Sell,EXAS,30063P105,EXACT SCIENCES CORP,100735,0.4504,,
+ARKK,2020-09-24,Buy,TSLA,88160R101,TESLA INC,55063,0.2396,,
+ARKK,2020-09-24,Sell,CGEN,M25722105,COMPUGEN LTD,174000,0.0325,,
+ARKK,2020-09-24,Sell,MCRB,81750R102,SERES THERAPEUTICS INC,81146,0.0244,,
+ARKK,2020-09-24,Sell,NSTG,63009R109,NANOSTRING TECHNOLOGIES INC,14629,0.0075,,
+ARKK,2020-09-24,Sell,XLNX,983919101,XILINX INC,172508,0.2031,,
+ARKQ,2020-09-24,Buy,WKHS,98138J206,WORKHORSE GROUP INC,86300,0.3173,,
+ARKQ,2020-09-24,Buy,TSLA,88160R101,TESLA INC,2639,0.1582,,
+ARKQ,2020-09-24,Buy,BYDDY,05606L100,BYD CO LTD,83363,0.3758,,
+ARKQ,2020-09-24,Sell,XLNX,983919101,XILINX INC,51754,0.8471,,
+ARKW,2020-09-24,Buy,TSLA,88160R101,TESLA INC,19794,0.3054,,
+ARKW,2020-09-24,Sell,ROKU,77543R102,ROKU INC,19361,0.1496,,
+ARKW,2020-09-24,Sell,SQ,852234103,SQUARE INC,22181,0.1474,,
+ARKW,2020-09-24,Sell,XLNX,983919101,XILINX INC,19133,0.0803,,
+,,,,,,,,,

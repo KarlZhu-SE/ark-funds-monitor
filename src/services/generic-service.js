@@ -1,6 +1,6 @@
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
-const tickerSubject = new Subject('');
+const tickerSubject = new BehaviorSubject('');
 
 const mostActiveDaysRangeSubject = new BehaviorSubject(7);
 const candlestickDaysRangeSubject = new BehaviorSubject(30);

@@ -1,0 +1,11 @@
+.stock-details-inner-wrapper {
+    flex-grow: 1;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+
+    .MuiBox-root {
+        min-height: 450px;
+        padding: 24px 0 !important;
+    }
+}

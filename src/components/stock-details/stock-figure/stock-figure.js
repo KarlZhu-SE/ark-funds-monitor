@@ -2,9 +2,11 @@ import React from 'react';
 import * as _ from 'lodash';
 import ReactEcharts from 'echarts-for-react';
 import {
-    CircularProgress
+    CircularProgress, Grid
 } from '@material-ui/core';
+import { ToggleButtonGroup, ToggleButton } from '@material-ui/lab';
 
+import { tickerService } from '../../../services/generic-service';
 import './stock-figure.scss';
 
 let arkData = require('../../../rawData/mergedData.json');
@@ -17,13 +19,109 @@ var upBorderColor = '#008F28';
 class StockFigure extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: '' };
+        this.state = {
+            ticker: '',
+            figureTitle: '',
+            candlestickDaysRange: 90,
+            isFigureLoading: false,
+            massagedData: [],
+            figureRangeButtonConfigs: [
+                { id: '1D', text: '1D', value: 1, resolution: '5', daysRange: 1 },
+                { id: '1W', text: '1W', value: 7, resolution: 'D', daysRange: 7 },
+                { id: '2W', text: '2W', value: 14, resolution: 'D', daysRange: 14 },
+                { id: '1M', text: '1M', value: 30, resolution: 'D', daysRange: 30 },
+                { id: '3M', text: '3M', value: 90, resolution: 'D', daysRange: 90 },
+                { id: '1Y', text: '1Y', value: 365, resolution: 'D', daysRange: 365 }
+            ]
+        };
         this.props = props;
     }
 
-    shouldComponentUpdate(nextProps) {
-        return this.props.data !== nextProps.data || this.props.isLoading !== nextProps.isLoading;
+    componentDidMount() {
+        this.tickerSubscription = tickerService.getTicker().subscribe(ticker => {
+            if (ticker) {
+                this.setState({ ticker: ticker });
+                this.getCandleData(ticker, this.state.candlestickDaysRange);
+            } else {
+                this.setState({ ticker: '' });
+            }
+        });
     }
+
+    componentWillUnmount() {
+        this.tickerSubscription.unsubscribe();
+    }
+
+    getCandleData(ticker, daysRange) {
+        // if (this.state.errorMessage) {
+        //     this.setState({ errorMessage: '' });
+        // }
+        this.setState({ isFigureLoading: true });
+
+
+        // let that = this;
+        let endDate = new Date().setHours(0, 0, 0, 0) / 1000;
+        let startDate = endDate - daysRange * 24 * 60 * 60;
+        let resolution = this.state.figureRangeButtonConfigs.find(x => x.value === daysRange).resolution;
+        let getCandleUrl = 'https://finnhub.io/api/v1/stock/candle?';
+
+        const apiParams = {
+            symbol: ticker,
+            resolution: resolution,
+            from: startDate,
+            to: endDate,
+            token: 'bti26hf48v6uv69lirj0'
+        };
+        let paramsArray = [];
+        for (let prop in apiParams) {
+            paramsArray.push(`${prop}=${apiParams[prop]}`);
+        }
+        getCandleUrl = getCandleUrl + paramsArray.join('&');
+
+        fetch(getCandleUrl, {
+            method: 'GET'
+        })
+            .then(response => response.json())
+            .then((data) => {
+                if (data && data.s === 'ok') {
+                    let massaged = [];
+                    for (let i = 0; i < data.t.length; i++) {
+                        let row = [];
+                        let time = '';
+                        if (resolution === 'D') {
+                            time = new Date(data.t[i] * 1000).toISOString().split("T")[0]
+                        } else if (typeof(parseInt(resolution)) === 'number') {
+                            const temp = new Date(data.t[i] * 1000);
+                            time = new Date(temp.setMinutes(temp.getMinutes() - 240)).toLocaleTimeString("en-US");
+                        }
+
+                        row.push(
+                            time,
+                            Math.round(data.o[i] * 100) / 100,
+                            Math.round(data.c[i] * 100) / 100,
+                            Math.round(data.l[i] * 100) / 100,
+                            Math.round(data.h[i] * 100) / 100,
+                            data.v[i],
+                        )
+                        massaged.push(row);
+                    }
+
+                    this.setState({ figureTitle: ticker });
+                    this.setState({ massagedData: massaged });
+                }
+
+                // if (data.s === 'no_data') {
+                //     that.setState({ errorMessage: `API returned 'NO DATA' for ${ticker}` });
+                // }
+
+                this.setState({ isFigureLoading: false });
+            })
+            .catch(error => this.setState({ error }));
+    }
+
+    // shouldComponentUpdate(nextProps) {
+    //     return this.props.data !== nextProps.data || this.props.isLoading !== nextProps.isLoading;
+    // }
 
     splitData(rawData) {
         var categoryData = [];
@@ -60,12 +158,11 @@ class StockFigure extends React.Component {
 
 
     getOption() {
-        this.data = this.splitData(_.cloneDeep(this.props.data));
-        // console.log(this.data)
+        this.data = this.splitData(_.cloneDeep(this.state.massagedData));
         let option = {
             backgroundColor: '#fff',
             title: {
-                text: this.props.title,
+                text: this.state.figureTitle,
                 left: '2%',
                 top: '-1%',
                 textStyle: {
@@ -92,7 +189,7 @@ class StockFigure extends React.Component {
                 }
             },
             legend: {
-                data: ['Day', 'MA5', 'MA10', 'MA20'],
+                data: ['Day'],
                 inactiveColor: '#777',
                 textStyle: {
                     color: '#000',
@@ -119,7 +216,7 @@ class StockFigure extends React.Component {
             },
             visualMap: {
                 show: false,
-                seriesIndex: 4,
+                seriesIndex: 1,
                 dimension: 2,
                 pieces: [{
                     value: 1,
@@ -131,13 +228,9 @@ class StockFigure extends React.Component {
             },
             grid: [
                 {
-                    left: '5%',
-                    right: '5%',
                     bottom: '30%'
                 },
                 {
-                    left: '5%',
-                    right: '5%',
                     height: '15%',
                     bottom: '10%'
                 }
@@ -156,7 +249,7 @@ class StockFigure extends React.Component {
                     axisLabel: {
                         show: true,
                         textStyle: {
-                            fontSize: 16
+                            fontSize: 14
                         }
                     }
                 },
@@ -185,7 +278,7 @@ class StockFigure extends React.Component {
                 axisLabel: {
                     show: true,
                     textStyle: {
-                        fontSize: 16
+                        fontSize: 14
                     }
                 }
             },
@@ -269,12 +362,12 @@ class StockFigure extends React.Component {
                                 valueDim: 'lowest',
                                 symbolOffset: [0, -20]
                             },
-                            {
-                                name: 'average value on close',
-                                type: 'average',
-                                valueDim: 'close',
-                                symbolOffset: [0, -20]
-                            }
+                            // {
+                            //     name: 'average value on close',
+                            //     type: 'average',
+                            //     valueDim: 'close',
+                            //     symbolOffset: [0, -20]
+                            // }
                         ],
                         tooltip: {
                             formatter: ((param) => param.name + '<br>' + (param.data.coord || ''))
@@ -331,51 +424,6 @@ class StockFigure extends React.Component {
                     }
                 },
                 {
-                    name: 'MA5',
-                    type: 'line',
-                    data: this.calculateMA(5),
-                    smooth: true,
-                    lineStyle: {
-                        opacity: 0.5
-                    },
-                    itemStyle: {
-                        color: '#0000FF'
-                    }
-                },
-                {
-                    name: 'MA10',
-                    type: 'line',
-                    data: this.calculateMA(10),
-                    smooth: true,
-                    lineStyle: {
-                        opacity: 0.5
-                    },
-                    itemStyle: {
-                        color: '#FFAE19',
-                    }
-                },
-                {
-                    name: 'MA20',
-                    type: 'line',
-                    data: this.calculateMA(20),
-                    smooth: true,
-                    lineStyle: {
-                        opacity: 0.5
-                    },
-                    itemStyle: {
-                        color: '#FF00FF',
-                    }
-                },
-                // {
-                //     name: 'MA30',
-                //     type: 'line',
-                //     data: this.calculateMA(30),
-                //     smooth: true,
-                //     lineStyle: {
-                //         opacity: 0.5
-                //     }
-                // },
-                {
                     name: 'Volume',
                     type: 'bar',
                     xAxisIndex: 1,
@@ -386,8 +434,60 @@ class StockFigure extends React.Component {
             ]
         };
 
+        // If resolution !== 'D' skip ARK history mark points and MA lines
+        if (this.state.figureRangeButtonConfigs.find(x => x.value === this.state.candlestickDaysRange).resolution !== 'D') {
+            return option;
+        }
+
+        // add MA lines according to candlestickDaysRange
+        if (this.state.candlestickDaysRange >= 10) {
+            option.series.push({
+                    name: 'MA5',
+                    type: 'line',
+                    data: this.calculateMA(5),
+                    smooth: true,
+                    lineStyle: {
+                        opacity: 0.5
+                    },
+                    itemStyle: {
+                        color: '#0000FF'
+                    }
+            });
+            option.legend.data.push('MA5');
+        }
+        if (this.state.candlestickDaysRange >= 20) {
+            option.series.push({
+                    name: 'MA10',
+                    type: 'line',
+                    data: this.calculateMA(10),
+                    smooth: true,
+                    lineStyle: {
+                        opacity: 0.5
+                    },
+                    itemStyle: {
+                        color: '#FFAE19'
+                    }
+            });
+            option.legend.data.push('MA10');
+        }
+        if (this.state.candlestickDaysRange >= 40) {
+            option.series.push({
+                name: 'MA20',
+                type: 'line',
+                data: this.calculateMA(20),
+                smooth: true,
+                lineStyle: {
+                    opacity: 0.5
+                },
+                itemStyle: {
+                    color: '#FF00FF',
+                }
+            });
+            option.legend.data.push('MA20');
+        }
+
         // handle mark point for BUY/SELL from ARK
-        const filteredArkData = arkData.filter(x => x.Ticker === this.props.title);
+        const filteredArkData = arkData.filter(x => x.Ticker === this.state.figureTitle);
         if (!filteredArkData || filteredArkData.length === 0) {
             return option;
         }
@@ -395,7 +495,7 @@ class StockFigure extends React.Component {
         const groupMap = _.groupBy(filteredArkData, 'Date');
         for (let date in groupMap) {
             const dataArrayInDate = groupMap[date];
-            const dataInProps = this.props.data.find(m => m[0] === dataArrayInDate[0].Date);
+            const dataInProps = this.state.massagedData.find(m => m[0] === dataArrayInDate[0].Date);
             if (!(dataInProps && dataInProps[4])) {
                 continue;
             }
@@ -449,32 +549,54 @@ class StockFigure extends React.Component {
         return option;
     }
 
+    handleCandlestickDaysRangeChange = (event, newValue) => {
+        if (newValue !== this.state.candlestickDaysRange && this.state.massagedData.length > 0) {
+            this.setState({ candlestickDaysRange: newValue });
+            this.getCandleData(this.state.ticker, newValue);
+        }
+    };
+
     render() {
         let subComponent;
-        if (this.props.isLoading === true) {
+        if (this.state.isFigureLoading === true) {
             subComponent =
                 <div className='loader-wrapper'>
                     <CircularProgress />
                 </div>
-        } else if (this.props.data.length > 0) {
-            const fullRangePercentage = this.props.data[this.props.data.length - 1][2] / this.props.data[0][2] - 1;
-            const halfRangePercentage = this.props.data[this.props.data.length - 1][2] / this.props.data[Math.round((this.props.data.length - 1) / 2)][2] - 1;
+        } else if (this.state.massagedData.length > 0) {
+            // const fullRangePercentage = this.state.massagedData[this.state.massagedData.length - 1][2] / this.state.massagedData.data[0][2] - 1;
+            // const halfRangePercentage = this.state.massagedData[this.state.massagedData.length - 1][2] / this.state.massagedData.data[Math.round((this.state.massagedData.data.length - 1) / 2)][2] - 1;
 
-            let fullRangeChange = (fullRangePercentage < 0 ? "" : "+") + (fullRangePercentage * 100).toFixed(2) + '%'
-            let halfRangeChange = (halfRangePercentage < 0 ? "" : "+") + (halfRangePercentage * 100).toFixed(2) + '%'
+            // let fullRangeChange = (fullRangePercentage < 0 ? "" : "+") + (fullRangePercentage * 100).toFixed(2) + '%'
+            // let halfRangeChange = (halfRangePercentage < 0 ? "" : "+") + (halfRangePercentage * 100).toFixed(2) + '%'
 
             subComponent =
                 <div>
-                    <div className="highlights">
+                    {/* <div className="highlights">
                         <div><p>Full range price change: {fullRangeChange}</p></div>
                         <div><p>Half range price change: {halfRangeChange}</p></div>
-                    </div>
+                    </div> */}
+
                     <ReactEcharts
                         option={this.getOption()}
                         notMerge={true}
                         lazyUpdate={true}
-                        style={{ height: '500px', width: '100%' }}
+                        style={{ height: '400px', width: '100%' }}
                     />
+
+                    <Grid container justify="center" alignItems="center">
+                        <ToggleButtonGroup
+                            className="toggle-button-group"
+                            value={this.state.candlestickDaysRange}
+                            exclusive
+                            onChange={this.handleCandlestickDaysRangeChange}
+                            aria-label="figure-range-button-group"
+                        >
+                            {this.state.figureRangeButtonConfigs.map(button =>
+                                <ToggleButton key={button.id} value={button.value} aria-label={`toggle-button-${button.id}`}>{button.text}</ToggleButton>
+                            )}
+                        </ToggleButtonGroup>
+                    </Grid>
                 </div>
         } else {
             subComponent =
