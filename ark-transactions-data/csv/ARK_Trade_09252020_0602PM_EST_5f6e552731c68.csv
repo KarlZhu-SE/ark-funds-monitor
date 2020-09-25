@@ -1,0 +1,17 @@
+INTRA-DAY TRADE TO TOTAL FUND HOLDINGS (NOT INDIVIDUAL BASKET),,,,,,,,,
+"Trade notification files are not provided until full trade execution at the end of a trading day. ARK may not trade every day. The time stamp of the email is the time of file upload and not necessarily the exact time of the trades. Files of trades are not comprehensive lists of a day's trades for the ARK ETFs, but instead contain the most recent trades made in the ARK ETFs' portfolios. Additional files may be posted at a later time. Most ARK ETF portfolio trades settle on a T+2 basis. These files represent an unofficial account, as all accounting and custody for the ARK ETFs is performed by BNY Mellon. Updated ARK ETF end of day holdings are available on https://ark-funds.com/investor-resources
+
+ARK Trade Desk
+212.426.7040
+ark@ark-invest.com",,,,,,,,,
+,,,,,,,,,
+FUND,Date,Direction,Ticker,CUSIP,Name,Shares,% of ETF,,
+ARKG,2020-09-25,Sell,CBMG,15117P102,CELLULAR BIOMEDICINE GROUP INC,3048,0.0025,,
+ARKK,2020-09-25,Buy,PSTG,74624M102,PURE STORAGE INC,221727,0.0379,,
+ARKK,2020-09-25,Buy,TWST,90184D100,TWIST BIOSCIENCE CORP,15495,0.0125,,
+ARKK,2020-09-25,Sell,CGEN,M25722105,COMPUGEN LTD,140255,0.0255,,
+ARKK,2020-09-25,Sell,MCRB,81750R102,SERES THERAPEUTICS INC,17800,0.0053,,
+ARKK,2020-09-25,Sell,NSTG,63009R109,NANOSTRING TECHNOLOGIES INC,43116,0.0217,,
+ARKK,2020-09-25,Sell,NVTA,46185L103,INVITAE CORP,357830,0.1835,,
+ARKK,2020-09-25,Sell,XONE,302104104,EXONE CO/THE,10481,0.0014,,
+,,,,,,,,,
