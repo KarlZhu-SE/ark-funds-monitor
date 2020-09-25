@@ -27,8 +27,6 @@ class Layout extends React.Component {
         };
 
         this.handlePanelChange = this.handlePanelChange.bind(this);
-        this.handleClickDaysRange = this.handleClickDaysRange.bind(this);
-        this.handleSelectDaysRange = this.handleSelectDaysRange.bind(this);
     }
 
     componentDidMount() {
