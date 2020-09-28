@@ -1,0 +1,21 @@
+INTRA-DAY TRADE TO TOTAL FUND HOLDINGS (NOT INDIVIDUAL BASKET),,,,,,,,,
+"Trade notification files are not provided until full trade execution at the end of a trading day. ARK may not trade every day. The time stamp of the email is the time of file upload and not necessarily the exact time of the trades. Files of trades are not comprehensive lists of a day's trades for the ARK ETFs, but instead contain the most recent trades made in the ARK ETFs' portfolios. Additional files may be posted at a later time. Most ARK ETF portfolio trades settle on a T+2 basis. These files represent an unofficial account, as all accounting and custody for the ARK ETFs is performed by BNY Mellon. Updated ARK ETF end of day holdings are available on https://ark-funds.com/investor-resources
+
+ARK Trade Desk
+212.426.7040
+ark@ark-invest.com",,,,,,,,,
+,,,,,,,,,
+FUND,Date,Direction,Ticker,CUSIP,Name,Shares,% of ETF,,
+ARKG,2020-09-28,Buy,ACCD,00437E102,ACCOLADE INC,41795,0.065,,
+ARKG,2020-09-28,Buy,PHR,71944F106,PHREESIA INC,8095,0.0106,,
+ARKG,2020-09-28,Sell,CBMG,15117P102,CELLULAR BIOMEDICINE GROUP INC,676,0.0006,,
+ARKG,2020-09-28,Sell,EXAS,30063P105,EXACT SCIENCES CORP,10000,0.0447,,
+ARKK,2020-09-28,Buy,PSTG,74624M102,PURE STORAGE INC,84690,0.0147,,
+ARKK,2020-09-28,Sell,XONE,302104104,EXONE CO/THE,29285,0.0039,,
+ARKK,2020-09-28,Sell,NSTG,63009R109,NANOSTRING TECHNOLOGIES INC,34447,0.0175,,
+ARKK,2020-09-28,Sell,MCRB,81750R102,SERES THERAPEUTICS INC,72906,0.0221,,
+ARKK,2020-09-28,Sell,CGEN,M25722105,COMPUGEN LTD,19958,0.0037,,
+ARKQ,2020-09-28,Buy,NNDM,63008G203,NANO DIMENSION LTD,32326,0.0077,,
+ARKQ,2020-09-28,Sell,AAPL,037833100,APPLE INC,8397,0.15,,
+ARKW,2020-09-28,Buy,IPOB,G8250T109,SOCIAL CAPITAL HEDOSOPHIA HOLDINGS CORP II,54456,0.0375,,
+,,,,,,,,,
