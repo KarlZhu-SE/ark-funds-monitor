@@ -66,7 +66,7 @@ class Header extends React.Component {
                 <Grid container spacing={3} justify="center" alignItems="center">
                     <Grid item xs={6} md={10} className='title-container'>
                         <span className="logo">
-                            <a href="http://IssueX.github.io/ark-funds-monitor/">
+                            <a href="http://karlzhu-se.github.io/ark-funds-monitor/">
                                 <img height="90" width="120" src="https://ark-funds.com/wp-content/uploads/2020/07/ark-logo-1-1.svg" alt="ark-funds.com" title="" />
                             </a>
                         </span>
