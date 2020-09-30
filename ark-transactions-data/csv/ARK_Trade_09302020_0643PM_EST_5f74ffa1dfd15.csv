@@ -1,0 +1,17 @@
+INTRA-DAY TRADE TO TOTAL FUND HOLDINGS (NOT INDIVIDUAL BASKET),,,,,,,,,
+"Trade notification files are not provided until full trade execution at the end of a trading day. ARK may not trade every day. The time stamp of the email is the time of file upload and not necessarily the exact time of the trades. Files of trades are not comprehensive lists of a day's trades for the ARK ETFs, but instead contain the most recent trades made in the ARK ETFs' portfolios. Additional files may be posted at a later time. Most ARK ETF portfolio trades settle on a T+2 basis. These files represent an unofficial account, as all accounting and custody for the ARK ETFs is performed by BNY Mellon. Updated ARK ETF end of day holdings are available on https://ark-funds.com/investor-resources
+
+ARK Trade Desk
+212.426.7040
+ark@ark-invest.com",,,,,,,,,
+,,,,,,,,,
+FUND,Date,Direction,Ticker,CUSIP,Name,Shares,% of ETF,,
+ARKG,2020-09-30,Buy,PHR,71944F106,PHREESIA INC,400,0.0005,,
+ARKG,2020-09-30,Buy,PSTG,74624M102,PURE STORAGE INC,358029,0.2443,,
+ARKG,2020-09-30,Sell,CBMG,15117P102,CELLULAR BIOMEDICINE GROUP INC,9471,0.0076,,
+ARKK,2020-09-30,Sell,CGEN,M25722105,COMPUGEN LTD,33009,0.0061,,
+ARKK,2020-09-30,Sell,NSTG,63009R109,NANOSTRING TECHNOLOGIES INC,502,0.0003,,
+ARKK,2020-09-30,Sell,XONE,302104104,EXONE CO/THE,1302,0.0002,,
+ARKW,2020-09-30,Buy,SPOT,L8681T102,SPOTIFY TECHNOLOGY SA,25265,0.2541,,
+ARKW,2020-09-30,Sell,XLNX,983919101,XILINX INC,57610,0.248,,
+,,,,,,,,,
