@@ -1,6 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
 
 const tickerSubject = new BehaviorSubject('');
+const errorMessageSubject = new BehaviorSubject('');
 
 const mostActiveDaysRangeSubject = new BehaviorSubject(7);
 const candlestickDaysRangeSubject = new BehaviorSubject(30);
@@ -9,6 +10,12 @@ export const tickerService = {
     changeTicker: ticker => tickerSubject.next(ticker),
     clearTicker: () => tickerSubject.next(),
     getTicker: () => tickerSubject.asObservable()
+};
+
+export const errorMessageService = {
+    changeErrorMessage: message => errorMessageSubject.next(message),
+    clearErrorMessage: () => errorMessageSubject.next(),
+    getErrorMessage: () => errorMessageSubject.asObservable()
 };
 
 export const daysRangeService = {

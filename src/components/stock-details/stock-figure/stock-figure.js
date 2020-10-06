@@ -6,7 +6,8 @@ import {
 } from '@material-ui/core';
 import { ToggleButtonGroup, ToggleButton } from '@material-ui/lab';
 
-import { tickerService } from '../../../services/generic-service';
+import * as Consts from '../../../shared/constants';
+import { tickerService, errorMessageService } from '../../../services/generic-service';
 import './stock-figure.scss';
 
 let arkData = require('../../../rawData/mergedData.json');
@@ -53,9 +54,7 @@ class StockFigure extends React.Component {
     }
 
     getCandleData(ticker, daysRange) {
-        // if (this.state.errorMessage) {
-        //     this.setState({ errorMessage: '' });
-        // }
+        errorMessageService.changeErrorMessage('');
         this.setState({ isFigureLoading: true });
 
 
@@ -63,20 +62,19 @@ class StockFigure extends React.Component {
         let endDate = new Date().setHours(0, 0, 0, 0) / 1000;
         let startDate = endDate - daysRange * 24 * 60 * 60;
         let resolution = this.state.figureRangeButtonConfigs.find(x => x.value === daysRange).resolution;
-        let getCandleUrl = 'https://finnhub.io/api/v1/stock/candle?';
 
         const apiParams = {
             symbol: ticker,
             resolution: resolution,
             from: startDate,
             to: endDate,
-            token: 'bti26hf48v6uv69lirj0'
+            token: Consts.token
         };
         let paramsArray = [];
         for (let prop in apiParams) {
             paramsArray.push(`${prop}=${apiParams[prop]}`);
         }
-        getCandleUrl = getCandleUrl + paramsArray.join('&');
+        let getCandleUrl = Consts.getCandleUrl + paramsArray.join('&');
 
         fetch(getCandleUrl, {
             method: 'GET'
@@ -110,18 +108,14 @@ class StockFigure extends React.Component {
                     this.setState({ massagedData: massaged });
                 }
 
-                // if (data.s === 'no_data') {
-                //     that.setState({ errorMessage: `API returned 'NO DATA' for ${ticker}` });
-                // }
+                if (data.s === 'no_data') {
+                    errorMessageService.changeErrorMessage(`API returned 'NO DATA' for ${ticker}`);
+                }
 
                 this.setState({ isFigureLoading: false });
             })
             .catch(error => this.setState({ error }));
     }
-
-    // shouldComponentUpdate(nextProps) {
-    //     return this.props.data !== nextProps.data || this.props.isLoading !== nextProps.isLoading;
-    // }
 
     splitData(rawData) {
         var categoryData = [];

@@ -1,0 +1,37 @@
+.news-card-wrapper {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+    .MuiCard-root {
+        height: 8rem;
+        border-radius: 12px;
+
+        .MuiCardContent-root {
+            padding: 10px;
+        }
+
+        .card-headline {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .card-time-source {
+            font-size: 12px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            white-space:pre;
+        }
+
+        .card-details {
+            font-size: 14px;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .MuiCard-root:hover {
+        cursor: pointer;
+    }
+
+}

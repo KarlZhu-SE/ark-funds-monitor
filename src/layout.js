@@ -8,7 +8,7 @@ import Alert from '@material-ui/lab/Alert';
 
 import packageJson from '../package.json';
 import './layout.scss';
-import { tickerService, daysRangeService } from './services/generic-service';
+import { tickerService, daysRangeService, errorMessageService } from './services/generic-service';
 import Header from './components/header/header';
 import MostActiveStocksTabs from './components/most-active-stocks-tabs/most-active-stocks-tabs';
 import DataGrid from './components/data-grid/data-grid';
@@ -53,11 +53,20 @@ class Layout extends React.Component {
                 this.setState({ mostActiveDaysRange: 30 });
             }
         });
+
+        this.errorMessageSubscription = errorMessageService.getErrorMessage().subscribe(message => {
+            if (message) {
+                this.setState({ errorMessage: message });
+            } else {
+                this.setState({ errorMessage: '' });
+            }
+        });
     }
 
     componentWillUnmount() {
         this.tickerSubscription.unsubscribe();
         this.mostActiveDaysRangeSubscription.unsubscribe();
+        this.errorMessageSubscription.unsubscribe();
     }
 
     handlePanelChange(panel) {

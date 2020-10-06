@@ -4,9 +4,14 @@
     .header-wrapper {}
 
     .notification-bar-wrapper {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+
         .MuiAlert-root {
             margin: auto;
-            width: 92%;
+            width: 98%;
             margin-bottom: 20px;
         }
     }
