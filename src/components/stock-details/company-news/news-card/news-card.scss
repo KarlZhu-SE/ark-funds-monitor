@@ -2,7 +2,7 @@
     margin-bottom: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
-    
+
     .MuiCard-root {
         height: 8rem;
         border-radius: 12px;
@@ -21,7 +21,7 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
-            white-space:pre;
+            white-space: pre;
         }
 
         .card-details {
@@ -34,4 +34,23 @@
         cursor: pointer;
     }
 
+}
+
+
+@media screen and (max-width: 800px) {
+    .news-card-wrapper {
+        .MuiCard-root {
+            .card-headline {
+                font-size: 12px !important;
+            }
+
+            .card-time-source {
+                font-size: 6px !important;
+            }
+
+            .card-details {
+                font-size: 8px !important;
+            }
+        }
+    }
 }
