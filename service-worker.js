@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ark-funds-monitor/precache-manifest.65e58c9d0c9f5093b1359078c374ac63.js"
+  "/ark-funds-monitor/precache-manifest.4369d885b5a7b4a072f5b28de556b2b1.js"
 );
 
 self.addEventListener('message', (event) => {
