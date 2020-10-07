@@ -39,20 +39,20 @@ class DataGrid extends React.Component {
                 case 'Date':
                     specificColDef = {
                         width: this.state.width / 12,
-                        minWidth: 130,
+                        minWidth: 120,
                     }
                     break
                 case 'Direction':
                 case 'CUSIP':
                 case 'Shares':
                 case '% Of ETF':
+                case 'Ticker':
                     specificColDef = {
                         width: this.state.width / 12,
                         minWidth: 100,
                     }
                     break
                 case 'FUND':
-                case 'Ticker':
                     specificColDef = {
                         width: this.state.width / 12,
                         minWidth: 90,
