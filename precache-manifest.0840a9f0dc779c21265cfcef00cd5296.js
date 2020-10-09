@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dd5b15359f86a4db5b767017ec7d7afd",
+    "revision": "798298e06bdc219179961aa681c379bd",
     "url": "/ark-funds-monitor/index.html"
   },
   {
