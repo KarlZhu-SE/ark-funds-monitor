@@ -27,7 +27,9 @@
 
       @media screen and (max-width: 800px) {
         .title {
-          display: none !important;
+          // display: none !important;
+          top: 3% !important;
+          font-size: 15px !important;
         }
       }
 
