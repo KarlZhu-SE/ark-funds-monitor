@@ -348,13 +348,19 @@ class StockFigure extends React.Component {
                                 name: 'highest value',
                                 type: 'max',
                                 valueDim: 'highest',
-                                symbolOffset: [0, -20]
+                                symbolOffset: [0, -30],
+                                itemStyle: {
+                                    color: '#FCAE1E'
+                                }
                             },
                             {
                                 name: 'lowest value',
                                 type: 'min',
                                 valueDim: 'lowest',
-                                symbolOffset: [0, -20]
+                                symbolOffset: [0, -30],
+                                itemStyle: {
+                                    color: '#FCAE1E'
+                                }
                             },
                             // {
                             //     name: 'average value on close',
