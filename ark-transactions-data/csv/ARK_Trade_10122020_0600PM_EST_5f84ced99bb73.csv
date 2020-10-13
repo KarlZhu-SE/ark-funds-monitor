@@ -1,0 +1,28 @@
+INTRA-DAY TRADE TO TOTAL FUND HOLDINGS (NOT INDIVIDUAL BASKET),,,,,,,,,
+"Trade notifications are for informational purposes only. ARK offers fully transparent ETFs and provides trade information for all actively managed ETFs. ARK’s statements are not an endorsement of any company or a recommendation to buy, sell or hold any security. Trade notification files are not provided until full trade execution at the end of a trading day. ARK may not trade every day. The time stamp of the email is the time of file upload and not necessarily the exact time of the trades. Files of trades are not comprehensive lists of a day's trades for the ARK ETFs, but instead contain the most recent trades made in the ARK ETFs' portfolios. Additional files may be posted at a later time. Most ARK ETF portfolio trades settle on a T+2 basis. These files represent an unofficial account, as all accounting and custody for the ARK ETFs is performed by BNY Mellon. Updated ARK ETF end of day holdings are available on https://ark-funds.com/investor-resources
+
+ARK Trade Desk
+212.426.7040
+ark@ark-invest.com",,,,,,,,,
+,,,,,,,,,
+FUND,Date,Direction,Ticker,CUSIP,Name,Shares,% of ETF,,
+ARKF,2020-10-12,Buy,INTU,461202103,INTUIT INC,13741,0.6,,
+ARKF,2020-10-12,Sell,CRM,79466L302,SALESFORCE.COM INC,17929,0.6,,
+ARKG,2020-10-12,Buy,IONS,462222100,IONIS PHARMACEUTICALS INC,72902,0.12,,
+ARKG,2020-10-12,Buy,ACCD,00437E102,ACCOLADE INC,9863,0.01,,
+ARKG,2020-10-12,Sell,CBMG,15117P102,CELLULAR BIOMEDICINE GROUP INC,4295,0,,
+ARKK,2020-10-12,Buy,ICE,45866F104,INTERCONTINENTAL EXCHANGE INC,95228,0.1,,
+ARKK,2020-10-12,Sell,XONE,302104104,EXONE CO/THE,62908,0.01,,
+ARKQ,2020-10-12,Buy,GOOG,02079K107,ALPHABET INC,1391,0.3,,
+ARKQ,2020-10-12,Buy,RAVN,754212108,RAVEN INDUSTRIES INC,18800,0.06,,
+ARKQ,2020-10-12,Sell,MTLS,57667T100,MATERIALISE NV,7443,0.05,,
+ARKW,2020-10-12,Buy,WORK,83088V102,SLACK TECHNOLOGIES INC,224400,0.25,,
+ARKW,2020-10-12,Buy,ICE,45866F104,INTERCONTINENTAL EXCHANGE INC,88606,0.32,,
+ARKW,2020-10-12,Buy,NET,18915M107,CLOUDFLARE INC,260600,0.51,,
+ARKW,2020-10-12,Buy,PSTG,74624M102,PURE STORAGE INC,136252,0.08,,
+ARKW,2020-10-12,Buy,PYPL,70450Y103,PAYPAL HOLDINGS INC,28219,0.2,,
+ARKW,2020-10-12,Sell,ZS,98980G102,ZSCALER INC,66046,0.35,,
+ARKW,2020-10-12,Sell,CRM,79466L302,SALESFORCE.COM INC,53282,0.5,,
+ARKW,2020-10-12,Sell,XLNX,983919101,XILINX INC,118562,0.5,,
+ARKW,2020-10-12,Sell,SE,81141R100,SEA LTD,50805,0.3,,
+,,,,,,,,,
