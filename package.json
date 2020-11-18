@@ -1,6 +1,6 @@
 {
   "name": "ark-funds-monitor",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "homepage": "http://karlzhu-se.github.io/ark-funds-monitor",
   "private": true,
   "dependencies": {

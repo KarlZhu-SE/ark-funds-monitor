@@ -11,3 +11,6 @@ Added Top 10 Most Active Stocks section;
 
 # Version 0.1.7
 Thanks to David Sun, added 08/05 - 08/17 data.
+
+# Version 0.1.8
+Thanks to David Sun, added 11/12/2019 - 08/05/2020 data.
