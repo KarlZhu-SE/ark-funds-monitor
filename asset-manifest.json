@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ark-funds-monitor/static/css/main.96909a40.chunk.css",
-    "main.js": "/ark-funds-monitor/static/js/main.8f8bd16f.chunk.js",
-    "main.js.map": "/ark-funds-monitor/static/js/main.8f8bd16f.chunk.js.map",
+    "main.js": "/ark-funds-monitor/static/js/main.96c96fa5.chunk.js",
+    "main.js.map": "/ark-funds-monitor/static/js/main.96c96fa5.chunk.js.map",
     "runtime-main.js": "/ark-funds-monitor/static/js/runtime-main.3ca9b8fc.js",
     "runtime-main.js.map": "/ark-funds-monitor/static/js/runtime-main.3ca9b8fc.js.map",
     "static/css/2.70891016.chunk.css": "/ark-funds-monitor/static/css/2.70891016.chunk.css",
     "static/js/2.49ef3126.chunk.js": "/ark-funds-monitor/static/js/2.49ef3126.chunk.js",
     "static/js/2.49ef3126.chunk.js.map": "/ark-funds-monitor/static/js/2.49ef3126.chunk.js.map",
     "index.html": "/ark-funds-monitor/index.html",
-    "precache-manifest.af25ce482ae4a477f6c441dca7a2027c.js": "/ark-funds-monitor/precache-manifest.af25ce482ae4a477f6c441dca7a2027c.js",
+    "precache-manifest.b60f950f96327b675a1a1ae3014b82de.js": "/ark-funds-monitor/precache-manifest.b60f950f96327b675a1a1ae3014b82de.js",
     "service-worker.js": "/ark-funds-monitor/service-worker.js",
     "static/css/2.70891016.chunk.css.map": "/ark-funds-monitor/static/css/2.70891016.chunk.css.map",
     "static/css/main.96909a40.chunk.css.map": "/ark-funds-monitor/static/css/main.96909a40.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.70891016.chunk.css",
     "static/js/2.49ef3126.chunk.js",
     "static/css/main.96909a40.chunk.css",
-    "static/js/main.8f8bd16f.chunk.js"
+    "static/js/main.96c96fa5.chunk.js"
   ]
 }
