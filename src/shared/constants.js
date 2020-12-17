@@ -1,4 +1,4 @@
-export const token = 'bti26hf48v6uv69lirj0';
+export const token = 'bvddfhv48v6tkd6gjq8g';
 
 export const getCandleUrl = 'https://finnhub.io/api/v1/stock/candle?';
 export const getBasicInfoUrl = 'https://finnhub.io/api/v1/stock/profile2?';
