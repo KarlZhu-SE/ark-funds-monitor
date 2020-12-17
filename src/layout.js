@@ -206,6 +206,21 @@ class Layout extends React.Component {
 
                 </div>
 
+                <div className="donation">
+                    <span>
+                        If you find this website useful, 
+                        <br></br>
+                        please consider to buy me a coffee! Cheers!
+                    </span>
+                    <form action="https://www.paypal.com/donate" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_donations" />
+                        <input type="hidden" name="business" value="xzhu@wpi.edu" />
+                        <input type="hidden" name="currency_code" value="USD" />
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="I will use this to buy a better API plan!" alt="Donate with PayPal button" />
+                        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                    </form>
+                </div>
+
                 <div className='info-container'>
                     <p className='info-version'>Version: {packageJson.version}</p>
                     <p className='info-update-date'>Latest ARK Data: {arkData[0]['Date']}</p>
