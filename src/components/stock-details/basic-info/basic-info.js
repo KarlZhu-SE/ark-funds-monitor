@@ -59,7 +59,12 @@ class BasicInfo extends React.Component {
         fetch(getBasicInfoUrl, {
             method: 'GET'
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP status " + response.status);
+                }
+                return response.json();
+            })
             .then((data) => {
                 if (data && (Object.keys(data).length !== 0 || data.constructor !== Object)) {
                     this.setState({

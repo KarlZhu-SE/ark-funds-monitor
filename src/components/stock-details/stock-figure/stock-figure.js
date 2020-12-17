@@ -79,7 +79,15 @@ class StockFigure extends React.Component {
         fetch(getCandleUrl, {
             method: 'GET'
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 429) {
+                        errorMessageService.changeErrorMessage(`Too Many Requests, Please Wait`);
+                    }
+                    throw new Error("HTTP status " + response.status);
+                }
+                return response.json();
+            })
             .then((data) => {
                 if (data && data.s === 'ok') {
                     let massaged = [];
