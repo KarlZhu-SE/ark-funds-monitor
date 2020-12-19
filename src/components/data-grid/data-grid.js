@@ -117,7 +117,8 @@ class DataGrid extends React.Component {
                 floatingFilter: true
             },
             columnDefs: this.getColumnDefs(rawData),
-            rowData: this.massageRawData(rawData)
+            rowData: this.massageRawData(rawData),
+            paginationPageSize: 20
         }
         return (
             <Grid container justify="center" alignItems="center">
@@ -126,7 +127,8 @@ class DataGrid extends React.Component {
                         rowData={dataGridDef.rowData}
                         columnDefs={dataGridDef.columnDefs}
                         defaultColDef={dataGridDef.defaultColDef}
-                        paginationAutoPageSize={true}
+                        // paginationAutoPageSize={true}
+                        paginationPageSize={dataGridDef.paginationPageSize}
                         pagination={true}
                         onRowClicked={this.onRowClicked.bind(this)}
                     >

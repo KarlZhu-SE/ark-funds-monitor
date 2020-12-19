@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     Accordion, Grid, AccordionDetails, AccordionSummary,
-    Typography, MenuItem, FormControl, Select
+    Typography, MenuItem, FormControl, Select, Button
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Alert from '@material-ui/lab/Alert';
@@ -29,6 +29,9 @@ class Layout extends React.Component {
         this.handlePanelChange = this.handlePanelChange.bind(this);
         this.handleClickDaysRange = this.handleClickDaysRange.bind(this);
         this.handleSelectDaysRange = this.handleSelectDaysRange.bind(this);
+        this.handleDonationSectionClick = this.handleDonationSectionClick.bind(this);
+
+        this.coffeeEmoji = React.createRef();
     }
 
     componentDidMount() {
@@ -96,6 +99,11 @@ class Layout extends React.Component {
             default:
                 break;
         }
+    }
+
+    handleDonationSectionClick() {
+        console.log(this.coffeeEmoji)
+        this.coffeeEmoji.current.click();
     }
 
     render() {
@@ -206,25 +214,34 @@ class Layout extends React.Component {
 
                 </div>
 
-                <div className="donation">
-                    <span>
-                        If you find this website useful, 
-                        <br></br>
-                        please consider to buy me a coffee! Cheers!
-                    </span>
-                    <form action="https://www.paypal.com/donate" method="post" target="_top">
-                        <input type="hidden" name="cmd" value="_donations" />
-                        <input type="hidden" name="business" value="xzhu@wpi.edu" />
-                        <input type="hidden" name="currency_code" value="USD" />
-                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="I will use this to buy a better API plan!" alt="Donate with PayPal button" />
-                        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-                    </form>
-                </div>
+                <Grid container className="sticky-footer">
 
-                <div className='info-container'>
-                    <p className='info-version'>Version: {packageJson.version}</p>
-                    <p className='info-update-date'>Latest ARK Data: {arkData[0]['Date']}</p>
-                </div>
+                    <Grid item xs={3} md={3}>
+                        <p className="disclaimer">Disclaimer: This web is built for education only.<br></br>The author takes no responsibility for financial decisions.</p>
+                    </Grid>
+
+                    <Grid item xs={6} md={6} className="donation-section">
+                        <div className="donation" onClick={this.handleDonationSectionClick}>
+                            <form action="https://www.paypal.com/donate" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_donations" />
+                                <input type="hidden" name="business" value="xzhu@wpi.edu" />
+                                <input type="hidden" name="currency_code" value="USD" />
+                                <Button size="small" variant="contained" color="primary" className="emoji-submit-button" type="submit" ref={this.coffeeEmoji}>
+                                    <span name="submit" role="img" aria-label="coffee">Like this? Pls buy me a coffee~☕</span>
+                                </Button>
+                                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                            </form>
+                        </div>
+                    </Grid>
+
+                    <Grid item xs={3} md={3}>
+                        <div className='info-container'>
+                            <p className='info-version'>Version: {packageJson.version}</p>
+                            <p className='info-update-date'>Latest ARK Data: {arkData[0]['Date']}</p>
+                        </div>
+                    </Grid>
+                </Grid>
+
             </div>
         );
     }
