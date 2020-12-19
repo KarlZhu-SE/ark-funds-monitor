@@ -13,7 +13,8 @@
     height: 80px;
 
     .title-container {
-      height: 80px;
+      display: flex;
+      align-items: center;
       padding: 0 !important;
 
       .logo {
@@ -27,30 +28,43 @@
 
       @media screen and (max-width: 800px) {
         .title {
-          // display: none !important;
-          top: 3% !important;
           font-size: 15px !important;
         }
       }
 
       .title {
-        position: absolute;
         color: white;
-        margin: auto;
-        padding-left: 30px;
-        top: 5px;
-        font-size: 40px;
+        text-decoration: none;
+        padding: 30px 20px 20px 30px;
+        font-size: 20px;
+      }
+
+      .github-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+
+        }
+        .github-icon {
+          // margin-left: 1%;
+        }
       }
     }
 
     .ticker-input-section {
       height: 64px;
       padding: 0 !important;
-      // background-color: #00203FFF;
+
+      @media screen and (max-width: 800px) {
+        form .MuiFormControl-root {
+          width: 120px;
+        }
+      }
 
       form .MuiFormControl-root {
         float: right;
-        margin-right: 15%;
+        margin-right: 3%;
 
         .MuiInputBase-root {
           border-radius: 8px;

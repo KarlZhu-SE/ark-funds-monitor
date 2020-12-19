@@ -227,14 +227,14 @@ class Layout extends React.Component {
                                 <input type="hidden" name="business" value="xzhu@wpi.edu" />
                                 <input type="hidden" name="currency_code" value="USD" />
                                 <Button size="small" variant="contained" color="primary" className="emoji-submit-button" type="submit" ref={this.coffeeEmoji}>
-                                    <span name="submit" role="img" aria-label="coffee">Like this? Pls buy me a coffee~☕</span>
+                                    <span name="submit" role="img" aria-label="coffee">Like this? <br></br>Pls buy me a coffee~☕</span>
                                 </Button>
                                 <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
                             </form>
                         </div>
                     </Grid>
 
-                    <Grid item xs={3} md={3}>
+                    <Grid item xs={3} md={3} className="additonal-info-section">
                         <div className='info-container'>
                             <p className='info-version'>Version: {packageJson.version}</p>
                             <p className='info-update-date'>Latest ARK Data: {arkData[0]['Date']}</p>

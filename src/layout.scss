@@ -106,12 +106,13 @@
             font-family: "Roboto", "Helvetica", "Arial", sans-serif;
             font-size: 8px;
             text-overflow: ellipsis;
-            overflow: hidden; 
+            overflow: hidden;
             // white-space: nowrap;
         }
 
         .donation-section {
             text-align: center;
+
             .donation {
                 margin: 0;
                 position: absolute;
@@ -120,8 +121,11 @@
                 -ms-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
                 cursor: pointer;
+
                 form {
                     .emoji-submit-button {
+                        background-color: rgb(255, 78, 46);
+
                         span {
                             font-family: "Roboto", "Helvetica", "Arial", sans-serif;
                             font-size: 9px;
@@ -131,18 +135,21 @@
             }
         }
 
-        .info-container {
-            text-align: center;
-            .info-version {
-                font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-                font-size: 10px;
-                margin: 2% 2% 4% 0;
-            }
+        .additonal-info-section {
+            .info-container {
+                text-align: right;
 
-            .info-update-date {
-                font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-                font-size: 10px;
-                margin: 2% 2% 0 0;
+                .info-version {
+                    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+                    font-size: 10px;
+                    margin: 2% 2% 1% 0;
+                }
+
+                .info-update-date {
+                    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+                    font-size: 10px;
+                    margin: 2% 2% 1% 0;
+                }
             }
         }
     }
