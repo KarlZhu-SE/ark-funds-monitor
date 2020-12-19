@@ -201,7 +201,7 @@ class Layout extends React.Component {
                             </Grid>
 
                             <Grid item xs={7} md={4} className="second-heading-wrapper">
-                                <Typography className="accordion-second-heading">All ARK Transactions from Aug 18th, 2020</Typography>
+                                <Typography className="accordion-second-heading">All ARK Transactions</Typography>
                             </Grid>
 
                         </AccordionSummary>
