@@ -14,16 +14,5 @@ Original data sets come from ARK funds daily email. The data could be inaccurate
 This website is intended for educational purposes only.
 The author takes no responsibility for financial decisions made using the data on this website.
 
-## Version 0.1.5
-Added box shadow to header;
-Resolve header search bar input issue;
 
-## Version 0.1.6
-Accordion structure;
-Added Top 10 Most Active Stocks section;
-
-## Version 0.1.7
-Thanks to David Sun, added 08/05 - 08/17 data.
-
-## Version 0.1.8
-Thanks to David Sun, added 11/12/2019 - 08/05/2020 data.
+Thanks to David Sun, added 08/05 - 08/17 data and 11/12/2019 - 08/05/2020 data..
