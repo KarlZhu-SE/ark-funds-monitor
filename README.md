@@ -1,5 +1,15 @@
 ## ARK Funds Monitor
-A small React app to monitor ARK funds daily transactions
+A small React app to monitor ARK funds daily transactions.
+
+Like this repo? Please give me repo a star ⭐ ⬆️.
+
+Feel free to use my repo, if so, please indicate the source and the original author on your website. 
+Please follow AGPL 3.0 license and publish your source code to open source community if the website is facing the crowd.
+
+# Disclaimer
+Original data sets come from ARK funds daily email. The data could be inaccurate.
+This website is intended for educational purposes only.
+The author takes no responsibility for financial decisions made using the data on this website.
 
 # Version 0.1.5
 Added box shadow to header;
