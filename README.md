@@ -3,6 +3,8 @@ A small React app to monitor ARK funds daily transactions.
 
 Like this repo? Please give this repo a star ⭐ ⬆️.
 
+Github Pages: https://karlzhu-se.github.io/ark-funds-monitor/
+
 Feel free to raise a Github issue if you have any suggestions or findings.
 
 I authorize anyone to use my repo, if so, please indicate the source and the original author on your website. 
