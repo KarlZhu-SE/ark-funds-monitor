@@ -236,7 +236,12 @@ class Layout extends React.Component {
 
                     <Grid item xs={3} md={3} className="additonal-info-section">
                         <div className='info-container'>
-                            <p className='info-version'>Version: {packageJson.version}</p>
+                            <p className='info-version'>
+                                <Button color="secondary">
+                                    <p href="https://github.com/KarlZhu-SE/ark-funds-monitor">Github Link</p>
+                                </Button>
+                                {/* &nbsp;&nbsp;Version: {packageJson.version} */}
+                            </p>
                             <p className='info-update-date'>Latest ARK Data: {arkData[0]['Date']}</p>
                         </div>
                     </Grid>
