@@ -6,7 +6,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Alert from '@material-ui/lab/Alert';
 
-import packageJson from '../package.json';
+// import packageJson from '../package.json';
 import './layout.scss';
 import { tickerService, daysRangeService, errorMessageService } from './services/generic-service';
 import Header from './components/header/header';
@@ -236,7 +236,12 @@ class Layout extends React.Component {
 
                     <Grid item xs={3} md={3} className="additonal-info-section">
                         <div className='info-container'>
-                            <p className='info-version'>Version: {packageJson.version}</p>
+                            <p className='info-version'>
+                                <Button color="secondary">
+                                    <p href="https://github.com/KarlZhu-SE/ark-funds-monitor">Github Link</p>
+                                </Button>
+                                {/* &nbsp;&nbsp;Version: {packageJson.version} */}
+                            </p>
                             <p className='info-update-date'>Latest ARK Data: {arkData[0]['Date']}</p>
                         </div>
                     </Grid>

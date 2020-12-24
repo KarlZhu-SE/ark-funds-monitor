@@ -143,6 +143,18 @@
                     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
                     font-size: 10px;
                     margin: 2% 2% 1% 0;
+
+                    button {
+                        padding: 0;
+                        background-color: rgb(255, 78, 46);
+
+                        span p {
+                            margin: 0 10px 0 10px;
+                            font-size: 12px;
+                            color: white;
+                            white-space: nowrap
+                        }
+                    }
                 }
 
                 .info-update-date {
