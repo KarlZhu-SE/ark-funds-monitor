@@ -6,7 +6,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Alert from '@material-ui/lab/Alert';
 
-import packageJson from '../package.json';
+// import packageJson from '../package.json';
 import './layout.scss';
 import { tickerService, daysRangeService, errorMessageService } from './services/generic-service';
 import Header from './components/header/header';
