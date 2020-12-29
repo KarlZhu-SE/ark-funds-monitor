@@ -238,7 +238,7 @@ class Layout extends React.Component {
                         <div className='info-container'>
                             <p className='info-version'>
                                 <Button color="secondary">
-                                    <p href="https://github.com/KarlZhu-SE/ark-funds-monitor">Github Link</p>
+                                    <a href="https://github.com/KarlZhu-SE/ark-funds-monitor">Github Link</a>
                                 </Button>
                                 {/* &nbsp;&nbsp;Version: {packageJson.version} */}
                             </p>
