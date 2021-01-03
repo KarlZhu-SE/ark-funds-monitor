@@ -46,18 +46,22 @@ class PrebuildTasks {
                             let promise = new Promise((resolve, reject) => {
                                 let strData = '';
                                 fs.readFile(filePath, "utf8", function (err, data) {
-                                    // Remove useless substring
-                                    strData = data.slice(data.indexOf('FUND,Date'));
+                                    strData = data.slice(data.indexOf('FUND,Date,Direction,Ticker'));
                                     const stream = parse({ headers: true })
                                         .on('error', error => console.error(error))
                                         .on('data', row => {
                                             let isEmpty = true;
                                             for (let prop in row) {
                                                 if (Object.prototype.hasOwnProperty.call(row, prop)) {
+                                                    // Remove useless substring
                                                     if (row[prop] !== '') {
                                                         isEmpty = false;
-                                                        break;
-                                                    }
+
+                                                        // handle 'ZM.US' format
+                                                        if (prop === 'Ticker' && row[prop].split('.')[1] === 'US') {
+                                                            row[prop] = row[prop].split('.')[0]
+                                                        }
+                                                    } 
                                                 }
                                             }
                                             if (!isEmpty) {
