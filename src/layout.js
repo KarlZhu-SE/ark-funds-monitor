@@ -148,7 +148,7 @@ class Layout extends React.Component {
                                             <MenuItem value={7}>1 Week</MenuItem>
                                             <MenuItem value={14}>2 Weeks</MenuItem>
                                             <MenuItem value={30}>1 Month</MenuItem>
-                                            <MenuItem value={60}>2 Months</MenuItem>
+                                            <MenuItem value={90}>3 Months</MenuItem>
                                             <MenuItem value={10000}>From 11/12/2019</MenuItem>
                                         </Select>
                                     </FormControl>

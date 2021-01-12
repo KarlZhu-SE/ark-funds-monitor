@@ -23,7 +23,7 @@ class StockFigure extends React.Component {
         this.state = {
             ticker: '',
             figureTitle: '',
-            candlestickDaysRange: 90,
+            candlestickDaysRange: 30,
             isFigureLoading: false,
             massagedData: [],
             figureRangeButtonConfigs: [
@@ -52,6 +52,21 @@ class StockFigure extends React.Component {
     componentWillUnmount() {
         this.tickerSubscription.unsubscribe();
     }
+
+    // Thanks to https://stackoverflow.com/questions/36734201/how-to-convert-numbers-to-million-in-javascript accepted answer
+    formatDollarAmount = (amount) =>
+        // Nine Zeroes for Billions
+        amount >= 1.0e+9
+            ? (amount / 1.0e+9).toFixed(1) + "B"
+
+            // Six Zeroes for Millions 
+            : amount >= 1.0e+6
+                ? (amount / 1.0e+6).toFixed(1) + "M"
+
+                // Three Zeroes for Thousands
+                : amount >= 1.0e+3
+                    ? (amount / 1.0e+3).toFixed(1) + "K"
+                    : (amount).toFixed(2);
 
     getCandleData(ticker, daysRange) {
         errorMessageService.changeErrorMessage('');
@@ -96,7 +111,7 @@ class StockFigure extends React.Component {
                         let time = '';
                         if (resolution === 'D') {
                             time = new Date(data.t[i] * 1000).toISOString().split("T")[0]
-                        } else if (typeof(parseInt(resolution)) === 'number') {
+                        } else if (typeof (parseInt(resolution)) === 'number') {
                             const temp = new Date(data.t[i] * 1000);
                             time = new Date(temp.setMinutes(temp.getMinutes() - 240)).toLocaleTimeString("en-US");
                         }
@@ -342,6 +357,7 @@ class StockFigure extends React.Component {
                     },
                     markPoint:
                     {
+                        symbolSize: 60,
                         label: {
                             normal: {
                                 formatter: function (param) {
@@ -352,24 +368,24 @@ class StockFigure extends React.Component {
                             }
                         },
                         data: [
-                            {
-                                name: 'highest value',
-                                type: 'max',
-                                valueDim: 'highest',
-                                symbolOffset: [0, -30],
-                                itemStyle: {
-                                    color: '#FCAE1E'
-                                }
-                            },
-                            {
-                                name: 'lowest value',
-                                type: 'min',
-                                valueDim: 'lowest',
-                                symbolOffset: [0, -30],
-                                itemStyle: {
-                                    color: '#FCAE1E'
-                                }
-                            },
+                            // {
+                            //     name: 'highest value',
+                            //     type: 'max',
+                            //     valueDim: 'highest',
+                            //     symbolOffset: [0, -30],
+                            //     itemStyle: {
+                            //         color: '#FCAE1E'
+                            //     }
+                            // },
+                            // {
+                            //     name: 'lowest value',
+                            //     type: 'min',
+                            //     valueDim: 'lowest',
+                            //     symbolOffset: [0, -30],
+                            //     itemStyle: {
+                            //         color: '#FCAE1E'
+                            //     }
+                            // },
                             // {
                             //     name: 'average value on close',
                             //     type: 'average',
@@ -450,31 +466,31 @@ class StockFigure extends React.Component {
         // add MA lines according to candlestickDaysRange
         if (this.state.candlestickDaysRange >= 10) {
             option.series.push({
-                    name: 'MA5',
-                    type: 'line',
-                    data: this.calculateMA(5),
-                    smooth: true,
-                    lineStyle: {
-                        opacity: 0.5
-                    },
-                    itemStyle: {
-                        color: '#0000FF'
-                    }
+                name: 'MA5',
+                type: 'line',
+                data: this.calculateMA(5),
+                smooth: true,
+                lineStyle: {
+                    opacity: 0.5
+                },
+                itemStyle: {
+                    color: '#0000FF'
+                }
             });
             option.legend.data.push('MA5');
         }
         if (this.state.candlestickDaysRange >= 20) {
             option.series.push({
-                    name: 'MA10',
-                    type: 'line',
-                    data: this.calculateMA(10),
-                    smooth: true,
-                    lineStyle: {
-                        opacity: 0.5
-                    },
-                    itemStyle: {
-                        color: '#FFAE19'
-                    }
+                name: 'MA10',
+                type: 'line',
+                data: this.calculateMA(10),
+                smooth: true,
+                lineStyle: {
+                    opacity: 0.5
+                },
+                itemStyle: {
+                    color: '#FFAE19'
+                }
             });
             option.legend.data.push('MA10');
         }
@@ -508,48 +524,45 @@ class StockFigure extends React.Component {
                 continue;
             }
 
-            const buyCount = dataArrayInDate.filter(x => x.Direction === 'Buy').length;
-            const sellCount = dataArrayInDate.length - buyCount;
+            const buySharesCount = dataArrayInDate
+                .filter(x => x.Direction === 'Buy')
+                .map(x => x.Shares)
+                .reduce((a, b) => parseInt(a) + parseInt(b), 0);
+            const sellSharesCount = dataArrayInDate
+                .filter(x => x.Direction === 'Sell')
+                .map(x => x.Shares)
+                .reduce((a, b) => parseInt(a) + parseInt(b), 0);
 
-            if (buyCount === 0 || sellCount === 0) {
-                let pointText = '';
-                if (buyCount === 0) {
-                    pointText = sellCount === 1
-                        ? `${dataArrayInDate[0].Direction}`
-                        : `Sell\nX${sellCount}`;
-                } else if (sellCount === 0) {
-                    pointText = buyCount === 1
-                        ? `${dataArrayInDate[0].Direction}`
-                        : `Buy\nX${buyCount}`;
-                }
+            // Use market close price
+            const buyPointText = 'Buy\n$' + this.formatDollarAmount(Math.abs((buySharesCount) * dataInProps[2]));
+            const sellPointText = 'Sell\n$' + this.formatDollarAmount(Math.abs((sellSharesCount) * dataInProps[2]));
 
+            if (buySharesCount > 0) {
+                option.series[0].markPoint.data.push({
+                    name: `${dataArrayInDate[0].Date} ${dataArrayInDate[0].Direction}`,
+                    coord: sellSharesCount > 0
+                            ? [dataArrayInDate[0].Date, dataInProps[4] * 1.1]
+                            : [dataArrayInDate[0].Date, dataInProps[4]],
+                    value: buyPointText,
+                    itemStyle: {
+                        color: upColor
+                    },
+                    label: {
+                        fontSize: 10
+                    }
+                })
+            }
+
+            if (sellSharesCount > 0) {
                 option.series[0].markPoint.data.push({
                     name: `${dataArrayInDate[0].Date} ${dataArrayInDate[0].Direction}`,
                     coord: [dataArrayInDate[0].Date, dataInProps[4]],
-                    value: pointText,
+                    value: sellPointText,
                     itemStyle: {
-                        color: buyCount === 0
-                            ? '#FF5000'
-                            : '#00C805'
-                    }
-                })
-            } else {
-                // have buyCount > 0 and sellCount > 0
-                option.series[0].markPoint.data.push({
-                    name: `${dataArrayInDate[0].Date} Buy`,
-                    coord: [dataArrayInDate[0].Date, dataInProps[4]],
-                    value: `Buy\nX${buyCount}`,
-                    itemStyle: {
-                        color: '#00C805'
-                    }
-                })
-
-                option.series[0].markPoint.data.push({
-                    name: `${dataArrayInDate[0].Date} Sell`,
-                    coord: [dataArrayInDate[0].Date, dataInProps[4] * 1.1],
-                    value: `Sell\n${sellCount}`,
-                    itemStyle: {
-                        color: '#FF5000'
+                        color: downColor
+                    },
+                    label: {
+                        fontSize: 10
                     }
                 })
             }
