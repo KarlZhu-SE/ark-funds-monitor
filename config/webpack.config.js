@@ -26,7 +26,6 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const postcssNormalize = require('postcss-normalize');
-const PrebuildTasks = require('./prebuildTasks');
 
 const appPackageJson = require(paths.appPackageJson);
 
@@ -56,6 +55,8 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 module.exports = function(webpackEnv) {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
+
+  const PrebuildTasks = isEnvDevelopment ? require('./prebuildTasks') : null;
 
   // Variable used for enabling profiling in Production
   // passed into alias object. Uses a flag if passed into the build command
@@ -509,7 +510,7 @@ module.exports = function(webpackEnv) {
       ],
     },
     plugins: [
-      !isEnvProduction && new PrebuildTasks({
+      isEnvDevelopment && new PrebuildTasks({
         xlsPath: 'ark-transactions-data/xls',
         csvPath: 'ark-transactions-data/csv',
         dailySummaryDataPath: 'ark-transactions-data/daily-summary',
