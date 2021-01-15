@@ -509,7 +509,7 @@ module.exports = function(webpackEnv) {
       ],
     },
     plugins: [
-      new PrebuildTasks({
+      !isEnvProduction && new PrebuildTasks({
         xlsPath: 'ark-transactions-data/xls',
         csvPath: 'ark-transactions-data/csv',
         dailySummaryDataPath: 'ark-transactions-data/daily-summary',

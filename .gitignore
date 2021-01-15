@@ -26,3 +26,6 @@ yarn-error.log*
 # mergedData.json
 
 # *.csv
+
+/config/prebuildTasks.js
+/ark-transactions-data
