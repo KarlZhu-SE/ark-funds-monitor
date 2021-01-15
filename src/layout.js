@@ -134,7 +134,7 @@ class Layout extends React.Component {
 
                             <Grid item xs={7} md={4} className="second-heading-wrapper">
                                 <Typography className="accordion-second-heading" component={'span'}>
-                                    Top 10 Most Active Stocks in
+                                    Most Active Stocks in
                                 <FormControl className="days-dropdown">
                                         <Select
                                             labelId="demo-simple-select-placeholder-label-label"

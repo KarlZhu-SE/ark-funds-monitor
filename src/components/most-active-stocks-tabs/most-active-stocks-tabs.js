@@ -90,7 +90,7 @@ class MostActiveStocksTabs extends React.Component {
             stock.transactionsDetails.push(tran);
         }
 
-        const numberOfStocks = rslt.length > 10 ? 10 : rslt.length;
+        const numberOfStocks = (rslt.length > 15 && daysRange !== 1) ? 15 : rslt.length;
         // eslint-disable-next-line
         this.state.mostBuyStocks = rslt.filter(x => x.noOfBuy > 0).sort((a, b) => b.noOfBuy - a.noOfBuy).slice(0, numberOfStocks);
         // eslint-disable-next-line
