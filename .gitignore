@@ -29,3 +29,4 @@ yarn-error.log*
 
 /config/prebuildTasks.js
 /ark-transactions-data
+/.vscode
