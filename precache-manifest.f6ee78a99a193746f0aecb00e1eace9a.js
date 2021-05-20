@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "62b73140ffd7b9fdf445484dfe5af5df",
+    "revision": "5cd52e689de5e5d76f2519bf01c0354e",
     "url": "/ark-funds-monitor/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ark-funds-monitor/static/css/2.70891016.chunk.css"
   },
   {
-    "revision": "4b84fdef57d8d70564e5",
+    "revision": "3211917b3518099dceee",
     "url": "/ark-funds-monitor/static/css/main.136f4053.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ark-funds-monitor/static/js/2.5ed9122e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4b84fdef57d8d70564e5",
-    "url": "/ark-funds-monitor/static/js/main.3ffb4cd3.chunk.js"
+    "revision": "3211917b3518099dceee",
+    "url": "/ark-funds-monitor/static/js/main.378b2486.chunk.js"
   },
   {
     "revision": "80c37d62bc7c36e93c36",
