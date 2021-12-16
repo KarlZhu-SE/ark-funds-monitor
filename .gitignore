@@ -27,6 +27,6 @@ yarn-error.log*
 
 # *.csv
 
-/config/prebuildTasks.js
+# /config/prebuildTasks.js
 /ark-transactions-data
 /.vscode
