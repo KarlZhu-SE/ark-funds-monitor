@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ark-funds-monitor/static/css/main.6985528b.css",
-    "main.js": "/ark-funds-monitor/static/js/main.2f182da0.js",
+    "main.js": "/ark-funds-monitor/static/js/main.c8cf6716.js",
     "index.html": "/ark-funds-monitor/index.html",
     "main.6985528b.css.map": "/ark-funds-monitor/static/css/main.6985528b.css.map",
-    "main.2f182da0.js.map": "/ark-funds-monitor/static/js/main.2f182da0.js.map"
+    "main.c8cf6716.js.map": "/ark-funds-monitor/static/js/main.c8cf6716.js.map"
   },
   "entrypoints": [
     "static/css/main.6985528b.css",
-    "static/js/main.2f182da0.js"
+    "static/js/main.c8cf6716.js"
   ]
 }
