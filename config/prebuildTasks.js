@@ -90,6 +90,7 @@ class PrebuildTasks {
                         return;
                     }
                     mergedData = _.orderBy(mergedData, ['Date', 'FUND'], ['desc', 'asc']);
+                    console.log('latest row of data', mergedData[0])
                     // fs.writeFileSync(`${pathObj.dailySummaryDataPath}/lastest.json`, JSON.stringify(mergedData));
                     // console.log(`Wrote data to ${pathObj.dailySummaryDataPath}/lastest.json`);
 
