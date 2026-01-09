@@ -2,11 +2,10 @@
 const nextConfig = {
   reactStrictMode: false,
   output: "export",
+  basePath: "/ark-funds-monitor",
   images: {
     unoptimized: true, // Required for static export
   },
-  // Uncomment and set basePath if deploying to a subdirectory
-  // basePath: '/ark-funds-monitor',
 };
 
 module.exports = nextConfig;
