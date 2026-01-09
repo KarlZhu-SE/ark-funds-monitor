@@ -5,7 +5,7 @@
 7:"$Sreact.suspense"
 :HL["/ark-funds-monitor/_next/static/chunks/512e9840d74d8220.css","style"]
 :HL["/ark-funds-monitor/_next/static/chunks/e1b846f2cade0d33.css","style"]
-0:{"buildId":"tXXFvbLnBa_RiyXr9bmfX","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","link","0",{"rel":"stylesheet","href":"/ark-funds-monitor/_next/static/chunks/512e9840d74d8220.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/ark-funds-monitor/_next/static/chunks/e1b846f2cade0d33.css","precedence":"next"}],["$","script","script-0",{"src":"/ark-funds-monitor/_next/static/chunks/1fb26e07bff89aff.js","async":true}],["$","script","script-1",{"src":"/ark-funds-monitor/_next/static/chunks/12296b4ea038dfc3.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"-RonKQSGdRbU7B7P8DYx-","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","link","0",{"rel":"stylesheet","href":"/ark-funds-monitor/_next/static/chunks/512e9840d74d8220.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/ark-funds-monitor/_next/static/chunks/e1b846f2cade0d33.css","precedence":"next"}],["$","script","script-0",{"src":"/ark-funds-monitor/_next/static/chunks/1fb26e07bff89aff.js","async":true}],["$","script","script-1",{"src":"/ark-funds-monitor/_next/static/chunks/12296b4ea038dfc3.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
 4:{}
 5:{}
 8:null
