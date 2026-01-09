@@ -18,7 +18,7 @@ jobs:
           NEXT_PUBLIC_FINNHUB_TOKEN: ${{ secrets.FINNHUB_TOKEN }}
         run: |
           node --version
-          npm install
+          npm install --legacy-peer-deps
           npm run build
 
       - name: Deploy 🚀
