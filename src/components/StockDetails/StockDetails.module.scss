@@ -1,0 +1,42 @@
+.wrapper {
+  background: rgba(15, 23, 42, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tabsContainer {
+  border-bottom: 1px solid var(--surface-border);
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.tabs {
+  :global(.MuiTabs-indicator) {
+    background: #6366f1;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+  }
+
+  :global(.MuiTab-root) {
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: none;
+    font-size: 0.95rem;
+    min-height: 64px;
+
+    &:global(.Mui-selected) {
+      color: var(--text-main);
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+  }
+}
+
+.tabPanel {
+  padding: 16px;
+
+  @media (min-width: 900px) {
+    padding: 32px;
+  }
+}

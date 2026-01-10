@@ -9,6 +9,7 @@ import StockFigure from "./StockFigure";
 import BasicInfo from "./BasicInfo";
 import CompanyNews from "./CompanyNews";
 import { useAppContext } from "../../context/AppContext";
+import styles from "./StockDetails.module.scss";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -27,7 +28,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`scrollable-auto-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: { xs: 2, md: 4 } }}>{children}</Box>}
+      {value === index && <Box className={styles.tabPanel}>{children}</Box>}
     </div>
   );
 }
@@ -51,20 +52,8 @@ const StockDetails = () => {
   };
 
   return (
-    <Box
-      className="stock-details-inner-wrapper"
-      sx={{
-        background: "rgba(15, 23, 42, 0.2)",
-        borderRadius: "12px",
-        overflow: "hidden",
-      }}
-    >
-      <Box
-        sx={{
-          borderBottom: "1px solid var(--surface-border)",
-          background: "rgba(15, 23, 42, 0.4)",
-        }}
-      >
+    <Box className={`stock-details-inner-wrapper ${styles.wrapper}`}>
+      <Box className={styles.tabsContainer}>
         <Tabs
           variant="fullWidth"
           value={tabIndex}
@@ -76,21 +65,7 @@ const StockDetails = () => {
               borderRadius: "3px 3px 0 0",
             },
           }}
-          sx={{
-            "& .MuiTab-root": {
-              color: "var(--text-muted)",
-              fontWeight: 700,
-              textTransform: "none",
-              fontSize: "0.95rem",
-              minHeight: "64px",
-              "&.Mui-selected": {
-                color: "var(--text-main)",
-              },
-              "&:hover": {
-                backgroundColor: "rgba(255, 255, 255, 0.03)",
-              },
-            },
-          }}
+          className={styles.tabs}
         >
           <Tab
             label="Chart"

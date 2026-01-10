@@ -9,6 +9,7 @@ import StockCard from "./StockCard";
 import { useAppContext } from "../../context/AppContext";
 import mergedData from "../../data/mergedData.json";
 import { StockData, Transaction } from "../../types";
+import styles from "./MostActiveStocksTabs.module.scss";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -25,56 +26,15 @@ function TabPanel(props: TabPanelProps) {
       hidden={value !== index}
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
-      style={{ width: "100%", minHeight: "400px" }}
+      className={styles.tabPanel}
       {...other}
     >
       {value === index && (
-        <Box
-          sx={{
-            p: { xs: 1, md: 3 },
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 1,
-            justifyContent: "center",
-          }}
-        >
-          {children}
-        </Box>
+        <Box className={styles.tabPanelContent}>{children}</Box>
       )}
     </div>
   );
 }
-
-const StyledTabs = styled(Tabs)(({ theme }) => ({
-  borderRight: `1px solid var(--surface-border)`,
-  minWidth: "160px",
-  backgroundColor: "rgba(15, 23, 42, 0.2)",
-  "& .MuiTabs-indicator": {
-    width: "4px",
-    borderRadius: "0 4px 4px 0",
-    left: 0,
-  },
-}));
-
-const StyledTab = styled(Tab)(({ theme }) => ({
-  textTransform: "none",
-  fontWeight: 700,
-  fontSize: "0.95rem",
-  minHeight: "64px",
-  padding: "0 24px",
-  alignItems: "flex-start",
-  textAlign: "left",
-  color: "var(--text-muted)",
-  transition: "all 0.2s ease",
-  "&.Mui-selected": {
-    color: "var(--text-main)",
-    backgroundColor: "rgba(255, 255, 255, 0.03)",
-  },
-  "&:hover": {
-    backgroundColor: "rgba(255, 255, 255, 0.05)",
-    color: "var(--text-main)",
-  },
-}));
 
 const MostActiveStocksTabs = () => {
   const { mostActiveDaysRange } = useAppContext();
@@ -174,39 +134,35 @@ const MostActiveStocksTabs = () => {
   };
 
   return (
-    <Box
-      sx={{
-        flexGrow: 1,
-        display: "flex",
-        height: "100%",
-        minHeight: 400,
-        background: "transparent",
-      }}
-    >
-      <StyledTabs
+    <Box className={styles.container}>
+      <Tabs
         orientation="vertical"
         variant="scrollable"
         value={tabIndex}
         onChange={handleTabChange}
         aria-label="Most Active Stocks Tabs"
         TabIndicatorProps={{ style: { background: tabsColor[tabIndex] } }}
+        className={styles.styledTabs}
       >
-        <StyledTab
+        <Tab
           label="Most Buy"
           {...a11yProps(0)}
+          className={styles.styledTab}
           sx={{ color: tabIndex === 0 ? tabsColor[0] : "var(--text-muted)" }}
         />
-        <StyledTab
+        <Tab
           label="Most Sell"
           {...a11yProps(1)}
+          className={styles.styledTab}
           sx={{ color: tabIndex === 1 ? tabsColor[1] : "var(--text-muted)" }}
         />
-        <StyledTab
+        <Tab
           label="Most Active"
           {...a11yProps(2)}
+          className={styles.styledTab}
           sx={{ color: tabIndex === 2 ? tabsColor[2] : "var(--text-muted)" }}
         />
-      </StyledTabs>
+      </Tabs>
 
       <TabPanel value={tabIndex} index={0}>
         {mostBuyStocks.map((el) => (

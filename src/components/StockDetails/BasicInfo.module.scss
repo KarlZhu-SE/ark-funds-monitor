@@ -1,0 +1,71 @@
+.container {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (min-width: 900px) {
+    padding: 16px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticker {
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+}
+
+.companyName {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.contentWrapper {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.logoLink {
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+  text-decoration: none;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.logoImage {
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.infoGrid {
+  flex: 1;
+  min-width: 200px;
+}
+
+.infoLabel {
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.infoValue {
+  color: var(--text-main);
+  font-weight: 600;
+}

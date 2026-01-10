@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { CircularProgress, Typography, Box, Grid } from "@mui/material";
 import { useAppContext } from "../../context/AppContext";
 import { getBasicInfoUrl, token } from "../../shared/constants";
+import styles from "./BasicInfo.module.scss";
 
 const BasicInfo = () => {
   const { ticker, setErrorMessage } = useAppContext();
@@ -54,67 +55,34 @@ const BasicInfo = () => {
   if (!showInfo || !companyInfo) return null;
 
   return (
-    <Box
-      sx={{
-        p: { xs: 1, md: 2 },
-        display: "flex",
-        flexDirection: "column",
-        gap: 2,
-      }}
-    >
-      <Box>
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: 800,
-            color: "var(--primary)",
-            letterSpacing: "-0.02em",
-          }}
-        >
+    <Box className={styles.container}>
+      <Box className={styles.header}>
+        <Typography variant="h4" className={styles.ticker}>
           {ticker}
         </Typography>
-        <Typography
-          variant="h5"
-          sx={{ fontWeight: 700, color: "var(--text-main)" }}
-        >
+        <Typography variant="h5" className={styles.companyName}>
           {companyInfo.name}
         </Typography>
       </Box>
 
-      <Box
-        sx={{
-          display: "flex",
-          gap: 4,
-          alignItems: "flex-start",
-          flexWrap: "wrap",
-        }}
-      >
+      <Box className={styles.contentWrapper}>
         {companyInfo.logo && (
           <Box
             component="a"
             href={companyInfo.weburl}
             target="_blank"
             rel="noreferrer"
-            sx={{
-              p: 2,
-              background: "#fff",
-              borderRadius: "12px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              transition: "transform 0.2s",
-              "&:hover": { transform: "scale(1.05)" },
-            }}
+            className={styles.logoLink}
           >
             <img
               src={companyInfo.logo}
               alt="Company Logo"
-              style={{ maxWidth: "80px", maxHeight: "80px" }}
+              className={styles.logoImage}
             />
           </Box>
         )}
 
-        <Grid container spacing={2} sx={{ flex: 1, minWidth: "200px" }}>
+        <Grid container spacing={2} className={styles.infoGrid}>
           {[
             { label: "Industry", value: companyInfo.finnhubIndustry },
             { label: "IPO Date", value: companyInfo.ipo },
@@ -126,22 +94,10 @@ const BasicInfo = () => {
             { label: "Shares", value: `${companyInfo.shareOutstanding}M` },
           ].map((item) => (
             <Grid item xs={12} sm={6} key={item.label}>
-              <Typography
-                variant="caption"
-                sx={{
-                  color: "var(--text-muted)",
-                  display: "block",
-                  mb: 0.5,
-                  fontWeight: 600,
-                  textTransform: "uppercase",
-                }}
-              >
+              <Typography variant="caption" className={styles.infoLabel}>
                 {item.label}
               </Typography>
-              <Typography
-                variant="body1"
-                sx={{ color: "var(--text-main)", fontWeight: 600 }}
-              >
+              <Typography variant="body1" className={styles.infoValue}>
                 {item.value || "N/A"}
               </Typography>
             </Grid>

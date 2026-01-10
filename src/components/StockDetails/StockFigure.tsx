@@ -20,6 +20,7 @@ import {
 import mergedData from "../../data/mergedData.json";
 import { Transaction } from "../../types";
 import * as _ from "lodash";
+import styles from "./StockFigure.module.scss";
 
 const downColor = "#FF5000";
 const downBorderColor = "#8A0000";
@@ -475,25 +476,13 @@ const StockFigure = () => {
 
   if (isFigureLoading) {
     return (
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          py: 10,
-          gap: 2,
-        }}
-      >
+      <Box className={styles.loadingContainer}>
         <CircularProgress
           size={32}
           thickness={5}
-          sx={{ color: "var(--primary)" }}
+          className={styles.loadingSpinner}
         />
-        <Typography
-          variant="body2"
-          sx={{ color: "var(--text-muted)", fontWeight: 600 }}
-        >
+        <Typography variant="body2" className={styles.loadingText}>
           Analyzing Market Data...
         </Typography>
       </Box>
@@ -504,35 +493,19 @@ const StockFigure = () => {
     const hasError = !!errorMessage;
     return (
       <Box
-        className="chart-placeholder"
-        sx={{
-          textAlign: "center",
-          py: 10,
-          px: 3,
-          background: hasError
-            ? "rgba(239, 68, 68, 0.02)"
-            : "rgba(255, 255, 255, 0.01)",
-          borderRadius: "16px",
-          border: hasError
-            ? "1px solid rgba(239, 68, 68, 0.1)"
-            : "1px dashed var(--surface-border)",
-          m: 2,
-        }}
+        className={`chart-placeholder ${styles.placeholderContainer} ${
+          hasError ? styles.hasError : styles.noError
+        }`}
       >
         <Typography
           variant="h6"
-          sx={{
-            color: hasError ? "var(--error)" : "var(--text-main)",
-            fontWeight: 700,
-            mb: 1,
-          }}
+          className={`${styles.placeholderTitle} ${
+            hasError ? styles.error : styles.normal
+          }`}
         >
           {hasError ? "Market Data Issue" : "Ready for Analysis"}
         </Typography>
-        <Typography
-          variant="body2"
-          sx={{ color: "var(--text-muted)", maxWidth: "400px", mx: "auto" }}
-        >
+        <Typography variant="body2" className={styles.placeholderMessage}>
           {hasError
             ? errorMessage
             : "Select a stock from the activity cards or search a ticker to visualize market insights."}
@@ -553,7 +526,7 @@ const StockFigure = () => {
         container
         justifyContent="center"
         alignItems="center"
-        style={{ marginTop: "10px" }}
+        className={styles.rangeButtonContainer}
       >
         <ToggleButtonGroup
           value={candlestickDaysRange}
