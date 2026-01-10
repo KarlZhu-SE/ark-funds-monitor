@@ -1,4 +1,5 @@
 :HL["/ark-funds-monitor/_next/static/chunks/00c8ca2458ab83da.css","style"]
+:HL["/ark-funds-monitor/_next/static/chunks/41b8b6f650e39476.css","style"]
 :HL["/ark-funds-monitor/_next/static/chunks/512e9840d74d8220.css","style"]
 :HL["/ark-funds-monitor/_next/static/chunks/e1b846f2cade0d33.css","style"]
-0:{"buildId":"-RonKQSGdRbU7B7P8DYx-","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"a6t0lbqeKPKU2hZCdeh89","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
