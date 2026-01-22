@@ -19,7 +19,7 @@
     "ag-grid-react": "^31.0.0",
     "echarts": "^5.4.0",
     "echarts-for-react": "^3.0.2",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
